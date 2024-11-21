@@ -22,8 +22,7 @@ namespace Sodv2101_Group13_BudgetApp
             Amount = amount;
         }
 
-        public abstract double GetTotalEarned()
-        {   
-        }
+        public abstract double GetTotalEarned();
+
     }
 }
