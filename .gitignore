@@ -361,3 +361,4 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Sodv2101_Group13_BudgetApp/DBConnection/DBConnection.cs
