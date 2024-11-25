@@ -1,5 +1,6 @@
 using Microsoft.Data.SqlClient;
-using Sodv2101_Group13_BudgetApp.Input_Forms;
+using Sodv2101_Group13_BudgetApp.InputForms;
+using Sodv2101_Group13_BudgetApp.SubPageForms;
 
 namespace Sodv2101_Group13_BudgetApp
 {
@@ -21,7 +22,17 @@ namespace Sodv2101_Group13_BudgetApp
 			CreateBudget budgetForm = new CreateBudget();
 			budgetForm.ShowDialog();
 
+		}
 
+		private void toolBtnAddExpense_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btnToolStripBudget_Click(object sender, EventArgs e)
+		{
+			BudgetPageForm budgetForm = new BudgetPageForm();
+			budgetForm.ShowDialog();
 		}
 	}
 }
