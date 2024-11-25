@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
 using Sodv2101_Group13_BudgetApp.DBConnectionClass;
-using Sodv2101_Group13_BudgetApp.Input_Forms;
+using Sodv2101_Group13_BudgetApp.InputForms;
 
 
 namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.BudgetServices
@@ -64,7 +64,70 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.BudgetServices
 
 			return false;
 		}
-		
+
+
+
+		public DataTable GetBudgetTable()
+		{
+			// default of 1 for now so that we can add login later if we want
+			int UserID = 1;
+
+			// might change this method to return a list of objects instead of a table
+			// List<Budget> budgets = new List<Budget>();
+			string query = "SELECT BudgetName, MaxAmount, Description, budgetID FROM Budget WHERE UserID = @UserID";
+			using (SqlConnection connection = new SqlConnection(dbConnection.ConnectionString))
+			{
+				try
+				{
+					connection.Open();
+					using (SqlCommand cmd = new SqlCommand(query, connection))
+					{
+						cmd.Parameters.AddWithValue("@UserID", 1);
+						SqlDataReader result = cmd.ExecuteReader();
+						DataTable budgetTable = new DataTable();
+						budgetTable.Load(result);
+
+						return budgetTable;
+
+					}
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine(ex.ToString());
+				}
+			}
+
+			return null;
+
+
+
+		}
+
+
+		public bool DeleteBudget(int budgetId)
+		{
+			string query = "DELETE FROM Budget WHERE budgetID = @budgetId";
+			using (SqlConnection connection = new SqlConnection(dbConnection.ConnectionString))
+			{
+				try
+				{
+					connection.Open();
+					using (SqlCommand cmd = new SqlCommand(query, connection))
+					{
+						cmd.Parameters.AddWithValue("@budgetId", budgetId);
+						cmd.ExecuteNonQuery();
+						return true;
+					}
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine(ex.ToString());
+				}
+			}
+			return false;
+		}
+
+
 
 
 	}
