@@ -56,7 +56,22 @@ namespace Sodv2101_Group13_BudgetApp
             return total;
         }
 
+		public double GetExpenseTotalByMonth(int month)
+		{
+			double total = 0;
+			foreach (Expense expense in expenses)
+			{
+                if(expense.TimePeriod.Month == month)
+                {
+					total += expense.Amount;
+				}
+				
+			}
+
+			return total;
+		}
 
 
-    }
+
+	}
 }

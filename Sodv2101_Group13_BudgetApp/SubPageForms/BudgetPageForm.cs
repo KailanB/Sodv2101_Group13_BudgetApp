@@ -83,21 +83,6 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
 
 				DataTable expenseTable = new DataTable();
 
-                //DataTable table = new DataTable();
-                //table.Columns.Add("Name", typeof(string));
-                //table.Columns.Add("Team", typeof(string));
-                //table.Columns.Add("ID", typeof(int));
-                //foreach (var player in players)
-                //{
-                //	table.Rows.Add(player.Name, player.Team, player.Id);
-                //}
-                //dataGridPlayers.DataSource = table;
-                //dataGridPlayers.SelectionChanged += DataGrid_PlayerSelected;
-
-                //int expenseId, int budgetId, string name, double amount, string description, string timePeriod
-
-                MessageBox.Show(expenses.Count.ToString());
-
 				expenseTable.Columns.Add("Name", typeof(string));
                 expenseTable.Columns.Add("Amount", typeof(double));
 				expenseTable.Columns.Add("Description", typeof(string));
@@ -111,11 +96,6 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
 
 				dataGridViewExpenses.DataSource = expenseTable;
 
-				//bool budgetDeleted = budgetService.DeleteBudget(budgetId);
-				//if (budgetDeleted)
-				//{
-				//	LoadBudgets();
-				//}
 			}
            
         }

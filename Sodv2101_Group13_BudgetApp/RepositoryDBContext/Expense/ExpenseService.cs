@@ -90,7 +90,7 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.ExpenseService
 				SqlDataReader reader = cmd.ExecuteReader();
 				while (reader.Read())
 				{
-                    expenses.Add(new Expense((Int32)reader[0], (Int32)reader[1], reader[2].ToString(), double.Parse(reader[3].ToString()), reader[4].ToString(), reader[5].ToString()));
+                    expenses.Add(new Expense((Int32)reader[0], (Int32)reader[1], reader[2].ToString(), double.Parse(reader[3].ToString()), reader[4].ToString(), (DateTime)reader[5]));
 
 
 					//Console.WriteLine("\t{0}\t{1}\t{2}",
@@ -117,7 +117,6 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.ExpenseService
 				MessageBox.Show($"An error occurred: {ex.Message}");
 			}
 
-            MessageBox.Show("In Expense service: " + expenses.Count.ToString());
 
 			return expenses;
 
