@@ -103,6 +103,43 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.BudgetServices
 
 		}
 
+		public List<Budget> GetBudgetList()
+		{
+			// default of 1 for now so that we can add login later if we want
+			int UserID = 1;
+			// might change this method to return a list of objects instead of a table
+			// List<Budget> budgets = new List<Budget>();
+			string query = "SELECT BudgetId, BudgetName, MaxAmount, Description, UserID FROM Budget WHERE UserID = @UserID";
+			using (SqlConnection connection = new SqlConnection(dbConnection.ConnectionString))
+			{
+				List<Budget> budgetList = new List<Budget>();
+				try
+				{
+					connection.Open();
+					using (SqlCommand cmd = new SqlCommand(query, connection))
+					{
+						cmd.Parameters.AddWithValue("@UserID", 1);
+						SqlDataReader result = cmd.ExecuteReader();
+
+						while(result.Read())
+						{
+							budgetList.Add(new Budget((Int32)result[0], result[1].ToString(), double.Parse(result[2].ToString()), result[3].ToString(), (Int32)result[4]));
+
+						}
+
+						return budgetList;
+						// pull Expense data for each budget and load data into each budget list
+
+					}
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine(ex.ToString());
+				}
+			}
+			return null;
+		}
+
 
 		public bool DeleteBudget(int budgetId)
 		{
