@@ -191,74 +191,82 @@
 			// 
 			// btnNewBudget
 			// 
+			btnNewBudget.BackColor = Color.Plum;
 			btnNewBudget.Location = new Point(22, 387);
 			btnNewBudget.Name = "btnNewBudget";
 			btnNewBudget.Size = new Size(82, 23);
 			btnNewBudget.TabIndex = 9;
 			btnNewBudget.Text = "New Budget";
-			btnNewBudget.UseVisualStyleBackColor = true;
+			btnNewBudget.UseVisualStyleBackColor = false;
 			btnNewBudget.Click += btnNewBudget_Click;
 			// 
 			// btnEditBudget
 			// 
+			btnEditBudget.BackColor = Color.Plum;
 			btnEditBudget.Location = new Point(142, 387);
 			btnEditBudget.Name = "btnEditBudget";
 			btnEditBudget.Size = new Size(85, 23);
 			btnEditBudget.TabIndex = 10;
 			btnEditBudget.Text = "Edit Budget";
-			btnEditBudget.UseVisualStyleBackColor = true;
+			btnEditBudget.UseVisualStyleBackColor = false;
 			// 
 			// btnDeleteBudget
 			// 
+			btnDeleteBudget.BackColor = Color.Plum;
 			btnDeleteBudget.Location = new Point(262, 387);
 			btnDeleteBudget.Name = "btnDeleteBudget";
 			btnDeleteBudget.Size = new Size(91, 23);
 			btnDeleteBudget.TabIndex = 11;
 			btnDeleteBudget.Text = "Delete Budget";
-			btnDeleteBudget.UseVisualStyleBackColor = true;
+			btnDeleteBudget.UseVisualStyleBackColor = false;
 			btnDeleteBudget.Click += btnDeleteBudget_Click;
 			// 
 			// btnNewExpense
 			// 
+			btnNewExpense.BackColor = Color.Plum;
 			btnNewExpense.Location = new Point(421, 387);
 			btnNewExpense.Name = "btnNewExpense";
 			btnNewExpense.Size = new Size(102, 23);
 			btnNewExpense.TabIndex = 12;
 			btnNewExpense.Text = "New Expense";
-			btnNewExpense.UseVisualStyleBackColor = true;
+			btnNewExpense.UseVisualStyleBackColor = false;
 			btnNewExpense.UseWaitCursor = true;
 			// 
 			// btnEditExpense
 			// 
+			btnEditExpense.BackColor = Color.Plum;
 			btnEditExpense.Location = new Point(562, 387);
 			btnEditExpense.Name = "btnEditExpense";
 			btnEditExpense.Size = new Size(94, 23);
 			btnEditExpense.TabIndex = 13;
 			btnEditExpense.Text = "Edit Expense";
-			btnEditExpense.UseVisualStyleBackColor = true;
+			btnEditExpense.UseVisualStyleBackColor = false;
 			// 
 			// btnDeleteExpense
 			// 
+			btnDeleteExpense.BackColor = Color.Plum;
 			btnDeleteExpense.Location = new Point(689, 387);
 			btnDeleteExpense.Name = "btnDeleteExpense";
 			btnDeleteExpense.Size = new Size(99, 23);
 			btnDeleteExpense.TabIndex = 14;
 			btnDeleteExpense.Text = "Delete Expense";
-			btnDeleteExpense.UseVisualStyleBackColor = true;
+			btnDeleteExpense.UseVisualStyleBackColor = false;
 			// 
 			// btnViewExpenses
 			// 
+			btnViewExpenses.BackColor = Color.Plum;
 			btnViewExpenses.Location = new Point(246, 50);
 			btnViewExpenses.Name = "btnViewExpenses";
 			btnViewExpenses.Size = new Size(107, 23);
 			btnViewExpenses.TabIndex = 15;
 			btnViewExpenses.Text = "View Expenses";
-			btnViewExpenses.UseVisualStyleBackColor = true;
+			btnViewExpenses.UseVisualStyleBackColor = false;
 			// 
 			// BudgetPageForm
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
+			BackColor = SystemColors.GradientInactiveCaption;
 			ClientSize = new Size(800, 432);
 			Controls.Add(btnViewExpenses);
 			Controls.Add(btnDeleteExpense);
