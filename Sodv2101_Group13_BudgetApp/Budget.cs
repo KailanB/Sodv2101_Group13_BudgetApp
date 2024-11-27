@@ -8,9 +8,11 @@ namespace Sodv2101_Group13_BudgetApp
 {
     internal class Budget
     {
+        public int BudgetID {  get; set; }
         public string Name { get; private set; }
         public double Max { get; private set; }
         public string Description { get; private set; }
+        public int UserID { get; private set; } 
 
         public List<Expense> expenses { get; private set; } = new List<Expense>();
 
@@ -19,11 +21,20 @@ namespace Sodv2101_Group13_BudgetApp
 
         }
 
-        public Budget(string name, double max, string description)
+		public Budget(string name, double max, string description)
+		{
+			Name = name;
+			Max = max;
+			Description = description;
+		}
+
+		public Budget(int budgetId, string name, double max, string description, int userID)
         {
+            BudgetID = budgetId;
             Name = name;
             Max = max;
             Description = description;
+            UserID = userID;
         }
 
 
