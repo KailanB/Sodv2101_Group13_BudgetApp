@@ -38,12 +38,22 @@ namespace Sodv2101_Group13_BudgetApp
         }
 
 
-        public void AddNewExpense(string name, double amount, string description, string timePeriod)
+        public void AddNewExpense(Expense expense)
         {
-            Expense newExpense = new Expense(name, amount, description, timePeriod);
-            expenses.Add(newExpense);
+            // Expense newExpense = new Expense(name, amount, description, timePeriod);
+            expenses.Add(expense);
 
+        }
 
+        public double GetExpenseTotal(int month)
+        {
+            double total = 0;
+            foreach(Expense expense in expenses)
+            {
+                total += expense.Amount;
+            }
+
+            return total;
         }
 
 

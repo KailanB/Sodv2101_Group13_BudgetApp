@@ -6,8 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
-using Sodv2101_Group13_BudgetApp.DBConnectionClass;
 using Sodv2101_Group13_BudgetApp.InputForms;
+using DBConnectionClass;
 
 
 namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.BudgetServices

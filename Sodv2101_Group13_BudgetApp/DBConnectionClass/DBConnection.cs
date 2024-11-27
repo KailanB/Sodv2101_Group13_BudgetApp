@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.VisualBasic.ApplicationServices;
+using System.Data;// to create a data table we need this library
+using System.Data.SqlClient; // to use the database
 
-namespace Sodv2101_Group13_BudgetApp.DBConnectionClass
+
+namespace DBConnectionClass
 {
-	public class DBConnection
-	{
-		public string ConnectionString {  get; set; } = "Data Source = DESKTOP-516INJ7; Initial Catalog = Sodv2101_BudgetAppDB; Integrated Security = true; TrustServerCertificate=True";
-	
-	}
+    public class DBConnection
+    {
+        // Connection string for the database
+        public string ConnectionString { get; set; } = "Data Source = DESKTOP-516INJ7; Initial Catalog = Sodv2101_BudgetAppDB; Integrated Security = true; TrustServerCertificate=True";
+    }
 }

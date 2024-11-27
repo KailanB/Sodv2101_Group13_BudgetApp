@@ -30,11 +30,6 @@ namespace Sodv2101_Group13_BudgetApp
 
         }
 
-        private void toolBtnAddExpense_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnToolStripBudget_Click(object sender, EventArgs e)
         {
             BudgetPageForm budgetForm = new BudgetPageForm();
