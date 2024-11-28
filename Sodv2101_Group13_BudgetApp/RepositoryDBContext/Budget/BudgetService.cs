@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
 using Sodv2101_Group13_BudgetApp.InputForms;
 using DBConnectionClass;
+using Sodv2101_Group13_BudgetApp.RepositoryDBContext.ExpenseServices;
 
 
 namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.BudgetServices
@@ -23,6 +24,8 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.BudgetServices
 		// paste this string into the class AS THE ONLY FIELD and replace with YOUR DB info
 		// ************* IMPORTANT ****************// 
 		private DBConnection dbConnection = new DBConnection();
+
+		ExpenseService expenseService = new ExpenseService();
 
 
 		
@@ -74,7 +77,6 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.BudgetServices
 
 			using (SqlConnection connection = new SqlConnection(dbConnection.ConnectionString))
 			{
-				// MessageBox.Show("Budget: " + budget.Name + "ID: " + id);
 				try
 				{
 					connection.Open();
@@ -88,7 +90,6 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.BudgetServices
 						cmd.Parameters.AddWithValue("@BudgetId", id); // budget to be updated
 																   // execute command
 						int rowsAffected = cmd.ExecuteNonQuery();
-						MessageBox.Show(rowsAffected.ToString());
 						// if rows are affected return true
 						if (rowsAffected > 0)
 						{
@@ -109,41 +110,38 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.BudgetServices
 
 
 
-		public DataTable GetBudgetTable()
-		{
-			// default of 1 for now so that we can add login later if we want
-			int UserID = 1;
+		//public DataTable GetBudgetTable()
+		//{
+		//	// default of 1 for now so that we can add login later if we want
+		//	int UserID = 1;
 
-			// might change this method to return a list of objects instead of a table
-			// List<Budget> budgets = new List<Budget>();
-			string query = "SELECT BudgetName, MaxAmount, Description, budgetID FROM Budget WHERE UserID = @UserID";
-			using (SqlConnection connection = new SqlConnection(dbConnection.ConnectionString))
-			{
-				try
-				{
-					connection.Open();
-					using (SqlCommand cmd = new SqlCommand(query, connection))
-					{
-						cmd.Parameters.AddWithValue("@UserID", 1);
-						SqlDataReader result = cmd.ExecuteReader();
-						DataTable budgetTable = new DataTable();
-						budgetTable.Load(result);
+		//	// might change this method to return a list of objects instead of a table
+		//	// List<Budget> budgets = new List<Budget>();
+		//	string query = "SELECT BudgetName, MaxAmount, Description, budgetID FROM Budget WHERE UserID = @UserID";
+		//	using (SqlConnection connection = new SqlConnection(dbConnection.ConnectionString))
+		//	{
+		//		try
+		//		{
+		//			connection.Open();
+		//			using (SqlCommand cmd = new SqlCommand(query, connection))
+		//			{
+		//				cmd.Parameters.AddWithValue("@UserID", 1);
+		//				SqlDataReader result = cmd.ExecuteReader();
+		//				DataTable budgetTable = new DataTable();
+		//				budgetTable.Load(result);
 
-						return budgetTable;
+		//				return budgetTable;
 
-					}
-				}
-				catch (Exception ex)
-				{
-					Console.WriteLine(ex.ToString());
-				}
-			}
+		//			}
+		//		}
+		//		catch (Exception ex)
+		//		{
+		//			Console.WriteLine(ex.ToString());
+		//		}
+		//	}
+		//	return null;
 
-			return null;
-
-
-
-		}
+		//}
 
 		public List<Budget> GetBudgetList()
 		{
@@ -151,7 +149,7 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.BudgetServices
 			int UserID = 1;
 			// might change this method to return a list of objects instead of a table
 			// List<Budget> budgets = new List<Budget>();
-			string query = "SELECT BudgetId, BudgetName, MaxAmount, Description, UserID FROM Budget WHERE UserID = @UserID";
+			string query = "SELECT BudgetId, BudgetName, MaxAmount, Description, BudgetID FROM Budget WHERE UserID = @UserID";
 			using (SqlConnection connection = new SqlConnection(dbConnection.ConnectionString))
 			{
 				List<Budget> budgetList = new List<Budget>();
@@ -169,6 +167,12 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.BudgetServices
 
 						}
 
+
+
+						foreach(Budget budget in budgetList)
+						{
+							budget.Expenses = expenseService.GetExpenseByBudgetId(budget.BudgetID);
+						}
 						return budgetList;
 						// pull Expense data for each budget and load data into each budget list
 
