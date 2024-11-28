@@ -108,6 +108,7 @@
 			btnEditBudget.TabIndex = 10;
 			btnEditBudget.Text = "Edit Budget";
 			btnEditBudget.UseVisualStyleBackColor = false;
+			btnEditBudget.Click += btnEditBudget_Click;
 			// 
 			// btnDeleteBudget
 			// 

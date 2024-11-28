@@ -51,6 +51,11 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
 
         }
 
+        //public void ChangeBtnNameEdit()
+        //{
+        //    btnCreate.Text = "Edit";
+        //}
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
