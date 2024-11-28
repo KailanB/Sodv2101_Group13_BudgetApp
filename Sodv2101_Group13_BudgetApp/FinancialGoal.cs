@@ -12,7 +12,10 @@ namespace Sodv2101_Group13_BudgetApp
 
         public string Name { get; private set; }
         public double Max { get; private set; }
-        public string Description { get; private set; }
+        public string? Description { get; private set; }
+        // Added deadline and UserID
+        public DateTime? Deadline { get; private set; }
+        public int UserID { get; private set; }
 
         public List<Contribution> contributions { get; private set; } = new List<Contribution>();
 
