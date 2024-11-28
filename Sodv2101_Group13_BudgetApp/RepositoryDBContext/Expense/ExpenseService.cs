@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 
 
-namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.ExpenseService
+namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.ExpenseServices
 { 
     internal class ExpenseService
     {
