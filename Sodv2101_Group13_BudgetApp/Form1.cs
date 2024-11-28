@@ -11,15 +11,15 @@ namespace Sodv2101_Group13_BudgetApp
 
 
 
-		private BudgetService budgetService = new BudgetService();
-		public Form1()
+        private BudgetService budgetService = new BudgetService();
+        public Form1()
         {
             InitializeComponent();
 
 
             LoadBudgetData();
 
-		}
+        }
 
         private void btnCreateBudget_Click(object sender, EventArgs e)
         {
@@ -49,8 +49,7 @@ namespace Sodv2101_Group13_BudgetApp
             int locationYIncrease = 0;
 			Bitmap bitmap = new Bitmap(250, 150);
 
-
-			foreach (Budget budget in budgets)
+            foreach (Budget budget in budgets)
             {
                 Label label = new Label();
                 label.Location = new Point(20, 225 + locationYIncrease);
@@ -105,5 +104,14 @@ namespace Sodv2101_Group13_BudgetApp
 		   picBudgetGraphs.Image = bitmap;
 
 		}
+            }
+            //MessageBox.Show(budgets.Count.ToString());
+        }
+
+        private void btnToolStripDropDownButtonGoals_Click(object sender, EventArgs e)
+        {
+            GoalPageForm goalForm = new GoalPageForm();
+            goalForm.ShowDialog();
+        }
     }
 }
