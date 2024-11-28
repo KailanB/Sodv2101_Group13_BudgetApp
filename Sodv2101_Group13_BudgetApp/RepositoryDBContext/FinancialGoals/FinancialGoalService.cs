@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using DBConnectionClass;
+using Sodv2101_Group13_BudgetApp.DBConnectionClass;
 using Microsoft.Data.SqlClient;
 using Sodv2101_Group13_BudgetApp.InputForms;
 
@@ -48,7 +48,7 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.FinancialGoals
 
         public bool EditFinancialGoal(FinancialGoal goal, int id)
         {
-            string query = "UPDATE FinancialGoal SET "
+            string query = "UPDATE FinancialGoal SET ";
             return false;
         }
     }

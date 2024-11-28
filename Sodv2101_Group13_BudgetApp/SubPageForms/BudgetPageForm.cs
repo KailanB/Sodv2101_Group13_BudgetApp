@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 
 
-using DBConnectionClass;
+using Sodv2101_Group13_BudgetApp.DBConnectionClass;
 
 
 namespace Sodv2101_Group13_BudgetApp.SubPageForms

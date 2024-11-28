@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <Folder Include="DBScripts\" />
+    <Folder Include="NewFolder\" />
   </ItemGroup>
 
   <ItemGroup>

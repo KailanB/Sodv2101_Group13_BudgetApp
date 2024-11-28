@@ -14,9 +14,7 @@ namespace Sodv2101_Group13_BudgetApp
         private BudgetService budgetService = new BudgetService();
         public Form1()
         {
-            InitializeComponent();
-
-
+			InitializeComponent();
             LoadBudgetData();
 
         }
@@ -104,9 +102,6 @@ namespace Sodv2101_Group13_BudgetApp
 		   picBudgetGraphs.Image = bitmap;
 
 		}
-            }
-            //MessageBox.Show(budgets.Count.ToString());
-        }
 
         private void btnToolStripDropDownButtonGoals_Click(object sender, EventArgs e)
         {
