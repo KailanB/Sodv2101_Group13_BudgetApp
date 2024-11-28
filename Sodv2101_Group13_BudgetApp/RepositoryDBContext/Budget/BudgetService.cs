@@ -66,6 +66,48 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.BudgetServices
 		}
 
 
+				// BudgetSerive CREATE METHOD
+		public bool EditBudget(Budget budget, int id)
+		{
+			// replace with necessary query string for whatever table
+			string query = "UPDATE Budget SET BudgetName = @BudgetName, MaxAmount = @MaxAmount, Description = @Description WHERE BudgetID = @BudgetId";
+
+			using (SqlConnection connection = new SqlConnection(dbConnection.ConnectionString))
+			{
+				// MessageBox.Show("Budget: " + budget.Name + "ID: " + id);
+				try
+				{
+					connection.Open();
+					using (SqlCommand cmd = new SqlCommand(query, connection))
+					{
+						// get parameters from the budget object we created earlier and pass the field values as parameters
+						cmd.Parameters.AddWithValue("@BudgetName", budget.Name);
+						cmd.Parameters.AddWithValue("@MaxAmount", budget.Max);
+						cmd.Parameters.AddWithValue("@Description", budget.Description);
+
+						cmd.Parameters.AddWithValue("@BudgetId", id); // budget to be updated
+																   // execute command
+						int rowsAffected = cmd.ExecuteNonQuery();
+						MessageBox.Show(rowsAffected.ToString());
+						// if rows are affected return true
+						if (rowsAffected > 0)
+						{
+							return true;
+						}
+						// else return false or catch error.
+
+					}
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine(ex.ToString());
+				}
+			}
+
+			return false;
+		}
+
+
 
 		public DataTable GetBudgetTable()
 		{
