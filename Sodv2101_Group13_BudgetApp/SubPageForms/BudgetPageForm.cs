@@ -14,137 +14,145 @@ using System.Windows.Forms;
 
 
 
-using DBConnectionClass;
-
 
 namespace Sodv2101_Group13_BudgetApp.SubPageForms
 {
-	public partial class BudgetPageForm : Form
-	{
+    public partial class BudgetPageForm : Form
+    {
 
-		// private DBConnection dbConnection = new DBConnection();
+        // private DBConnection dbConnection = new DBConnection();
 
-		private List<Budget> budgetList = new List<Budget>();
+        private List<Budget> budgetList = new List<Budget>();
 
-		private BudgetService budgetService = new BudgetService();
+        private BudgetService budgetService = new BudgetService();
 
-		private ExpenseService expenseService = new ExpenseService();
-		public BudgetPageForm()
-		{
-			InitializeComponent();
+        private ExpenseService expenseService = new ExpenseService();
+        public BudgetPageForm()
+        {
+            InitializeComponent();
 
-			LoadBudgets();
-		}
+            LoadBudgets();
+        }
 
-		private void LoadBudgets()
-		{
+        private void LoadBudgets()
+        {
 
-			budgetList = budgetService.GetBudgetList();
-			DataTable budgetTable = new DataTable();
-			budgetTable.Columns.Add("Budget", typeof(string));
-			budgetTable.Columns.Add("Max Amount", typeof(double));
-			budgetTable.Columns.Add("Description", typeof(string));
-			budgetTable.Columns.Add("Budget ID", typeof(int));
-			foreach (var budg in budgetList)
-			{
-				budgetTable.Rows.Add(budg.Name, budg.Max, budg.Description, budg.BudgetID);
-			}
-			dataGridViewBudgets.DataSource = budgetTable;
+            budgetList = budgetService.GetBudgetList();
+            DataTable budgetTable = new DataTable();
+            budgetTable.Columns.Add("Budget", typeof(string));
+            budgetTable.Columns.Add("Max Amount", typeof(double));
+            budgetTable.Columns.Add("Description", typeof(string));
+            budgetTable.Columns.Add("Budget ID", typeof(int));
+            foreach (var budg in budgetList)
+            {
+                budgetTable.Rows.Add(budg.Name, budg.Max, budg.Description, budg.BudgetID);
+            }
+            dataGridViewBudgets.DataSource = budgetTable;
 
-		}
+        }
 
-		private void btnNewBudget_Click(object sender, EventArgs e)
-		{
-			CreateBudget budgetForm = new CreateBudget();
-			DialogResult result = budgetForm.ShowDialog();
-			if (result == DialogResult.OK)
-			{
-				LoadBudgets();
-			}
-		}
+        private void btnNewBudget_Click(object sender, EventArgs e)
+        {
+            CreateBudget budgetForm = new CreateBudget();
+            DialogResult result = budgetForm.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                LoadBudgets();
+            }
+        }
 
-		private void btnDeleteBudget_Click(object sender, EventArgs e)
-		{
-			if (dataGridViewBudgets.SelectedRows.Count > 0)
-			{
-				DataGridViewRow selectedRow = dataGridViewBudgets.SelectedRows[0];
-				int budgetListIndex = dataGridViewBudgets.CurrentCell.RowIndex;
-				int budgetId = budgetList[budgetListIndex].BudgetID;
+        private void btnDeleteBudget_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewBudgets.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dataGridViewBudgets.SelectedRows[0];
+                int budgetListIndex = dataGridViewBudgets.CurrentCell.RowIndex;
+                int budgetId = budgetList[budgetListIndex].BudgetID;
 
-				// int budgetId = Convert.ToInt32(selectedRow.Cells["Budget ID"].Value);
+                // int budgetId = Convert.ToInt32(selectedRow.Cells["Budget ID"].Value);
 
-				bool budgetDeleted = budgetService.DeleteBudget(budgetId);
-				if (budgetDeleted)
-				{
-					LoadBudgets();
-				}
-			}
-		}
-		//to VIEW ALL EXPENSES IN THE BUDGET PAGE FORM
-		private void btnViewExpenses_Click(object sender, EventArgs e)
-		{
-			List<Expense> expenses = new List<Expense>();
-			if (dataGridViewBudgets.SelectedRows.Count > 0)
-			{
-				DataGridViewRow selectedRow = dataGridViewBudgets.SelectedRows[0];
+                bool budgetDeleted = budgetService.DeleteBudget(budgetId);
+                if (budgetDeleted)
+                {
+                    LoadBudgets();
+                }
+            }
+        }
+        //to VIEW ALL EXPENSES IN THE BUDGET PAGE FORM
+        private void btnViewExpenses_Click(object sender, EventArgs e)
+        {
+            List<Expense> expenses = new List<Expense>();
+            if (dataGridViewBudgets.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dataGridViewBudgets.SelectedRows[0];
 
-				// get id via using list index to find ID of budget at index.
-				int budgetListIndex = dataGridViewBudgets.CurrentCell.RowIndex;
-				int budgetId = budgetList[budgetListIndex].BudgetID;
-				// int budgetId = Convert.ToInt32(selectedRow.Cells["Budget ID"].Value);
+                // get id via using list index to find ID of budget at index.
+                int budgetListIndex = dataGridViewBudgets.CurrentCell.RowIndex;
+                int budgetId = budgetList[budgetListIndex].BudgetID;
+                // int budgetId = Convert.ToInt32(selectedRow.Cells["Budget ID"].Value);
 
-				expenses = expenseService.GetExpenseByBudgetId(budgetId);
+                expenses = expenseService.GetExpenseByBudgetId(budgetId);
 
-				DataTable expenseTable = new DataTable();
+                DataTable expenseTable = new DataTable();
 
-				expenseTable.Columns.Add("Name", typeof(string));
-				expenseTable.Columns.Add("Amount", typeof(double));
-				expenseTable.Columns.Add("Description", typeof(string));
-				expenseTable.Columns.Add("Time Period", typeof(string));
-				expenseTable.Columns.Add("Expense ID", typeof(int));
-				foreach (var exp in expenses)
-				{
-					expenseTable.Rows.Add(exp.Name, exp.Amount, exp.Description, exp.TimePeriod, exp.ExpenseId);
-				}
-
-
-				dataGridViewExpenses.DataSource = expenseTable;
-
-			}
-
-		}
-
-		private void btnEditBudget_Click(object sender, EventArgs e)
-		{
-			if (dataGridViewBudgets.SelectedRows.Count > 0 && dataGridViewBudgets.SelectedRows.Count < 2)
-			{
-				DataGridViewRow selectedRow = dataGridViewBudgets.SelectedRows[0];
-				int budgetListIndex = dataGridViewBudgets.CurrentCell.RowIndex;
-				int budgetId = budgetList[budgetListIndex].BudgetID;
-
-				string name = selectedRow.Cells["Budget"].Value.ToString();
-				double amount = Convert.ToDouble(selectedRow.Cells["Max Amount"].Value);
-				string description = selectedRow.Cells["Description"].Value.ToString();
-
-				Budget budget = new Budget(name, amount, description);
-
-				EditBudgetForm editBudgetForm = new EditBudgetForm();
-				editBudgetForm.PopulateInputs(budget, budgetId);
-				DialogResult result = editBudgetForm.ShowDialog();
-				// if new budget is added then reload budget info
-				if (result == DialogResult.OK)
-				{
-					{
-						LoadBudgets();
-					}
+                expenseTable.Columns.Add("Name", typeof(string));
+                expenseTable.Columns.Add("Amount", typeof(double));
+                expenseTable.Columns.Add("Description", typeof(string));
+                expenseTable.Columns.Add("Time Period", typeof(string));
+                expenseTable.Columns.Add("Expense ID", typeof(int));
+                foreach (var exp in expenses)
+                {
+                    expenseTable.Rows.Add(exp.Name, exp.Amount, exp.Description, exp.TimePeriod, exp.ExpenseId);
+                }
 
 
-				}
-			}
+                dataGridViewExpenses.DataSource = expenseTable;
+
+            }
+
+        }
+
+        private void btnEditBudget_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewBudgets.SelectedRows.Count > 0 && dataGridViewBudgets.SelectedRows.Count < 2)
+            {
+                DataGridViewRow selectedRow = dataGridViewBudgets.SelectedRows[0];
+                int budgetListIndex = dataGridViewBudgets.CurrentCell.RowIndex;
+                int budgetId = budgetList[budgetListIndex].BudgetID;
+
+                string name = selectedRow.Cells["Budget"].Value.ToString();
+                double amount = Convert.ToDouble(selectedRow.Cells["Max Amount"].Value);
+                string description = selectedRow.Cells["Description"].Value.ToString();
+
+                Budget budget = new Budget(name, amount, description);
+
+                EditBudgetForm editBudgetForm = new EditBudgetForm();
+                editBudgetForm.PopulateInputs(budget, budgetId);
+                DialogResult result = editBudgetForm.ShowDialog();
+                // if new budget is added then reload budget info
+                if (result == DialogResult.OK)
+                {
+                    {
+                        LoadBudgets();
+                    }
+
+
+                }
+            }
 
 
 
-		}
-	}
+        }
+
+        private void btnNewExpense_Click(object sender, EventArgs e)
+        {
+            NewExpense expenseForm = new NewExpense();
+            DialogResult result = expenseForm.ShowDialog();
+            if(result == DialogResult.OK)
+            {
+               
+            }
+        }
+    }
 }
 
