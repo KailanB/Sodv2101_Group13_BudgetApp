@@ -107,7 +107,7 @@ INSERT INTO Contribution (GoalID, Amount, Description) VALUES
 
 
 
-INSERT INTO Expense(BudgetID, Amount, Description, PurchaseDate) VALUES 
+INSERT INTO Expense(BudgetID, Name, Amount, Description, PurchaseDate) VALUES 
 
 ---- GROCERIES FOR ALEX
 -- October
