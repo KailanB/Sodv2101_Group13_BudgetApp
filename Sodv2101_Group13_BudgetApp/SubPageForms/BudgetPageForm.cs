@@ -1,7 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using Sodv2101_Group13_BudgetApp.InputForms;
 using Sodv2101_Group13_BudgetApp.RepositoryDBContext.BudgetServices;
-using Sodv2101_Group13_BudgetApp.RepositoryDBContext.ExpenseService;
+using Sodv2101_Group13_BudgetApp.RepositoryDBContext.ExpenseServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 
 using DBConnectionClass;
-using Sodv2101_Group13_BudgetApp.RepositoryDBContext.ExpenseService;
+
 
 namespace Sodv2101_Group13_BudgetApp.SubPageForms
 {
@@ -38,8 +38,17 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
 
 		private void LoadBudgets()
 		{
-			DataTable budgetTable = budgetService.GetBudgetTable();
 
+			budgetList = budgetService.GetBudgetList();
+			DataTable budgetTable = new DataTable();
+			budgetTable.Columns.Add("Budget", typeof(string));
+			budgetTable.Columns.Add("Max Amount", typeof(double));
+			budgetTable.Columns.Add("Description", typeof(string));
+			budgetTable.Columns.Add("Budget ID", typeof(int));
+			foreach (var budg in budgetList)
+			{
+				budgetTable.Rows.Add(budg.Name, budg.Max, budg.Description, budg.BudgetID);
+			}
 			dataGridViewBudgets.DataSource = budgetTable;
 
 		}
@@ -59,8 +68,10 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
 			if (dataGridViewBudgets.SelectedRows.Count > 0)
 			{
 				DataGridViewRow selectedRow = dataGridViewBudgets.SelectedRows[0];
+				int budgetListIndex = dataGridViewBudgets.CurrentCell.RowIndex;
+				int budgetId = budgetList[budgetListIndex].BudgetID;
 
-				int budgetId = Convert.ToInt32(selectedRow.Cells["BudgetID"].Value);
+				// int budgetId = Convert.ToInt32(selectedRow.Cells["Budget ID"].Value);
 
 				bool budgetDeleted = budgetService.DeleteBudget(budgetId);
 				if (budgetDeleted)
@@ -77,7 +88,10 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
 			{
 				DataGridViewRow selectedRow = dataGridViewBudgets.SelectedRows[0];
 
-				int budgetId = Convert.ToInt32(selectedRow.Cells["BudgetID"].Value);
+				// get id via using list index to find ID of budget at index.
+				int budgetListIndex = dataGridViewBudgets.CurrentCell.RowIndex;
+				int budgetId = budgetList[budgetListIndex].BudgetID;
+				// int budgetId = Convert.ToInt32(selectedRow.Cells["Budget ID"].Value);
 
 				expenses = expenseService.GetExpenseByBudgetId(budgetId);
 
@@ -102,24 +116,31 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
 
 		private void btnEditBudget_Click(object sender, EventArgs e)
 		{
+			if (dataGridViewBudgets.SelectedRows.Count > 0 && dataGridViewBudgets.SelectedRows.Count < 2)
+			{
+				DataGridViewRow selectedRow = dataGridViewBudgets.SelectedRows[0];
+				int budgetListIndex = dataGridViewBudgets.CurrentCell.RowIndex;
+				int budgetId = budgetList[budgetListIndex].BudgetID;
 
-			DataGridViewRow selectedRow = dataGridViewBudgets.SelectedRows[0];
+				string name = selectedRow.Cells["Budget"].Value.ToString();
+				double amount = Convert.ToDouble(selectedRow.Cells["Max Amount"].Value);
+				string description = selectedRow.Cells["Description"].Value.ToString();
 
-			// FIGURE OUT HOW TO GET CORRECT ID 
-			int budgetId = 5;
+				Budget budget = new Budget(name, amount, description);
 
-			string name = selectedRow.Cells["BudgetName"].Value.ToString();
-			double amount = Convert.ToDouble(selectedRow.Cells["MaxAmount"].Value);
-			string description = selectedRow.Cells["Description"].Value.ToString();
+				EditBudgetForm editBudgetForm = new EditBudgetForm();
+				editBudgetForm.PopulateInputs(budget, budgetId);
+				DialogResult result = editBudgetForm.ShowDialog();
+				// if new budget is added then reload budget info
+				if (result == DialogResult.OK)
+				{
+					{
+						LoadBudgets();
+					}
 
-			Budget budget = new Budget(name, amount, description);
 
-			EditBudgetForm editBudgetForm = new EditBudgetForm();
-			editBudgetForm.PopulateInputs(budget, budgetId);
-			editBudgetForm.ShowDialog();
-
-
-			budgetList = budgetService.GetBudgetList();
+				}
+			}
 
 
 
