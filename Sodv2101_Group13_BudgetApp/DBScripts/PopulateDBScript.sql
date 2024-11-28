@@ -75,16 +75,16 @@ INSERT INTO Budget (BudgetName, MaxAmount, Description, UserID) VALUES
 ('Other', 1000.00, 'Emergency fund and long-term savings', 5); -- Sam
 
 
-INSERT INTO FinancialGoal (Amount, Description, Deadline, UserID) VALUES
-(2000, 'Emergency Fund.', '2025-03-31', 1),
-(8000, 'Buy a reliable used car.', '2025-12-31', 1),
-(25000, 'Save for a house down payment.', '2026-12-31', 1), -- Alex
+INSERT INTO FinancialGoal (Name, Amount, Description, Deadline, UserID) VALUES
+('Emergency Fund',2000, 'Emergency Fund.', '2025-03-31', 1), -- GoalID 1
+('Vehicle Purchase', 8000, 'Buy a reliable used car.', '2025-12-31', 1), -- GoalID 2
+('Down Payment Funds', 25000, 'Save for a house down payment.', '2026-12-31', 1), -- Alex -- GoalID 3
 
 
-(5000.00, 'Pay off student loans', '2025-01-15', 2), -- Taylor
-(15000.00, 'Invest in a second property', '2025-12-31', 3), -- Jordan
-(2000.00, 'Save for a vacation', '2025-03-15', 4), -- Charlie
-(3000.00, 'Build an emergency fund', '2025-09-01', 5); -- Sam
+('Student Loan Repayment', 5000.00, 'Pay off student loans', '2025-01-15', 2), -- Taylor GoalID 1
+('Property Investment', 15000.00, 'Invest in a second property', '2025-12-31', 3), -- Jordan GoalID 1
+('Vacation', 2000.00, 'Save for a vacation', '2025-03-15', 4), -- Charlie GoalID 1
+('Emergency Fund', 3000.00, 'Build an emergency fund', '2025-09-01', 5); -- Sam GoalID 1
 
 INSERT INTO Contribution (GoalID, Amount, Description) VALUES
 (1, 500, 'First deposit for emergency fund.'),  -- Alex
@@ -100,7 +100,7 @@ INSERT INTO Contribution (GoalID, Amount, Description) VALUES
 (3, 3000, 'Salary increment savings.'),  -- Alex
 
 
-(4, 1000.00, 'Paid extra from freelance gig'), -- Taylor
+(4, 1000.00, 'Paid extra from freelance gig'), -- Taylor 
 (5, 5000.00, 'Initial savings for property'), -- Jordan
 (6, 500.00, 'Set aside from investments'), -- Charlie
 (7, 1000.00, 'First emergency fund deposit'); -- Sam
