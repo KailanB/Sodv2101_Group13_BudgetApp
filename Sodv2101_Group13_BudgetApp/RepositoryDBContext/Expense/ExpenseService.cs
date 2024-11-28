@@ -1,5 +1,6 @@
-﻿using DBConnectionClass;
+﻿
 using Microsoft.Data.SqlClient;
+using Sodv2101_Group13_BudgetApp.DBConnectionClass;
 using System.Data;
 using System.Security.Policy;
 using System.Windows.Forms;
@@ -15,7 +16,7 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.ExpenseServices
         // Method to create a new expense
         public bool NewExpense(Expense expense)
         {
-            string query = "INSERT INTO Expense (Name, Amount, Description, TimePeriod) VALUES (@Name, @Amount, @Description, @TimePeriod)";
+            string query = "INSERT INTO Expense (BudgetID, Name, Amount, Description, PurchaseDate ) VALUES (@BudgetID, @Name, @Amount, @Description, @TimePeriod)";
 
             using (SqlConnection connection = new SqlConnection(dbConnection.ConnectionString))
             {
@@ -27,7 +28,8 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.ExpenseServices
                         cmd.Parameters.AddWithValue("@Name", expense.Name);
                         cmd.Parameters.AddWithValue("@Amount", expense.Amount);
                         cmd.Parameters.AddWithValue("@Description", expense.Description);
-                        cmd.Parameters.AddWithValue("@TimePeriod", expense.TimePeriod);
+                        cmd.Parameters.AddWithValue("@TimePeriod", expense.DateString);
+                        cmd.Parameters.AddWithValue("@BudgetID", expense.BudgetId);
 
                         int rowsAffected = cmd.ExecuteNonQuery();
                         return rowsAffected > 0;
@@ -38,6 +40,8 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.ExpenseServices
                     MessageBox.Show("Error adding new expense: " + ex.Message);
                     return false;
                 }
+
+                MessageBox.Show("Saved");
             }
         }
 
@@ -59,7 +63,7 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.ExpenseServices
                         cmd.Parameters.AddWithValue("@Name", expense.Name);
                         cmd.Parameters.AddWithValue("@Amount", expense.Amount);
                         cmd.Parameters.AddWithValue("@Description", expense.Description);
-                        cmd.Parameters.AddWithValue("@TimePeriod", expense.TimePeriod);
+                        cmd.Parameters.AddWithValue("@TimePeriod", expense.DateString);
 
                         // Execute the query and check rows affected
                         int rowsAffected = cmd.ExecuteNonQuery();
