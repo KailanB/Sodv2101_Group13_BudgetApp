@@ -17,10 +17,22 @@ namespace Sodv2101_Group13_BudgetApp
 		// working with DateTime values https://learn.microsoft.com/en-us/dotnet/api/system.datetime.month?view=net-8.0
 		public DateTime TimePeriod { get; set; }
 
+        public string DateString { get; set; }
+
 
         public Expense()
         {
 
+        }
+
+        public Expense( int budgetId, string name, double amount, string description, string datestring)
+        {
+           
+            BudgetId = budgetId;
+            Name = name;
+            Amount = amount;
+            Description = description;
+            DateString = datestring;
         }
 
 
