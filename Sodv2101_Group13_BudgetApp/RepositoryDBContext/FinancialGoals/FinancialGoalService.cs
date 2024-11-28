@@ -101,7 +101,7 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.FinancialGoals
                     Console.WriteLine(ex.ToString());
                 }
             }
-            string query = "UPDATE FinancialGoal SET ";
+            //string query = "UPDATE FinancialGoal SET ";
             return false;
         }
 
