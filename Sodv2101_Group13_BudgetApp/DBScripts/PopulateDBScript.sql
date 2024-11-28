@@ -111,107 +111,107 @@ INSERT INTO Expense(BudgetID, Amount, Description, PurchaseDate) VALUES
 
 ---- GROCERIES FOR ALEX
 -- October
-(1, 20, 'Quick pickup of snacks.', '2024-10-02'),
-(1, 250, 'Monthly stock-up of essentials.', '2024-10-05'),
-(1, 80, 'Mid-month vegetables and fruits.', '2024-10-15'),
-(1, 150, 'Prepping for a dinner party.', '2024-10-22'),
-(1, 90, 'End-of-month top-up.', '2024-10-30'),
+(1, 'grocery', 20, 'Quick pickup of snacks.', '2024-10-02'),
+(1, 'grocery', 250, 'Monthly stock-up of essentials.', '2024-10-05'),
+(1, 'grocery', 80, 'Mid-month vegetables and fruits.', '2024-10-15'),
+(1, 'grocery', 150, 'Prepping for a dinner party.', '2024-10-22'),
+(1, 'grocery', 90, 'End-of-month top-up.', '2024-10-30'),
 
 -- November
-(1, 30, 'Milk and bread.', '2024-11-03'),
-(1, 240, 'Monthly stock-up.', '2024-11-07'),
-(1, 120, 'Holiday baking supplies.', '2024-11-20'),
-(1, 110, 'Extra snacks for visitors.', '2024-11-25'),
-(1, 90, 'Weekend dinner groceries.', '2024-11-28'),
+(1, 'grocery', 30, 'Milk and bread.', '2024-11-03'),
+(1, 'grocery', 240, 'Monthly stock-up.', '2024-11-07'),
+(1, 'grocery', 120, 'Holiday baking supplies.', '2024-11-20'),
+(1, 'grocery', 110, 'Extra snacks for visitors.', '2024-11-25'),
+(1, 'grocery', 90, 'Weekend dinner groceries.', '2024-11-28'),
 
 -- December
-(1, 50, 'Holiday treats.', '2024-12-05'),
-(1, 300, 'Monthly stock-up for holidays.', '2024-12-07'),
-(1, 100, 'Party supplies.', '2024-12-15'),
-(1, 80, 'Special occasion ingredients.', '2024-12-20'),
-(1, 70, 'End-of-year groceries.', '2024-12-30'),
+(1, 'grocery', 50, 'Holiday treats.', '2024-12-05'),
+(1, 'grocery', 300, 'Monthly stock-up for holidays.', '2024-12-07'),
+(1, 'grocery', 100, 'Party supplies.', '2024-12-15'),
+(1, 'grocery', 80, 'Special occasion ingredients.', '2024-12-20'),
+(1, 'grocery', 70, 'End-of-year groceries.', '2024-12-30'),
 
 
 -- ESSENTIALS FOR ALEX
 -- October
-(2, 800, 'Monthly rent.', '2024-10-01'),
-(2, 120, 'Utility bills.', '2024-10-05'),
-(2, 50, 'Water bill.', '2024-10-10'),
-(2, 30, 'Phone recharge.', '2024-10-20'),
+(2, 'grocery', 800, 'Monthly rent.', '2024-10-01'),
+(2, 'grocery', 120, 'Utility bills.', '2024-10-05'),
+(2, 'grocery', 50, 'Water bill.', '2024-10-10'),
+(2, 'grocery', 30, 'Phone recharge.', '2024-10-20'),
 
 -- November
-(2, 800, 'Monthly rent.', '2024-11-01'),
-(2, 140, 'Utility bills.', '2024-11-06'),
-(2, 20, 'Repair supplies.', '2024-11-10'),
-(2, 40, 'Cleaning services.', '2024-11-20'),
+(2, 'grocery', 800, 'Monthly rent.', '2024-11-01'),
+(2, 'grocery', 140, 'Utility bills.', '2024-11-06'),
+(2, 'grocery', 20, 'Repair supplies.', '2024-11-10'),
+(2, 'grocery', 40, 'Cleaning services.', '2024-11-20'),
 
 -- December
-(2, 800, 'Monthly rent.', '2024-12-01'),
-(2, 130, 'Utility bills.', '2024-12-10'),
-(2, 20, 'Emergency plumbing.', '2024-12-18'),
-(2, 120, 'End-of-year maintenance.', '2024-12-28'),
+(2, 'grocery', 800, 'Monthly rent.', '2024-12-01'),
+(2, 'grocery', 130, 'Utility bills.', '2024-12-10'),
+(2, 'grocery', 20, 'Emergency plumbing.', '2024-12-18'),
+(2, 'grocery', 120, 'End-of-year maintenance.', '2024-12-28'),
 
 
 -- EATING OUT FOR ALEX
 -- October
-(3, 40, 'Coffee date.', '2024-10-05'),
-(3, 80, 'Lunch with colleagues.', '2024-10-12'),
-(3, 50, 'Weekend dinner.', '2024-10-20'),
-(3, 100, 'Takeout for a party.', '2024-10-28'),
+(3, 'grocery', 40, 'Coffee date.', '2024-10-05'),
+(3, 'grocery', 80, 'Lunch with colleagues.', '2024-10-12'),
+(3, 'grocery', 50, 'Weekend dinner.', '2024-10-20'),
+(3, 'grocery', 100, 'Takeout for a party.', '2024-10-28'),
 
 -- November
-(3, 30, 'Breakfast outing.', '2024-11-03'),
-(3, 70, 'Lunch with family.', '2024-11-10'),
-(3, 100, 'Dinner date.', '2024-11-18'),
-(3, 90, 'Late-night takeout.', '2024-11-26'),
+(3, 'grocery', 30, 'Breakfast outing.', '2024-11-03'),
+(3, 'grocery', 70, 'Lunch with family.', '2024-11-10'),
+(3, 'grocery', 100, 'Dinner date.', '2024-11-18'),
+(3, 'grocery', 90, 'Late-night takeout.', '2024-11-26'),
 
 -- December
-(3, 60, 'Holiday brunch.', '2024-12-08'),
-(3, 100, 'Dinner with visiting relatives.', '2024-12-15'),
-(3, 80, 'End-of-year celebration dinner.', '2024-12-30'),
+(3, 'grocery', 60, 'Holiday brunch.', '2024-12-08'),
+(3, 'grocery', 100, 'Dinner with visiting relatives.', '2024-12-15'),
+(3, 'grocery', 80, 'End-of-year celebration dinner.', '2024-12-30'),
 
 -- ENTERTAINMENT FOR ALEX
 -- October
-(4, 50, 'Netflix subscription.', '2024-10-01'),
-(4, 60, 'Concert tickets.', '2024-10-10'),
-(4, 50, 'Movie night.', '2024-10-25'),
+(4, 'grocery', 50, 'Netflix subscription.', '2024-10-01'),
+(4, 'grocery', 60, 'Concert tickets.', '2024-10-10'),
+(4, 'grocery', 50, 'Movie night.', '2024-10-25'),
 
 -- November
-(4, 50, 'Netflix subscription.', '2024-11-01'),
-(4, 80, 'Theater play tickets.', '2024-11-14'),
-(4, 60, 'Escape room game.', '2024-11-27'),
+(4, 'grocery', 50, 'Netflix subscription.', '2024-11-01'),
+(4, 'grocery', 80, 'Theater play tickets.', '2024-11-14'),
+(4, 'grocery', 60, 'Escape room game.', '2024-11-27'),
 
 -- December
-(4, 50, 'Netflix subscription.', '2024-12-01'),
-(4, 70, 'Amusement park visit.', '2024-12-18'),
-(4, 60, 'End-of-year concert.', '2024-12-30'),
+(4, 'grocery', 50, 'Netflix subscription.', '2024-12-01'),
+(4, 'grocery', 70, 'Amusement park visit.', '2024-12-18'),
+(4, 'grocery', 60, 'End-of-year concert.', '2024-12-30'),
 
 
 -- FITNESS FOR ALEX
 -- October
-(5, 50, 'Gym membership.', '2024-10-01'),
-(5, 30, 'New workout gear.', '2024-10-15'),
-(5, 40, 'Yoga class subscription.', '2024-10-25'),
+(5, 'grocery', 50, 'Gym membership.', '2024-10-01'),
+(5, 'grocery', 30, 'New workout gear.', '2024-10-15'),
+(5, 'grocery', 40, 'Yoga class subscription.', '2024-10-25'),
 
 -- November
-(5, 50, 'Gym membership.', '2024-11-01'),
-(5, 40, 'Fitness app subscription.', '2024-11-14'),
-(5, 50, 'New running shoes.', '2024-11-21'),
+(5, 'grocery', 50, 'Gym membership.', '2024-11-01'),
+(5, 'grocery', 40, 'Fitness app subscription.', '2024-11-14'),
+(5, 'grocery', 50, 'New running shoes.', '2024-11-21'),
 
 -- December
-(5, 50, 'Gym membership.', '2024-12-01'),
-(5, 30, 'Holiday workout gear.', '2024-12-12'),
-(5, 40, 'New yoga mat.', '2024-12-28'),
+(5, 'grocery', 50, 'Gym membership.', '2024-12-01'),
+(5, 'grocery', 30, 'Holiday workout gear.', '2024-12-12'),
+(5, 'grocery', 40, 'New yoga mat.', '2024-12-28'),
 
 
-(8, 150.00, 'Concert Tickets', '2024-11-03'),
-(7, 200.00, 'Monthly Gym Membership', '2024-11-04'),
-(6, 30.00, 'Gas for Car', '2024-11-05'),
-(6, 1200.00, 'Monthly Rent', '2024-11-01'),
-(6, 60.00, 'Utilities - Electricity Bill', '2024-11-03'),
-(9, 25.00, 'Birthday Gift for Friend', '2024-11-06'),
-(8, 8.00, 'Lunch at Work', '2024-11-07'),
-(8, 10.00, 'Streaming Service Subscription', '2024-11-08');
+(8, 'grocery', 150.00, 'Concert Tickets', '2024-11-03'),
+(7, 'grocery', 200.00, 'Monthly Gym Membership', '2024-11-04'),
+(6, 'grocery', 30.00, 'Gas for Car', '2024-11-05'),
+(6, 'grocery', 1200.00, 'Monthly Rent', '2024-11-01'),
+(6, 'grocery', 60.00, 'Utilities - Electricity Bill', '2024-11-03'),
+(9, 'grocery', 25.00, 'Birthday Gift for Friend', '2024-11-06'),
+(8, 'grocery', 8.00, 'Lunch at Work', '2024-11-07'),
+(8, 'grocery', 10.00, 'Streaming Service Subscription', '2024-11-08');
 
 
 
