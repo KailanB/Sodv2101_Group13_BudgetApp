@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sodv2101_Group13_BudgetApp
 {
-    internal class Budget
+    public class Budget
     {
         public int BudgetID {  get; set; }
         public string Name { get; private set; }
@@ -63,8 +63,8 @@ namespace Sodv2101_Group13_BudgetApp
 			{
                 if(expense.TimePeriod.Month == month)
                 {
-					total += expense.Amount;
-				}
+                    total += expense.Amount;
+                }
 				
 			}
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sodv2101_Group13_BudgetApp
 {
-    internal class Expense
+    public class Expense
     {
 
         public int ExpenseId { get; set; } // Check if it is necessary to match the DB
