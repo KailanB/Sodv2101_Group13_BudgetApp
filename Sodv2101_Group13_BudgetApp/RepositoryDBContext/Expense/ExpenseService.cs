@@ -1,4 +1,4 @@
-﻿using Sodv2101_Group13_BudgetApp.DBConnectionClass;
+﻿using DBConnectionClass;
 using Microsoft.Data.SqlClient;
 using System.Data;
 using System.Security.Policy;
