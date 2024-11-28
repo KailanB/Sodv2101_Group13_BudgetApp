@@ -101,6 +101,7 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.FinancialGoals
                     Console.WriteLine(ex.ToString());
                 }
             }
+            string query = "UPDATE FinancialGoal SET ";
             return false;
         }
 
@@ -119,7 +120,7 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.FinancialGoals
                     connection.Open();
                     using (SqlCommand cmd = new SqlCommand(query, connection))
                     {
-                        cmd.Parameters.AddWithValue("@UserID", 1);
+                        cmd.Parameters.AddWithValue("@UserID", UserID);
                         SqlDataReader result = cmd.ExecuteReader();
                         DataTable GoalTable = new DataTable();
                         GoalTable.Load(result);
