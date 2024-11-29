@@ -48,7 +48,7 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.ExpenseServices
 
         public bool UpdateExpense(Expense expense, int budgetId)
         {
-            string query = "UPDATE Expense SET Name = @Name, Amount = @Amount, Description = @Description, TimePeriod = @TimePeriod WHERE ExpenseId = @ExpenseId";
+            string query = "UPDATE Expense SET Name = @Name, Amount = @Amount, Description = @Description, PurchaseDate = @TimePeriod WHERE ExpenseId = @ExpenseId";
 
             using (SqlConnection connection = new SqlConnection(dbConnection.ConnectionString))
             {
