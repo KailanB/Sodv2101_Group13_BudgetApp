@@ -148,11 +148,67 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
         {
             NewExpense expenseForm = new NewExpense();
             DialogResult result = expenseForm.ShowDialog();
-            if(result == DialogResult.OK)
+            if (result == DialogResult.OK)
             {
-               
+
             }
         }
+
+        //Error Handler
+
+        //private void btnEditExpense_Click(object sender, EventArgs e)
+        //{
+        //    if (dataGridViewExpenses.SelectedRows.Count > 0)
+        //    {
+        //        DataGridViewRow selectedRow = dataGridViewExpenses.SelectedRows[0];
+
+        //        int budgetListIndex = dataGridViewBudgets.CurrentCell.RowIndex;
+        //        int budgetId = budgetList[budgetListIndex].BudgetID;
+
+        //        //int budgetId = Convert.ToInt32(selectedRow.Cells["BudgetID"].Value);
+        //        string name = selectedRow.Cells["Name"].Value.ToString();
+        //        double amount = Convert.ToDouble(selectedRow.Cells["Amount"].Value);
+        //        string description = selectedRow.Cells["Description"].Value.ToString();
+        //        string dateString = selectedRow.Cells["Time Period"].Value.ToString();
+
+        //        Expense expense = new Expense(budgetId, name, amount, description, dateString);
+
+        //        EditExpenseForm editExpenseForm = new EditExpenseForm();
+        //        editExpenseForm.PopulateInputs(expense, budgetId);
+        //        if (editExpenseForm.ShowDialog() == DialogResult.OK)
+        //        {
+        //            LoadExpenses(budgetId); // Refresh expenses
+        //        }
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Please select a single expense to edit.");
+        //    }
+        //}
+
+        //private void btnDeleteExpense_Click(object sender, EventArgs e)
+        //{
+
+        //    if (dataGridViewExpenses.SelectedRows.Count > 0)
+        //    {
+        //        DataGridViewRow selectedRow = dataGridViewExpenses.SelectedRows[0];
+        //        int budgetListIndex = dataGridViewExpenses.CurrentCell.RowIndex;
+        //        int budgetId = budgetList[budgetListIndex].BudgetID;
+
+        //        // int budgetId = Convert.ToInt32(selectedRow.Cells["Budget ID"].Value);
+
+        //        bool expenseDeleted = expenseService.DeleteExpense(budgetId);
+
+        //        if (expenseDeleted)
+        //        {
+
+        //            LoadExpenses(budgetId);
+        //            //LoadBudgets();
+        //        }
+
+        //    }
+
+        //}
     }
 }
 
