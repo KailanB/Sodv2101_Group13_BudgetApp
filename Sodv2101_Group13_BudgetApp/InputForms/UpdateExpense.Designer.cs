@@ -33,9 +33,9 @@
             numExpenseAmount = new NumericUpDown();
             lblExpenseAmount = new Label();
             lblDescription = new Label();
-            txtBudgetDescription = new TextBox();
+            txtDescription = new TextBox();
             btnCancel = new Button();
-            btnSave = new Button();
+            btnEditExpense = new Button();
             lblTimePeriod = new Label();
             dateTimePicker1 = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)numExpenseAmount).BeginInit();
@@ -85,14 +85,14 @@
             lblDescription.TabIndex = 8;
             lblDescription.Text = "Description";
             // 
-            // txtBudgetDescription
+            // txtDescription
             // 
-            txtBudgetDescription.Location = new Point(142, 151);
-            txtBudgetDescription.Margin = new Padding(3, 4, 3, 4);
-            txtBudgetDescription.Multiline = true;
-            txtBudgetDescription.Name = "txtBudgetDescription";
-            txtBudgetDescription.Size = new Size(181, 149);
-            txtBudgetDescription.TabIndex = 9;
+            txtDescription.Location = new Point(142, 151);
+            txtDescription.Margin = new Padding(3, 4, 3, 4);
+            txtDescription.Multiline = true;
+            txtDescription.Name = "txtDescription";
+            txtDescription.Size = new Size(181, 149);
+            txtDescription.TabIndex = 9;
             // 
             // btnCancel
             // 
@@ -105,15 +105,16 @@
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
             // 
-            // btnSave
+            // btnEditExpense
             // 
-            btnSave.Location = new Point(309, 392);
-            btnSave.Margin = new Padding(3, 4, 3, 4);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(86, 31);
-            btnSave.TabIndex = 11;
-            btnSave.Text = "Save";
-            btnSave.UseVisualStyleBackColor = true;
+            btnEditExpense.Location = new Point(309, 392);
+            btnEditExpense.Margin = new Padding(3, 4, 3, 4);
+            btnEditExpense.Name = "btnEditExpense";
+            btnEditExpense.Size = new Size(86, 31);
+            btnEditExpense.TabIndex = 11;
+            btnEditExpense.Text = "Edit";
+            btnEditExpense.UseVisualStyleBackColor = true;
+            //btnEditExpense.Click += btnEditExpense_Click;
             // 
             // lblTimePeriod
             // 
@@ -138,9 +139,9 @@
             ClientSize = new Size(465, 450);
             Controls.Add(dateTimePicker1);
             Controls.Add(lblTimePeriod);
-            Controls.Add(btnSave);
+            Controls.Add(btnEditExpense);
             Controls.Add(btnCancel);
-            Controls.Add(txtBudgetDescription);
+            Controls.Add(txtDescription);
             Controls.Add(lblDescription);
             Controls.Add(lblExpenseAmount);
             Controls.Add(numExpenseAmount);
@@ -161,9 +162,9 @@
         private NumericUpDown numExpenseAmount;
         private Label lblExpenseAmount;
         private Label lblDescription;
-        private TextBox txtBudgetDescription;
+        private TextBox txtDescription;
         private Button btnCancel;
-        private Button btnSave;
+        private Button btnEditExpense;
         private Label lblTimePeriod;
         private DateTimePicker dateTimePicker1;
     }
