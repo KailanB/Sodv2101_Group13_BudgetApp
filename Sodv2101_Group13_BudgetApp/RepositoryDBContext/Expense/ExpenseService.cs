@@ -41,12 +41,12 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.ExpenseServices
                     return false;
                 }
 
-                MessageBox.Show("Saved");
+           
             }
         }
 
 
-        public bool UpdateExpense(Expense expense)
+        public bool UpdateExpense(Expense expense, int budgetId)
         {
             string query = "UPDATE Expense SET Name = @Name, Amount = @Amount, Description = @Description, TimePeriod = @TimePeriod WHERE ExpenseId = @ExpenseId";
 
@@ -125,6 +125,33 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.ExpenseServices
 			return expenses;
 
         }
+
+
+        //Having Error Handler at the end. Can not debug it :( 
+
+
+        //public bool DeleteExpense(int expenseID)
+        //{
+        //    string query = "DELETE FROM Expense WHERE ExpenseId = @expenseID";
+        //    using (SqlConnection connection = new SqlConnection(dbConnection.ConnectionString))
+        //    {
+        //        try
+        //        {
+        //            connection.Open();
+        //            using (SqlCommand cmd = new SqlCommand(query, connection))
+        //            {
+        //                cmd.Parameters.AddWithValue("@expenseID", expenseID);
+        //                cmd.ExecuteNonQuery();
+        //                return true;
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            Console.WriteLine(ex.ToString());
+        //        }
+        //    }
+        //    return false;
+        //}
 
 
 
