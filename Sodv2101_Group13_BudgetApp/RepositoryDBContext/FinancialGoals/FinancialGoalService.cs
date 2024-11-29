@@ -102,11 +102,11 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.FinancialGoals
                     Console.WriteLine(ex.ToString());
                 }
             }
-<<<<<<< Updated upstream
+//<<<<<<< Updated upstream
             //string query = "UPDATE FinancialGoal SET ";
-=======
+//=======
             string query1 = "UPDATE FinancialGoal SET ";
->>>>>>> Stashed changes
+//>>>>>>> Stashed changes
             return false;
         }
 
