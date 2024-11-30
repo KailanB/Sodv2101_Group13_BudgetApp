@@ -29,18 +29,19 @@
         private void InitializeComponent()
         {
             lblGoalName = new Label();
-            numericUpDown1 = new NumericUpDown();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            numericUpDownAddGoalAmount = new NumericUpDown();
+            txtBoxAddGoalDescription = new TextBox();
+            txtBoxAddGoalName = new TextBox();
             btnSaveGoal = new Button();
             lblGoalAmount = new Label();
             lblGoalDescription = new Label();
             lblGoalDeadline = new Label();
             btnUpdateGoal = new Button();
             btnDeleteGoal = new Button();
-            dateTimePicker1 = new DateTimePicker();
+            dateTimePickerAddGoalDeadline = new DateTimePicker();
             lblAddGoalHeader = new Label();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            lblAddGoalErrorMessage = new Label();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownAddGoalAmount).BeginInit();
             SuspendLayout();
             // 
             // lblGoalName
@@ -52,27 +53,28 @@
             lblGoalName.TabIndex = 0;
             lblGoalName.Text = "Name";
             // 
-            // numericUpDown1
+            // numericUpDownAddGoalAmount
             // 
-            numericUpDown1.Location = new Point(170, 121);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(200, 23);
-            numericUpDown1.TabIndex = 1;
+            numericUpDownAddGoalAmount.Location = new Point(170, 121);
+            numericUpDownAddGoalAmount.Name = "numericUpDownAddGoalAmount";
+            numericUpDownAddGoalAmount.Size = new Size(200, 23);
+            numericUpDownAddGoalAmount.TabIndex = 1;
+            numericUpDownAddGoalAmount.TextAlign = HorizontalAlignment.Center;
             // 
-            // textBox1
+            // txtBoxAddGoalDescription
             // 
-            textBox1.Location = new Point(170, 175);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(200, 23);
-            textBox1.TabIndex = 2;
+            txtBoxAddGoalDescription.Location = new Point(170, 175);
+            txtBoxAddGoalDescription.Multiline = true;
+            txtBoxAddGoalDescription.Name = "txtBoxAddGoalDescription";
+            txtBoxAddGoalDescription.Size = new Size(200, 23);
+            txtBoxAddGoalDescription.TabIndex = 2;
             // 
-            // textBox2
+            // txtBoxAddGoalName
             // 
-            textBox2.Location = new Point(170, 71);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(200, 23);
-            textBox2.TabIndex = 3;
+            txtBoxAddGoalName.Location = new Point(170, 71);
+            txtBoxAddGoalName.Name = "txtBoxAddGoalName";
+            txtBoxAddGoalName.Size = new Size(200, 23);
+            txtBoxAddGoalName.TabIndex = 3;
             // 
             // btnSaveGoal
             // 
@@ -82,6 +84,7 @@
             btnSaveGoal.TabIndex = 4;
             btnSaveGoal.Text = "Save";
             btnSaveGoal.UseVisualStyleBackColor = true;
+            btnSaveGoal.Click += btnSaveGoal_Click;
             // 
             // lblGoalAmount
             // 
@@ -128,12 +131,12 @@
             btnDeleteGoal.Text = "Delete ";
             btnDeleteGoal.UseVisualStyleBackColor = true;
             // 
-            // dateTimePicker1
+            // dateTimePickerAddGoalDeadline
             // 
-            dateTimePicker1.Location = new Point(170, 235);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(200, 23);
-            dateTimePicker1.TabIndex = 10;
+            dateTimePickerAddGoalDeadline.Location = new Point(170, 235);
+            dateTimePickerAddGoalDeadline.Name = "dateTimePickerAddGoalDeadline";
+            dateTimePickerAddGoalDeadline.Size = new Size(200, 23);
+            dateTimePickerAddGoalDeadline.TabIndex = 10;
             // 
             // lblAddGoalHeader
             // 
@@ -146,26 +149,36 @@
             lblAddGoalHeader.Text = "Add Goal";
             lblAddGoalHeader.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // AddGoal
+            // lblAddGoalErrorMessage
+            // 
+            lblAddGoalErrorMessage.AutoSize = true;
+            lblAddGoalErrorMessage.Location = new Point(33, 290);
+            lblAddGoalErrorMessage.Name = "lblAddGoalErrorMessage";
+            lblAddGoalErrorMessage.Size = new Size(38, 15);
+            lblAddGoalErrorMessage.TabIndex = 12;
+            lblAddGoalErrorMessage.Text = "label1";
+            // 
+            // AddGoalForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(491, 450);
+            Controls.Add(lblAddGoalErrorMessage);
             Controls.Add(lblAddGoalHeader);
-            Controls.Add(dateTimePicker1);
+            Controls.Add(dateTimePickerAddGoalDeadline);
             Controls.Add(btnDeleteGoal);
             Controls.Add(btnUpdateGoal);
             Controls.Add(lblGoalDeadline);
             Controls.Add(lblGoalDescription);
             Controls.Add(lblGoalAmount);
             Controls.Add(btnSaveGoal);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
-            Controls.Add(numericUpDown1);
+            Controls.Add(txtBoxAddGoalName);
+            Controls.Add(txtBoxAddGoalDescription);
+            Controls.Add(numericUpDownAddGoalAmount);
             Controls.Add(lblGoalName);
-            Name = "AddGoal";
+            Name = "AddGoalForm";
             Text = "AddGoal";
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownAddGoalAmount).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -173,16 +186,17 @@
         #endregion
 
         private Label lblGoalName;
-        private NumericUpDown numericUpDown1;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private NumericUpDown numericUpDownAddGoalAmount;
+        private TextBox txtBoxAddGoalDescription;
+        private TextBox txtBoxAddGoalName;
         private Button btnSaveGoal;
         private Label lblGoalAmount;
         private Label lblGoalDescription;
         private Label lblGoalDeadline;
         private Button btnUpdateGoal;
         private Button btnDeleteGoal;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dateTimePickerAddGoalDeadline;
         private Label lblAddGoalHeader;
+        private Label lblAddGoalErrorMessage;
     }
 }

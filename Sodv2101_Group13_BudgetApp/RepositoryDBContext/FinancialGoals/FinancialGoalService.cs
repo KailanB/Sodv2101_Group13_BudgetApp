@@ -21,7 +21,12 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.FinancialGoalsService
 
         public bool CreateFinancialGoal(FinancialGoal goal)
         {
-            string query = "INSERT INTO FinancialGoal VALUES (@GoalName, @Amount, @Description, @Deadline, @UserID)";
+            if(string.IsNullOrEmpty(goal.Name) || goal.MaxAmount <=0 || goal.Deadline == DateTime.MinValue)
+            {
+                throw new ArgumentException("Invalid financial goal data");
+            }
+
+            string query = "INSERT INTO FinancialGoal (Name, Amount, Description, Deadline, UserID) VALUES (@GoalName, @Amount, @Description, @Deadline, @UserID)";
 
             using(SqlConnection connection = new SqlConnection(dBConnection.ConnectionString))
             {
@@ -31,8 +36,8 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.FinancialGoalsService
                     using(SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@GoalName", goal.Name);
-                        command.Parameters.AddWithValue("@Amount", goal.Max);
-                        command.Parameters.AddWithValue("@Description", goal.Description);
+                        command.Parameters.AddWithValue("@Amount", goal.MaxAmount);
+                        command.Parameters.AddWithValue("@Description", goal.Description ?? (object)DBNull.Value);
                         command.Parameters.AddWithValue("@Deadline", goal.Deadline);
                         command.Parameters.AddWithValue("@UserID", 1);
 
@@ -45,7 +50,7 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.FinancialGoalsService
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.ToString);
+                    Console.WriteLine(ex.ToString());
                 }
             }
             return false;
@@ -53,6 +58,10 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.FinancialGoalsService
 
         public bool EditFinancialGoal(FinancialGoal goal, int id)
         {
+            if (string.IsNullOrEmpty(goal.Name) || goal.MaxAmount <= 0 || goal.Deadline == DateTime.MinValue)
+            {
+                throw new ArgumentException("Invalid financial goal data");
+            }
             string query = "UPDATE FinancialGoal SET Name = @GoalName, Max = @Amount, Description = @Description, Deadline = @Deadline WHERE GoalID = @GoalID";
 
             using(SqlConnection connection = new SqlConnection(dBConnection.ConnectionString))
@@ -63,8 +72,8 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.FinancialGoalsService
                     using(SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@GoalName", goal.Name);                        
-                        command.Parameters.AddWithValue("@Amount", goal.Max);
-                        command.Parameters.AddWithValue("@Description", goal.Description);
+                        command.Parameters.AddWithValue("@Amount", goal.MaxAmount);
+                        command.Parameters.AddWithValue("@Description", goal.Description ?? (object)DBNull.Value);
                         command.Parameters.AddWithValue("@Deadline", goal.Deadline);
                         command.Parameters.AddWithValue("@GoalID", id);
 
@@ -77,7 +86,7 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.FinancialGoalsService
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.ToString);
+                    Console.WriteLine(ex.ToString());
                 }
 
             }                
@@ -86,9 +95,14 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.FinancialGoalsService
 
         public bool DeleteFinancialGoal(int goalId)
         {
+            if (goalId <= 0)
+            {
+                throw new ArgumentException("Invalid GoalID");
+            }
             string query = "DELETE FROM FinancialGoal WHERE GoalID = @GoalID";
             using (SqlConnection connection = new SqlConnection(dBConnection.ConnectionString))
             {
+               
                 try
                 {
                     connection.Open();
@@ -155,34 +169,41 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.FinancialGoalsService
             // might change this method to return a list of objects instead of a table
             // List<Budget> budgets = new List<Budget>();
             string query = "SELECT GoalID, Name, Amount, Description, Deadline  FROM FinancialGoal WHERE UserID = @UserID";
+            List<FinancialGoal> goalList = new List<FinancialGoal>();
             using (SqlConnection connection = new SqlConnection(dBConnection.ConnectionString))
             {
-                List<FinancialGoal> goalList = new List<FinancialGoal>();
+               
                 try
                 {
                     connection.Open();
                     using (SqlCommand cmd = new SqlCommand(query, connection))
                     {
-                        cmd.Parameters.AddWithValue("@UserID", 1);
+                        cmd.Parameters.AddWithValue("@UserID", UserID);
                         SqlDataReader result = cmd.ExecuteReader();
 
                         while (result.Read())
                         {
-                            goalList.Add(new FinancialGoal(result[0].ToString(), double.Parse(result[1].ToString()), (result[2].ToString()), (DateTime)result[3]));
-
-                        }
-
-
-
-                        foreach (FinancialGoal goal in goalList)
-                        {
+                            FinancialGoal goal = new FinancialGoal
+                            {
+                                GoalID = Convert.ToInt32(result["GoalID"]),
+                                Name = result["Name"].ToString(),
+                                MaxAmount = Convert.ToDouble(result["Amount"]),
+                                Description = result["Description"].ToString(),
+                                Deadline = Convert.ToDateTime(result["Deadline"])
+                            };
                             goal.Contributions = contributionService.GetContributionByGoalName(goal.Name);
+                            goalList.Add(goal);
+
                         }
+
+
+
+                        //foreach (FinancialGoal goal in goalList)
+                        //{
+                        //    goal.Contributions = contributionService.GetContributionByGoalName(goal.Name);
+                        //}
                         // pull Expense data for each budget and load data into each budget list
-
-                        return goalList;
                         
-
                     }
                 }
                 catch (Exception ex)
@@ -190,7 +211,7 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.FinancialGoalsService
                     Console.WriteLine(ex.ToString());
                 }
             }
-            return null;
+            return goalList;
         }
     }
 }

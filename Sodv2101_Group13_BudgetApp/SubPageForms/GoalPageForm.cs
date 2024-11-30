@@ -29,13 +29,13 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
             goalList = goalService.GetFinancialGoalList();
             DataTable goalTable = new DataTable();
             goalTable.Columns.Add("Name", typeof(string));
-            goalTable.Columns.Add("Max", typeof(double));
+            goalTable.Columns.Add("MaxAmount", typeof(double));
             goalTable.Columns.Add("Description", typeof(string));
             goalTable.Columns.Add("Deadline", typeof(DateTime));
 
             foreach(var goal in goalList)
             {
-                goalTable.Rows.Add(goal.Name, goal.Max, goal.Description, goal.Deadline);
+                goalTable.Rows.Add(goal.Name, goal.MaxAmount, goal.Description, goal.Deadline);
             }
             dataGridViewFinancialGoals.DataSource = goalTable;
 
@@ -53,16 +53,34 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
 
         private void btnGFPAddGoal_Click(object sender, EventArgs e)
         {
-            
+            AddGoalForm addGoalForm = new AddGoalForm();
+            if(addGoalForm.ShowDialog() == DialogResult.OK)
+            {
+                FinancialGoal newGoal = addGoalForm.NewGoal;
+
+                if(newGoal != null)
+                {
+                    goalService.CreateFinancialGoal(newGoal);
+                    LoadGoals();
+                }
+            }
 
         }
 
         private void btnGFPDeleteGoal_Click(object sender, EventArgs e)
         {
-            if (dataGridViewFinancialGoals.SelectedRows != null)
+            if (dataGridViewFinancialGoals.SelectedRows.Count > 0)
             {
                 //Still working on the Logic
-                //selectedGoal.Remove(goal);
+                int selectedIndex = dataGridViewFinancialGoals.SelectedRows[0].Index;
+                FinancialGoal selectedGoal = goalList[selectedIndex];
+
+                DialogResult confirmResult = MessageBox.Show("Are you sure you want to delete this goal?", "Confirm Deletion", MessageBoxButtons.YesNo);
+                if(confirmResult == DialogResult.Yes)
+                {
+                    goalService.DeleteFinancialGoal(selectedGoal.GoalID);
+                    LoadGoals();
+                }
             }
             else
             {

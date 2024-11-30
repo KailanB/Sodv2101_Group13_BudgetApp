@@ -9,12 +9,12 @@ namespace Sodv2101_Group13_BudgetApp
     internal class FinancialGoal
     {
 
-
-        public string Name { get; private set; }
-        public double Max { get; private set; }
-        public string? Description { get; private set; }
+        public int GoalID { get; set; }
+        public string Name { get;  set; }
+        public double MaxAmount { get;  set; }
+        public string? Description { get;  set; }
         // Added deadline and UserID
-        public DateTime? Deadline { get; private set; }
+        public DateTime? Deadline { get;  set; }
         public int UserID { get; private set; }
 
         public List<Contribution> Contributions { get; set; } = new List<Contribution>();
@@ -24,10 +24,10 @@ namespace Sodv2101_Group13_BudgetApp
 
         }
 
-        public FinancialGoal(string name, double max, string description, DateTime deadline)
+        public FinancialGoal(string name, double maxAmount, string description, DateTime deadline)
         {
             Name = name;
-            Max = max;
+            MaxAmount = maxAmount;
             Description = description;
             Deadline = deadline;
         }
