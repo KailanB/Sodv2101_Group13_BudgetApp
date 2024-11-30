@@ -13,27 +13,46 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
 {
     public partial class UpdateExpense : Form
     {
+        private ExpenseService expenseService = new ExpenseService();
+
+        private int budgetId;
+
         public UpdateExpense()
         {
             InitializeComponent();
         }
 
-        private ExpenseService expenseService = new ExpenseService();
+ 
 
 
-        private int budgetId;
-
-
-
+        //REdone the Populated Inputs because of the date parsing
         public void PopulateInputs(Expense expense, int id)
         {
-            txtExpenseName.Text = expense.Name;
-            numExpenseAmount.Value = (decimal)expense.Amount;
-            txtDescription.Text = expense.Description;
-            dateTimePicker1.Value = DateTime.Parse(expense.DateString);
+            if (expense == null)
+            {
+                MessageBox.Show("Expense data is null.");
+                return;
+            }
 
-            // Store the budgetId for later use
-            budgetId = id;
+            string dateString = expense.TimePeriod.ToString(); // Ensure it's not null
+
+            if (string.IsNullOrEmpty(dateString))
+            {
+                MessageBox.Show("Expense date is invalid or missing.");
+                return;
+            }
+
+            // Check if the date string is valid before parsing
+            DateTime timePeriod;
+            if (DateTime.TryParse(dateString, out timePeriod))
+            {
+                // Proceed with setting the inputs (form fields)
+                dateTimePicker1.Text = timePeriod.ToString("yyyy-MM-dd"); // example date format
+            }
+            else
+            {
+                MessageBox.Show("The date format is incorrect or cannot be parsed.");
+            }
         }
 
 
