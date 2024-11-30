@@ -275,6 +275,7 @@
             toolStripMenuItemDeleteGoal.Name = "toolStripMenuItemDeleteGoal";
             toolStripMenuItemDeleteGoal.Size = new Size(188, 22);
             toolStripMenuItemDeleteGoal.Text = "Delete Goal";
+            toolStripMenuItemDeleteGoal.Click += toolStripMenuItemDeleteGoal_Click;
             // 
             // label3
             // 

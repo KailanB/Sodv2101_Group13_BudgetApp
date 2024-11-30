@@ -84,12 +84,12 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
             {
                 //Still working on the Logic
                 int selectedIndex = dataGridViewFinancialGoals.SelectedRows[0].Index;
-                FinancialGoal selectedGoal = goalList[selectedIndex];
+                 SelectedGoal = goalList[selectedIndex];
 
                 DialogResult confirmResult = MessageBox.Show("Are you sure you want to delete this goal?", "Confirm Deletion", MessageBoxButtons.YesNo);
                 if (confirmResult == DialogResult.Yes)
                 {
-                    goalService.DeleteFinancialGoal(selectedGoal.GoalID);
+                    goalService.DeleteFinancialGoal(SelectedGoal.GoalID);
                     LoadGoals();
                 }
             }

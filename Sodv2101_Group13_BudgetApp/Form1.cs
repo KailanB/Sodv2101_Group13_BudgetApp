@@ -1,6 +1,7 @@
 using Microsoft.Data.SqlClient;
 using Sodv2101_Group13_BudgetApp.InputForms;
 using Sodv2101_Group13_BudgetApp.RepositoryDBContext.BudgetServices;
+using Sodv2101_Group13_BudgetApp.RepositoryDBContext.FinancialGoalsService;
 using Sodv2101_Group13_BudgetApp.SubPageForms;
 using System.Drawing;
 
@@ -12,6 +13,7 @@ namespace Sodv2101_Group13_BudgetApp
 
 
         private BudgetService budgetService = new BudgetService();
+        private FinancialGoalService goalService = new FinancialGoalService();
         public Form1()
         {
             InitializeComponent();
@@ -131,11 +133,11 @@ namespace Sodv2101_Group13_BudgetApp
         {
             GoalPageForm goalForm = new GoalPageForm();
             goalForm.ShowDialog();
-            if(DialogResult == DialogResult.OK)
+            if (DialogResult == DialogResult.OK)
             {
                 FinancialGoal selectedGoal = goalForm.SelectedGoal;
 
-                if(selectedGoal != null)
+                if (selectedGoal != null)
                 {
                     EditGoalForm editGoal = new EditGoalForm();
                     editGoal.PopulateInput(selectedGoal, selectedGoal.GoalID);
@@ -151,35 +153,31 @@ namespace Sodv2101_Group13_BudgetApp
                     errorLabel.Text = "No goal was selected to edit.";
                 }
 
-                //if (dataGridViewFinancialGoals.SelectedRows.Count > 0)
-                //{
-                //    DataGridViewRow selectedRow = dataGridViewFinancialGoals.SelectedRows[0];
 
-                //    int goalIndex = dataGridViewFinancialGoals.CurrentCell.RowIndex;
-                //    FinancialGoal selectedGoal = goalList[goalIndex];
-
-
-                //    string goalName = selectedRow.Cells["Name"].Value.ToString();
-                //    double amount = Convert.ToDouble(selectedRow.Cells["Max Amount"].Value);
-                //    string description = selectedRow.Cells["Description"].Value.ToString();
-                //    DateTime deadline = Convert.ToDateTime(selectedRow.Cells["Deadline"].Value.ToString());
-
-                //    FinancialGoal goal = new FinancialGoal(goalName, amount, description, deadline);
-
-                //    EditGoalForm editGoal = new EditGoalForm();
-                //    editGoal.PopulateInput(goal, selectedGoal.GoalID);
-                //    DialogResult newGoalResult = editGoal.ShowDialog();
-                //    if (newGoalResult == DialogResult.OK)
-                //    {
-                //        LoadGoals();
-                //    }
-                //}
-                //else
-                //{
-                //    lblGPFError.Text = "Please select a goal to edit";
-                //}
             }
-            
+
+        }
+
+        private void toolStripMenuItemDeleteGoal_Click(object sender, EventArgs e)
+        {
+            GoalPageForm goalForm = new GoalPageForm();
+            goalForm.ShowDialog();
+            if (DialogResult == DialogResult.OK)
+            {
+                FinancialGoal selectedGoal = goalForm.SelectedGoal;
+
+                if (selectedGoal != null)
+                {
+                    DialogResult confirmResult = MessageBox.Show("Are you sure you want to delete this goal?", "Confirm Deletion", MessageBoxButtons.YesNo);
+                    if (confirmResult == DialogResult.Yes)
+                    {
+                        goalService.DeleteFinancialGoal(selectedGoal.GoalID);
+                        goalForm.LoadGoals();
+                        
+                    }
+                }
+            }
+            goalForm.Close();
         }
     }
 }
