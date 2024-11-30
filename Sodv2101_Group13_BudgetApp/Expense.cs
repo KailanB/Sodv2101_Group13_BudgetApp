@@ -25,6 +25,7 @@ namespace Sodv2101_Group13_BudgetApp
 
         }
 
+        //to insert into Database
         public Expense( int budgetId, string name, double amount, string description, string datestring)
         {
            
@@ -35,7 +36,7 @@ namespace Sodv2101_Group13_BudgetApp
             DateString = datestring;
         }
 
-
+        //to pull from databse
         public Expense(int expenseId, int budgetId, string name, double amount, string description, DateTime timePeriod)
         {
             ExpenseId = expenseId;//I am not sure about the ID if we follow the db
