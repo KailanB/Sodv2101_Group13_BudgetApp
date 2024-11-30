@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sodv2101_Group13_BudgetApp
 {
-    internal class Contribution
+    public class Contribution
     {
 
         public string Name { get; private set; } // Should the Name be a comboBox of Categories with options of (Budget, Financial Goal, Expense)

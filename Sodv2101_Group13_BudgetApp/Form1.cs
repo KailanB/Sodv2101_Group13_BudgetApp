@@ -108,17 +108,78 @@ namespace Sodv2101_Group13_BudgetApp
             CreateBudget budgetForm = new CreateBudget();
             budgetForm.ShowDialog();
         }
-
+        // ----------------------------------------------------------------------------------------------
+        // GOAL SECTION
         private void toolStripDropDownButtonGoals_Click(object sender, EventArgs e)
         {
-            GoalPageForm goalForm = new GoalPageForm();
-            goalForm.ShowDialog();
+
         }
 
         private void toolStripMenuItemAddGoal_Click(object sender, EventArgs e)
         {
             AddGoalForm addGoal = new AddGoalForm();
             addGoal.ShowDialog();
+        }
+
+        private void toolStripDropDownButtonGoals_DoubleClick(object sender, EventArgs e)
+        {
+            GoalPageForm goalForm = new GoalPageForm();
+            goalForm.ShowDialog();
+        }
+
+        private void toolStripMenuItemEditGoal_Click(object sender, EventArgs e)
+        {
+            GoalPageForm goalForm = new GoalPageForm();
+            goalForm.ShowDialog();
+            if(DialogResult == DialogResult.OK)
+            {
+                FinancialGoal selectedGoal = goalForm.SelectedGoal;
+
+                if(selectedGoal != null)
+                {
+                    EditGoalForm editGoal = new EditGoalForm();
+                    editGoal.PopulateInput(selectedGoal, selectedGoal.GoalID);
+                    DialogResult result = editGoal.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        goalForm.LoadGoals();
+                    }
+                }
+                else
+                {
+                    Label errorLabel = new Label();
+                    errorLabel.Text = "No goal was selected to edit.";
+                }
+
+                //if (dataGridViewFinancialGoals.SelectedRows.Count > 0)
+                //{
+                //    DataGridViewRow selectedRow = dataGridViewFinancialGoals.SelectedRows[0];
+
+                //    int goalIndex = dataGridViewFinancialGoals.CurrentCell.RowIndex;
+                //    FinancialGoal selectedGoal = goalList[goalIndex];
+
+
+                //    string goalName = selectedRow.Cells["Name"].Value.ToString();
+                //    double amount = Convert.ToDouble(selectedRow.Cells["Max Amount"].Value);
+                //    string description = selectedRow.Cells["Description"].Value.ToString();
+                //    DateTime deadline = Convert.ToDateTime(selectedRow.Cells["Deadline"].Value.ToString());
+
+                //    FinancialGoal goal = new FinancialGoal(goalName, amount, description, deadline);
+
+                //    EditGoalForm editGoal = new EditGoalForm();
+                //    editGoal.PopulateInput(goal, selectedGoal.GoalID);
+                //    DialogResult newGoalResult = editGoal.ShowDialog();
+                //    if (newGoalResult == DialogResult.OK)
+                //    {
+                //        LoadGoals();
+                //    }
+                //}
+                //else
+                //{
+                //    lblGPFError.Text = "Please select a goal to edit";
+                //}
+            }
+            
         }
     }
 }

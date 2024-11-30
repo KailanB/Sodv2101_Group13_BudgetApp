@@ -236,6 +236,7 @@
             toolStripDropDownButtonGoals.Size = new Size(100, 22);
             toolStripDropDownButtonGoals.Text = "Goals";
             toolStripDropDownButtonGoals.Click += toolStripDropDownButtonGoals_Click;
+            toolStripDropDownButtonGoals.DoubleClick += toolStripDropDownButtonGoals_DoubleClick;
             // 
             // toolStripMenuItemAddContribution
             // 
@@ -267,6 +268,7 @@
             toolStripMenuItemEditGoal.Name = "toolStripMenuItemEditGoal";
             toolStripMenuItemEditGoal.Size = new Size(188, 22);
             toolStripMenuItemEditGoal.Text = "Edit Goal";
+            toolStripMenuItemEditGoal.Click += toolStripMenuItemEditGoal_Click;
             // 
             // toolStripMenuItemDeleteGoal
             // 

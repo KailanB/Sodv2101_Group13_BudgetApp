@@ -194,6 +194,7 @@
             toolStripMenuItemRemoveContribution.Name = "toolStripMenuItemRemoveContribution";
             toolStripMenuItemRemoveContribution.Size = new Size(188, 22);
             toolStripMenuItemRemoveContribution.Text = "Remove Contribution";
+            toolStripMenuItemRemoveContribution.Click += toolStripMenuItemRemoveContribution_Click;
             // 
             // toolStripMenuItemUpdateContribution
             // 
@@ -264,6 +265,7 @@
             btnGFPEditGoal.TabIndex = 7;
             btnGFPEditGoal.Text = "EDIT";
             btnGFPEditGoal.UseVisualStyleBackColor = true;
+            btnGFPEditGoal.Click += btnGFPEditGoal_Click;
             // 
             // btnGFPViewGoal
             // 
@@ -279,9 +281,9 @@
             lblGPFError.AutoSize = true;
             lblGPFError.Location = new Point(34, 393);
             lblGPFError.Name = "lblGPFError";
-            lblGPFError.Size = new Size(38, 15);
+            lblGPFError.Size = new Size(0, 15);
             lblGPFError.TabIndex = 9;
-            lblGPFError.Text = "label1";
+            lblGPFError.TextChanged += lblGPFError_TextChanged;
             // 
             // GoalPageForm
             // 

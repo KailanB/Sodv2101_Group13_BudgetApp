@@ -56,6 +56,7 @@
             // numericUpDownAddGoalAmount
             // 
             numericUpDownAddGoalAmount.Location = new Point(170, 121);
+            numericUpDownAddGoalAmount.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
             numericUpDownAddGoalAmount.Name = "numericUpDownAddGoalAmount";
             numericUpDownAddGoalAmount.Size = new Size(200, 23);
             numericUpDownAddGoalAmount.TabIndex = 1;
@@ -154,9 +155,9 @@
             lblAddGoalErrorMessage.AutoSize = true;
             lblAddGoalErrorMessage.Location = new Point(33, 290);
             lblAddGoalErrorMessage.Name = "lblAddGoalErrorMessage";
-            lblAddGoalErrorMessage.Size = new Size(38, 15);
+            lblAddGoalErrorMessage.Size = new Size(0, 15);
             lblAddGoalErrorMessage.TabIndex = 12;
-            lblAddGoalErrorMessage.Text = "label1";
+            lblAddGoalErrorMessage.TextChanged += lblAddGoalErrorMessage_TextChanged;
             // 
             // AddGoalForm
             // 
