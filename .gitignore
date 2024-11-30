@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /Sodv2101_Group13_BudgetApp/DBConnection/DBConnection.cs
 /Sodv2101_Group13_BudgetApp/DBConnectionClass/DBConnection.cs
+/Sodv2101_Group13_BudgetApp/InputForms/EditBudgetForm.cs
