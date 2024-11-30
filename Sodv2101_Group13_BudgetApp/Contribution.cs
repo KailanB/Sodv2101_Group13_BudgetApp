@@ -13,7 +13,7 @@ namespace Sodv2101_Group13_BudgetApp
         public double Amount { get; private set; }
         public string Description { get; private set; }
 
-        public string Deadline { get; private set; }
+        public DateTime Deadline { get; private set; }
 
 
         public Contribution()
@@ -21,7 +21,7 @@ namespace Sodv2101_Group13_BudgetApp
 
         }
 
-        public Contribution(string name, double amount, string description, string deadline)
+        public Contribution(string name, double amount, string description, DateTime deadline)
         {
             Name = name;
             Amount = amount;

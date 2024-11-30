@@ -14,7 +14,7 @@ namespace Sodv2101_Group13_BudgetApp
         private BudgetService budgetService = new BudgetService();
         public Form1()
         {
-			InitializeComponent();
+            InitializeComponent();
             LoadBudgetData();
 
         }
@@ -45,7 +45,7 @@ namespace Sodv2101_Group13_BudgetApp
         {
             List<Budget> budgets = budgetService.GetBudgetList();
             int locationYIncrease = 0;
-			Bitmap bitmap = new Bitmap(250, 150);
+            Bitmap bitmap = new Bitmap(250, 150);
 
             foreach (Budget budget in budgets)
             {
@@ -53,32 +53,32 @@ namespace Sodv2101_Group13_BudgetApp
                 label.Location = new Point(20, 225 + locationYIncrease);
                 label.Text = budget.Name;
                 this.Controls.Add(label);
-                
+
 
                 // get current date
                 DateTime date = DateTime.Now;
                 // pass month to get only expenses for that month
                 double expensesTotal = budget.GetExpenseTotalByMonth(date.Month);
-				Label labelExpense = new Label();
+                Label labelExpense = new Label();
                 labelExpense.AutoSize = false;
                 labelExpense.Width = 250;
-				labelExpense.Location = new Point(370, 225 + locationYIncrease);
-				labelExpense.Text = $"Max: {budget.Max}. Spent: {expensesTotal}. Remaining: {budget.Max-expensesTotal}";
+                labelExpense.Location = new Point(370, 225 + locationYIncrease);
+                labelExpense.Text = $"Max: {budget.Max}. Spent: {expensesTotal}. Remaining: {budget.Max - expensesTotal}";
 
-				this.Controls.Add(labelExpense);
+                this.Controls.Add(labelExpense);
 
                 using (Graphics g = Graphics.FromImage(bitmap))
                 {
                     // calculate percentage spent
                     double percentSpent = ((expensesTotal * 100) / budget.Max) / 100;
-                   
+
                     // define bar of spent amount
                     int spent = (Int32)(percentSpent * 250);
                     // define bar of remainder
                     int remaining = 250 - spent;
                     // rectangle x axis here start "spent" percent over since that portion will be red
                     // recntangle width is then remaining amount
-					Rectangle rectRemainder = new Rectangle(0 + spent, 0 + locationYIncrease, remaining, 20);
+                    Rectangle rectRemainder = new Rectangle(0 + spent, 0 + locationYIncrease, remaining, 20);
                     // rectangle here is simply width of spent
                     Rectangle rectSpent = new Rectangle(0, 0 + locationYIncrease, spent, 20);
 
@@ -94,19 +94,31 @@ namespace Sodv2101_Group13_BudgetApp
                     }
                 }
 
-                
 
-				locationYIncrease += 30;
-			}
 
-		   picBudgetGraphs.Image = bitmap;
+                locationYIncrease += 30;
+            }
 
-		}
+            picBudgetGraphs.Image = bitmap;
 
-        private void btnToolStripDropDownButtonGoals_Click(object sender, EventArgs e)
+        }
+
+        private void toolStripMenuItemCreateBudget_Click(object sender, EventArgs e)
+        {
+            CreateBudget budgetForm = new CreateBudget();
+            budgetForm.ShowDialog();
+        }
+
+        private void toolStripDropDownButtonGoals_Click(object sender, EventArgs e)
         {
             GoalPageForm goalForm = new GoalPageForm();
             goalForm.ShowDialog();
+        }
+
+        private void toolStripMenuItemAddGoal_Click(object sender, EventArgs e)
+        {
+            AddGoalForm addGoal = new AddGoalForm();
+            addGoal.ShowDialog();
         }
     }
 }

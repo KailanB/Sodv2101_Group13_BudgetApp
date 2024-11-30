@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 using Sodv2101_Group13_BudgetApp.InputForms;
 using System.Data.Common;
-using Sodv2101_Group13_BudgetApp.DBConnectionClass;
+using DBConnectionClass;
+using System.Data;
 
-namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.ContributionService
+namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.ContributionServices
 {
     internal class ContributionService
     {
@@ -105,6 +106,34 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.ContributionService
             }
             return false;
         }
+        public List<Contribution> GetContributionByGoalName(string goalName)
+        {
+            List<Contribution> contributions = new List<Contribution>();
 
+            SqlConnection con = new SqlConnection(dBConnection.ConnectionString);
+            try
+            {
+                con.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT ContributionID, GoalID, Amount, Description, Date FROM Contribution c JOIN FinancialGoal fg ON c.GoalID = fg.GoalID WHERE fg.Name = @goalName", con);
+                cmd.Parameters.AddWithValue("@goalName", goalName);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    contributions.Add(new Contribution(reader[0].ToString(), double.Parse(reader[1].ToString()), reader[2].ToString(), (DateTime)reader[3]));                    
+                }
+                reader.Close();
+                                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+
+
+            return contributions;
+
+        }
     }
 }

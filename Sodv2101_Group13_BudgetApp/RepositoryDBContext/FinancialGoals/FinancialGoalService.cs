@@ -6,16 +6,18 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-
 using Microsoft.Data.SqlClient;
-using Sodv2101_Group13_BudgetApp.DBConnectionClass;
+using DBConnectionClass;
 using Sodv2101_Group13_BudgetApp.InputForms;
+using Sodv2101_Group13_BudgetApp.RepositoryDBContext.ContributionServices;
 
-namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.FinancialGoals
+namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.FinancialGoalsService
 {
     internal class FinancialGoalService
     {
         private DBConnection dBConnection = new DBConnection();
+        //private FinancialGoalService financialGoalService = new FinancialGoalService();
+        private ContributionService contributionService = new ContributionService();
 
         public bool CreateFinancialGoal(FinancialGoal goal)
         {
@@ -105,19 +107,19 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.FinancialGoals
 //<<<<<<< Updated upstream
             //string query = "UPDATE FinancialGoal SET ";
 //=======
-            string query1 = "UPDATE FinancialGoal SET ";
+            //string query1 = "UPDATE FinancialGoal SET ";
 //>>>>>>> Stashed changes
             return false;
         }
 
-        public DataTable GetBudgetTable()
+        public DataTable GetFinancialGoalTable()
         {
             // default of 1 for now so that we can add login later if we want
             int UserID = 1;
 
             // might change this method to return a list of objects instead of a table
             // List<Budget> budgets = new List<Budget>();
-            string query = "SELECT Name, Max, Description, GoalID FROM FinancialGoal WHERE UserID = @UserID";
+            string query = "SELECT Name, Amount, Description, Deadline, GoalID FROM FinancialGoal WHERE UserID = @UserID";
             using (SqlConnection connection = new SqlConnection(dBConnection.ConnectionString))
             {
                 try
@@ -146,5 +148,49 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.FinancialGoals
 
         }
 
+        public List<FinancialGoal> GetFinancialGoalList()
+        {
+            // default of 1 for now so that we can add login later if we want
+            int UserID = 1;
+            // might change this method to return a list of objects instead of a table
+            // List<Budget> budgets = new List<Budget>();
+            string query = "SELECT GoalID, Name, Amount, Description, Deadline  FROM FinancialGoal WHERE UserID = @UserID";
+            using (SqlConnection connection = new SqlConnection(dBConnection.ConnectionString))
+            {
+                List<FinancialGoal> goalList = new List<FinancialGoal>();
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@UserID", 1);
+                        SqlDataReader result = cmd.ExecuteReader();
+
+                        while (result.Read())
+                        {
+                            goalList.Add(new FinancialGoal(result[0].ToString(), double.Parse(result[1].ToString()), (result[2].ToString()), (DateTime)result[3]));
+
+                        }
+
+
+
+                        foreach (FinancialGoal goal in goalList)
+                        {
+                            goal.Contributions = contributionService.GetContributionByGoalName(goal.Name);
+                        }
+                        // pull Expense data for each budget and load data into each budget list
+
+                        return goalList;
+                        
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+            }
+            return null;
+        }
     }
 }

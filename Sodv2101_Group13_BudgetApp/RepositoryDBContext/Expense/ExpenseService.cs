@@ -1,6 +1,6 @@
 ﻿
 using Microsoft.Data.SqlClient;
-using Sodv2101_Group13_BudgetApp.DBConnectionClass;
+using DBConnectionClass;
 using System.Data;
 using System.Security.Policy;
 using System.Windows.Forms;

@@ -17,25 +17,26 @@ namespace Sodv2101_Group13_BudgetApp
         public DateTime? Deadline { get; private set; }
         public int UserID { get; private set; }
 
-        public List<Contribution> contributions { get; private set; } = new List<Contribution>();
+        public List<Contribution> Contributions { get; set; } = new List<Contribution>();
 
         public FinancialGoal()
         {
 
         }
 
-        public FinancialGoal(string name, double max, string description)
+        public FinancialGoal(string name, double max, string description, DateTime deadline)
         {
             Name = name;
             Max = max;
             Description = description;
+            Deadline = deadline;
         }
 
 
-        public void AddNewExpense(string name, double amount, string description, string timePeriod)
+        public void AddNewExpense(string name, double amount, string description, DateTime timePeriod)
         {
             Contribution newContribution = new Contribution(name, amount, description, timePeriod);
-            contributions.Add(newContribution);
+            Contributions.Add(newContribution);
 
 
         }
