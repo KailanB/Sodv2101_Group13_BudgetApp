@@ -120,5 +120,12 @@ namespace Sodv2101_Group13_BudgetApp
             AddGoalForm addGoal = new AddGoalForm();
             addGoal.ShowDialog();
         }
+
+        private void newExpenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NewExpense newExpense = new NewExpense();
+            newExpense.ShowDialog();
+
+        }
     }
 }
