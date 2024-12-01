@@ -17,8 +17,8 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
         // Constructor for the form
         public IncomePage()
         {
-            InitializeComponent();  
-            SetupUI();  
+            InitializeComponent();
+            SetupUI();
         }
 
 
@@ -213,5 +213,66 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
         {
             ToggleIncomeForm(false);
         }
+
+        private void InitializeComponent()
+        {
+            lstincome = new ListBox();
+            btnNewIncome = new Button();
+            btnEditIncome = new Button();
+            btnDeleteIncome = new Button();
+            SuspendLayout();
+            // 
+            // lstincome
+            // 
+            lstincome.FormattingEnabled = true;
+            lstincome.Location = new Point(40, 40);
+            lstincome.Name = "lstincome";
+            lstincome.Size = new Size(500, 184);
+            lstincome.TabIndex = 0;
+            // 
+            // btnNewIncome
+            // 
+            btnNewIncome.BackColor = Color.White;
+            btnNewIncome.Location = new Point(40, 240);
+            btnNewIncome.Name = "btnNewIncome";
+            btnNewIncome.Size = new Size(100, 30);
+            btnNewIncome.TabIndex = 1;
+            btnNewIncome.Text = "New Income";
+            btnNewIncome.UseVisualStyleBackColor = false;
+            // 
+            // btnEditIncome
+            // 
+            btnEditIncome.BackColor = Color.White;
+            btnEditIncome.Location = new Point(200, 240);
+            btnEditIncome.Name = "btnEditIncome";
+            btnEditIncome.Size = new Size(100, 30);
+            btnEditIncome.TabIndex = 2;
+            btnEditIncome.Text = "Edit";
+            btnEditIncome.UseVisualStyleBackColor = false;
+            // 
+            // btnDeleteIncome
+            // 
+            btnDeleteIncome.Location = new Point(360, 240);
+            btnDeleteIncome.Name = "btnDeleteIncome";
+            btnDeleteIncome.Size = new Size(100, 30);
+            btnDeleteIncome.TabIndex = 3;
+            btnDeleteIncome.Text = "Delete";
+            btnDeleteIncome.UseVisualStyleBackColor = true;
+            // 
+            // IncomePage
+            // 
+            ClientSize = new Size(850, 457);
+            Controls.Add(btnDeleteIncome);
+            Controls.Add(btnEditIncome);
+            Controls.Add(btnNewIncome);
+            Controls.Add(lstincome);
+            Name = "IncomePage";
+            Text = "IncomePage";
+            ResumeLayout(false);
+        }
+
+        private ListBox lstincome;
+        private Button btnEditIncome;
+        private Button btnDeleteIncome;
     }
 }
