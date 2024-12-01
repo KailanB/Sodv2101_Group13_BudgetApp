@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 
 namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.ExpenseServices
-{ 
+{
     internal class ExpenseService
     {
         private DBConnection dbConnection = new DBConnection();
@@ -26,6 +26,8 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.ExpenseServices
                     connection.Open();
                     using (SqlCommand cmd = new SqlCommand(query, connection))
                     {
+
+                        //first try
                         //        cmd.Parameters.AddWithValue("@Name", expense.Name);
                         //        cmd.Parameters.AddWithValue("@Amount", expense.Amount);
                         //        cmd.Parameters.AddWithValue("@Description", expense.Description);
@@ -42,14 +44,16 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.ExpenseServices
                         //    return false;
                         //} // Add parameters for the SQL query
 
+                        //SECOND TRY
                         //Added to get edit button to workk nov 11:22 pm
                         cmd.Parameters.AddWithValue("@BudgetId", expense.BudgetId);  // BudgetId is used as a foreign key
                         cmd.Parameters.AddWithValue("@Name", expense.Name);
                         cmd.Parameters.AddWithValue("@Amount", expense.Amount);
                         cmd.Parameters.AddWithValue("@Description", expense.Description);
+                        cmd.Parameters.AddWithValue("@PurchaseDate", expense.TimePeriod);//added for the third try
 
-                        // Pass TimePeriod from the Expense object
-                        cmd.Parameters.AddWithValue("@TimePeriod", expense.DateString);
+                        //// Pass TimePeriod from the Expense object
+                        //cmd.Parameters.AddWithValue("@TimePeriod", expense.DateString);
 
                         // Execute the command
                         int rowsAffected = cmd.ExecuteNonQuery();
@@ -58,7 +62,8 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.ExpenseServices
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.ToString());
+                    Console.WriteLine($"Error adding expense: {ex.Message}");
+                    //Console.WriteLine(ex.ToString());//second try
                     return false; // Return false if there was an error
                 }
 
@@ -69,7 +74,16 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.ExpenseServices
 
         public bool UpdateExpense(Expense expense, int budgetId)
         {
-            string query = "UPDATE Expense SET Name = @Name, Amount = @Amount, Description = @Description, TimePeriod = @TimePeriod WHERE ExpenseId = @ExpenseId";
+            string query = @"
+        UPDATE Expense 
+        SET 
+            Name = @Name, 
+            Amount = @Amount, 
+            Description = @Description, 
+            PurchaseDate = @TimePeriod, 
+            BudgetId = @BudgetId 
+        WHERE 
+            ExpenseId = @ExpenseId";
 
             using (SqlConnection connection = new SqlConnection(dbConnection.ConnectionString))
             {
@@ -84,38 +98,72 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.ExpenseServices
                         cmd.Parameters.AddWithValue("@Name", expense.Name);
                         cmd.Parameters.AddWithValue("@Amount", expense.Amount);
                         cmd.Parameters.AddWithValue("@Description", expense.Description);
-                        cmd.Parameters.AddWithValue("@TimePeriod", expense.DateString);
+                        cmd.Parameters.AddWithValue("@TimePeriod", expense.TimePeriod);
+                        cmd.Parameters.AddWithValue("@BudgetId", budgetId);
 
-                        //        // Execute the query and check rows affected
-                        //        int rowsAffected = cmd.ExecuteNonQuery();
-                        //        return rowsAffected > 0;
-                        //    }
-                        //}
-                        //catch (Exception ex)
-                        //{
-                        //    Console.WriteLine("Error updating expense: " + ex.Message);
-                        //    return false;
-                        //}
-
+                        // Execute the query and check rows affected
                         return cmd.ExecuteNonQuery() > 0;
                     }
                 }
-                //catch (Exception ex)
-                //{
-                //    Console.WriteLine("Error updating expense: " + ex.Message);
-                //    return false;
-                //}
-                catch (SqlException ex) when (ex.Number == 547) // Foreign key violation
-                {
-                    MessageBox.Show("The selected budget is not valid. Please select a valid budget.");
-                    return false;
-                }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"An error occurred: {ex.Message}");
+                    // Log or handle the exception as needed
+                    Console.WriteLine($"Error while updating expense: {ex.Message}");
                     return false;
                 }
             }
+            //second try
+            //string query = "UPDATE Expense SET Name = @Name, Amount = @Amount, Description = @Description, TimePeriod = @TimePeriod WHERE ExpenseId = @ExpenseId";
+
+            //using (SqlConnection connection = new SqlConnection(dbConnection.ConnectionString))
+            //{
+            //    try
+            //    {
+            //        connection.Open();
+
+            //        using (SqlCommand cmd = new SqlCommand(query, connection))
+            //        {
+            //            // Set parameters for the SQL query
+            //            cmd.Parameters.AddWithValue("@ExpenseId", expense.ExpenseId);
+            //            cmd.Parameters.AddWithValue("@Name", expense.Name);
+            //            cmd.Parameters.AddWithValue("@Amount", expense.Amount);
+            //            cmd.Parameters.AddWithValue("@Description", expense.Description);
+            //            cmd.Parameters.AddWithValue("@TimePeriod", expense.DateString);
+
+            //            //        // Execute the query and check rows affected
+            //            //        int rowsAffected = cmd.ExecuteNonQuery();
+            //            //        return rowsAffected > 0;
+            //            //    }
+            //            //}
+            //            //catch (Exception ex)
+            //            //{
+            //            //    Console.WriteLine("Error updating expense: " + ex.Message);
+            //            //    return false;
+            //            //}
+
+            //            return cmd.ExecuteNonQuery() > 0;
+            //        }
+            //    }
+
+
+            //    //catch (Exception ex)
+            //    //{
+            //    //    Console.WriteLine("Error updating expense: " + ex.Message);
+            //    //    return false;
+            //    //}
+
+            //Second Try
+            //    catch (SqlException ex) when (ex.Number == 547) // Foreign key violation
+            //    {
+            //        MessageBox.Show("The selected budget is not valid. Please select a valid budget.");
+            //        return false;
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show($"An error occurred: {ex.Message}");
+            //        return false;
+            //    }
+            //}
         }
 
 
@@ -123,24 +171,24 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.ExpenseServices
         {
             List<Expense> expenses = new List<Expense>();
 
-			SqlConnection con = new SqlConnection(dbConnection.ConnectionString);
-			try
-			{
-				con.Open();
+            SqlConnection con = new SqlConnection(dbConnection.ConnectionString);
+            try
+            {
+                con.Open();
 
-				SqlCommand cmd = new SqlCommand("SELECT ExpenseID, BudgetID, Name, Amount, Description, PurchaseDate FROM Expense WHERE BudgetID = @budgetID", con);
+                SqlCommand cmd = new SqlCommand("SELECT ExpenseID, BudgetID, Name, Amount, Description, PurchaseDate FROM Expense WHERE BudgetID = @budgetID", con);
                 cmd.Parameters.AddWithValue("@budgetID", budgetId);
 
-				SqlDataReader reader = cmd.ExecuteReader();
-				while (reader.Read())
-				{
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
                     expenses.Add(new Expense((Int32)reader[0], (Int32)reader[1], reader[2].ToString(), double.Parse(reader[3].ToString()), reader[4].ToString(), (DateTime)reader[5]));
 
 
-					//Console.WriteLine("\t{0}\t{1}\t{2}",
-					//reader[0], reader[1], reader[2]);
-				}
-				reader.Close();
+                    //Console.WriteLine("\t{0}\t{1}\t{2}",
+                    //reader[0], reader[1], reader[2]);
+                }
+                reader.Close();
 
 
 
@@ -148,74 +196,100 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.ExpenseServices
 
 
 
-				//SqlDataAdapter da = new SqlDataAdapter(cmd);
-				//DataTable dt = new DataTable();
-				//da.Fill(dt);
+                //SqlDataAdapter da = new SqlDataAdapter(cmd);
+                //DataTable dt = new DataTable();
+                //da.Fill(dt);
 
-				// dataGridViewExpenses.DataSource = dt;
+                // dataGridViewExpenses.DataSource = dt;
 
-				//con.Close();
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show($"An error occurred: {ex.Message}");
-			}
+                //con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
 
 
-			return expenses;
+            return expenses;
 
         }
 
+        //added nov 31 9:43am
+        public bool DeleteExpense(int expenseID)
+        {
 
-        //NEED TO GIFURE THE DELETION OUT NOV 11:24pm
+            string query = "DELETE FROM Expense WHERE ExpenseId = @ExpenseId";
+
+            using (SqlConnection connection = new SqlConnection(dbConnection.ConnectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        // Add the ExpenseId parameter
+                        cmd.Parameters.AddWithValue("@ExpenseId", expenseID);
+
+                        // Execute the query
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        return rowsAffected > 0;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error deleting expense: {ex.Message}");
+                    return false;
+                }
+
+                //NEED TO GIFURE THE DELETION OUT NOV 11:24pm
 
 
-        //public bool DeleteExpense(int expenseID)
-        //{
-        //     string query = "DELETE FROM Expense WHERE ExpenseId = @expenseID";
-        //using (SqlConnection connection = new SqlConnection(dbConnection.ConnectionString))
-        //{
-        //    try
-        //    {
-        //        connection.Open();
-        //        using (SqlCommand cmd = new SqlCommand(query, connection))
-        //        {
-        //            cmd.Parameters.AddWithValue("@expenseID", expenseID);
-        //            cmd.ExecuteNonQuery();
-        //            return true;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.ToString());
-        //    }
-        //}
-        //return false;
-        //}
+                //public bool DeleteExpense(int expenseID)
+                //{
+                //     string query = "DELETE FROM Expense WHERE ExpenseId = @expenseID";
+                //using (SqlConnection connection = new SqlConnection(dbConnection.ConnectionString))
+                //{
+                //    try
+                //    {
+                //        connection.Open();
+                //        using (SqlCommand cmd = new SqlCommand(query, connection))
+                //        {
+                //            cmd.Parameters.AddWithValue("@expenseID", expenseID);
+                //            cmd.ExecuteNonQuery();
+                //            return true;
+                //        }
+                //    }
+                //    catch (Exception ex)
+                //    {
+                //        Console.WriteLine(ex.ToString());
+                //    }
+                //}
+                //return false;
+                //}
 
 
-        //POSSIBLE PARSING TO INMSERT EXPENSE TO DATABASE AFTER EDITED NOV 30 11:25pm
-        //public bool InsertExpense(Expense expense)
-        //{
-        //    string query = "INSERT INTO Expenses (BudgetId, Name, Amount, Description, TimePeriod) " +
-        //                   "VALUES (@BudgetId, @Name, @Amount, @Description, @TimePeriod)";
+                //POSSIBLE PARSING TO INMSERT EXPENSE TO DATABASE AFTER EDITED NOV 30 11:25pm
+                //public bool InsertExpense(Expense expense)
+                //{
+                //    string query = "INSERT INTO Expenses (BudgetId, Name, Amount, Description, TimePeriod) " +
+                //                   "VALUES (@BudgetId, @Name, @Amount, @Description, @TimePeriod)";
 
-        //    using (SqlConnection connection = new SqlConnection(dbConnection.ConnectionString))
-        //    {
-        //        using (SqlCommand command = new SqlCommand(query, connection))
-        //        {
-        //            command.Parameters.AddWithValue("@BudgetId", expense.BudgetId);
-        //            command.Parameters.AddWithValue("@Name", expense.Name);
-        //            command.Parameters.AddWithValue("@Amount", expense.Amount);
-        //            command.Parameters.AddWithValue("@Description", expense.Description);
-        //            command.Parameters.AddWithValue("@TimePeriod", expense.DateString);
+                //    using (SqlConnection connection = new SqlConnection(dbConnection.ConnectionString))
+                //    {
+                //        using (SqlCommand command = new SqlCommand(query, connection))
+                //        {
+                //            command.Parameters.AddWithValue("@BudgetId", expense.BudgetId);
+                //            command.Parameters.AddWithValue("@Name", expense.Name);
+                //            command.Parameters.AddWithValue("@Amount", expense.Amount);
+                //            command.Parameters.AddWithValue("@Description", expense.Description);
+                //            command.Parameters.AddWithValue("@TimePeriod", expense.DateString);
 
-        //            connection.Open();
-        //            int result = command.ExecuteNonQuery();
-        //            return result > 0;
-        //        }
-        //    }
-        //}
+                //            connection.Open();
+                //            int result = command.ExecuteNonQuery();
+                //            return result > 0;
+                //        }
+                //    }
+                //}
 
-    }
+            }
 }
