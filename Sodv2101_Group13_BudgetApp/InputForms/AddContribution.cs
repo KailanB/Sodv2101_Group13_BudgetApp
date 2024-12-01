@@ -1,4 +1,5 @@
 ﻿using Sodv2101_Group13_BudgetApp.RepositoryDBContext.ContributionServices;
+using Sodv2101_Group13_BudgetApp.RepositoryDBContext.FinancialGoalsService;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +15,20 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
     public partial class AddContribution : Form
     {
         private ContributionService contributionService = new ContributionService();
+        private FinancialGoalService financialGoalService = new FinancialGoalService();
         private FinancialGoal goal;
+
+        private List<FinancialGoal> financialGoals = new List<FinancialGoal>();
+        
+        // added paramterless constructor so that we can use this Form outside of the GoalPageForm.
+        // instead of passing a value into the constructor simply use financialGoalService to pull goal list and populate form combo box
+        public AddContribution()
+        {
+			InitializeComponent();
+
+            //populates combo box with financial goal options
+            LoadFinancialGoalsComboBox();
+		}
         public AddContribution(List<FinancialGoal> goals)
         {
             InitializeComponent();
@@ -24,6 +38,15 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
             comboBoxAddContribution.ValueMember = "GoalID";
         }
 
+
+        private void LoadFinancialGoalsComboBox()
+        {
+			financialGoals = financialGoalService.GetFinancialGoalList();
+
+			comboBoxAddContribution.DataSource = financialGoals;
+			comboBoxAddContribution.DisplayMember = "Name";
+			comboBoxAddContribution.ValueMember = "GoalID";
+		}
         private void btnAddContributionSave_Click(object sender, EventArgs e)
         {
 
