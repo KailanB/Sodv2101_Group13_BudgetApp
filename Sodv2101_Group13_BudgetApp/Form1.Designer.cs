@@ -59,7 +59,6 @@
             toolStripMenuItemEditGoal = new ToolStripMenuItem();
             toolStripMenuItemDeleteGoal = new ToolStripMenuItem();
             label3 = new Label();
-            deleteExpenseToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)picBudgetGraphs).BeginInit();
             toolStrip1.SuspendLayout();
             SuspendLayout();
@@ -210,7 +209,7 @@
             btnToolStripBudget.AutoSize = false;
             btnToolStripBudget.BackColor = Color.Plum;
             btnToolStripBudget.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            btnToolStripBudget.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItemCreateBudget, toolStripMenuItemEditBudget, newExpenseToolStripMenuItem, editExpenseToolStripMenuItem, deleteExpenseToolStripMenuItem });
+            btnToolStripBudget.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItemCreateBudget, toolStripMenuItemEditBudget, newExpenseToolStripMenuItem, editExpenseToolStripMenuItem });
             btnToolStripBudget.ImageTransparentColor = Color.Magenta;
             btnToolStripBudget.Name = "btnToolStripBudget";
             btnToolStripBudget.Size = new Size(100, 22);
@@ -243,6 +242,7 @@
             editExpenseToolStripMenuItem.Name = "editExpenseToolStripMenuItem";
             editExpenseToolStripMenuItem.Size = new Size(224, 26);
             editExpenseToolStripMenuItem.Text = "Edit Expense";
+            editExpenseToolStripMenuItem.Click += editExpenseToolStripMenuItem_Click;
             // 
             // toolStripDropDownButtonGoals
             // 
@@ -256,6 +256,7 @@
             toolStripDropDownButtonGoals.Size = new Size(100, 22);
             toolStripDropDownButtonGoals.Text = "Goals";
             toolStripDropDownButtonGoals.Click += toolStripDropDownButtonGoals_Click;
+            toolStripDropDownButtonGoals.DoubleClick += toolStripDropDownButtonGoals_DoubleClick;
             // 
             // toolStripMenuItemAddContribution
             // 
@@ -287,12 +288,14 @@
             toolStripMenuItemEditGoal.Name = "toolStripMenuItemEditGoal";
             toolStripMenuItemEditGoal.Size = new Size(233, 26);
             toolStripMenuItemEditGoal.Text = "Edit Goal";
+            toolStripMenuItemEditGoal.Click += toolStripMenuItemEditGoal_Click;
             // 
             // toolStripMenuItemDeleteGoal
             // 
             toolStripMenuItemDeleteGoal.Name = "toolStripMenuItemDeleteGoal";
             toolStripMenuItemDeleteGoal.Size = new Size(233, 26);
             toolStripMenuItemDeleteGoal.Text = "Delete Goal";
+            toolStripMenuItemDeleteGoal.Click += toolStripMenuItemDeleteGoal_Click;
             // 
             // label3
             // 
@@ -303,12 +306,6 @@
             label3.Size = new Size(83, 28);
             label3.TabIndex = 7;
             label3.Text = "Budgets";
-            // 
-            // deleteExpenseToolStripMenuItem
-            // 
-            deleteExpenseToolStripMenuItem.Name = "deleteExpenseToolStripMenuItem";
-            deleteExpenseToolStripMenuItem.Size = new Size(194, 26);
-            deleteExpenseToolStripMenuItem.Text = "Delete Expense";
             // 
             // Form1
             // 
@@ -379,7 +376,6 @@
         private ToolStripMenuItem toolStripMenuItemDeleteGoal;
         private ToolStripMenuItem newExpenseToolStripMenuItem;
         private ToolStripMenuItem editExpenseToolStripMenuItem;
-        private ToolStripMenuItem deleteExpenseToolStripMenuItem;
     }
 }
 
