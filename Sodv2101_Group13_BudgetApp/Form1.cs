@@ -1,6 +1,7 @@
 using Microsoft.Data.SqlClient;
 using Sodv2101_Group13_BudgetApp.InputForms;
 using Sodv2101_Group13_BudgetApp.RepositoryDBContext.BudgetServices;
+using Sodv2101_Group13_BudgetApp.RepositoryDBContext.FinancialGoalsService;
 using Sodv2101_Group13_BudgetApp.SubPageForms;
 using System.Drawing;
 
@@ -12,6 +13,7 @@ namespace Sodv2101_Group13_BudgetApp
 
 
         private BudgetService budgetService = new BudgetService();
+        private FinancialGoalService goalService = new FinancialGoalService();
         public Form1()
         {
             InitializeComponent();
@@ -108,11 +110,11 @@ namespace Sodv2101_Group13_BudgetApp
             CreateBudget budgetForm = new CreateBudget();
             budgetForm.ShowDialog();
         }
-
+        // ----------------------------------------------------------------------------------------------
+        // GOAL SECTION
         private void toolStripDropDownButtonGoals_Click(object sender, EventArgs e)
         {
-            GoalPageForm goalForm = new GoalPageForm();
-            goalForm.ShowDialog();
+
         }
 
         private void toolStripMenuItemAddGoal_Click(object sender, EventArgs e)
@@ -121,11 +123,83 @@ namespace Sodv2101_Group13_BudgetApp
             addGoal.ShowDialog();
         }
 
+
+
+
+        private void toolStripDropDownButtonGoals_DoubleClick(object sender, EventArgs e)
+        {
+            GoalPageForm goalForm = new GoalPageForm();
+            goalForm.ShowDialog();
+        }
+
+        private void toolStripMenuItemEditGoal_Click(object sender, EventArgs e)
+        {
+            GoalPageForm goalForm = new GoalPageForm();
+            goalForm.ShowDialog();
+            if (DialogResult == DialogResult.OK)
+            {
+                FinancialGoal selectedGoal = goalForm.SelectedGoal;
+
+                if (selectedGoal != null)
+                {
+                    EditGoalForm editGoal = new EditGoalForm();
+                    editGoal.PopulateInput(selectedGoal, selectedGoal.GoalID);
+                    DialogResult result = editGoal.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        goalForm.LoadGoals();
+                    }
+                }
+                else
+                {
+                    Label errorLabel = new Label();
+                    errorLabel.Text = "No goal was selected to edit.";
+                }
+
+
+            }
+
+        }
+
+        private void toolStripMenuItemDeleteGoal_Click(object sender, EventArgs e)
+        {
+            GoalPageForm goalForm = new GoalPageForm();
+            goalForm.ShowDialog();
+            if (DialogResult == DialogResult.OK)
+            {
+                FinancialGoal selectedGoal = goalForm.SelectedGoal;
+
+                if (selectedGoal != null)
+                {
+                    DialogResult confirmResult = MessageBox.Show("Are you sure you want to delete this goal?", "Confirm Deletion", MessageBoxButtons.YesNo);
+                    if (confirmResult == DialogResult.Yes)
+                    {
+                        goalService.DeleteFinancialGoal(selectedGoal.GoalID);
+                        goalForm.LoadGoals();
+
+                    }
+                }
+            }
+            goalForm.Close();
+        }
+
+        //----------------EXPENSE SECTION ---------------------//
         private void newExpenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             NewExpense newExpense = new NewExpense();
             newExpense.ShowDialog();
 
         }
+        private void editExpenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UpdateExpense updateExpense = new UpdateExpense();
+            updateExpense.ShowDialog();
+
+        }
+        //added but not too sure why if it in update form
+        //private void deleteExpenseToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+            
+        //}
     }
 }
