@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sodv2101_Group13_BudgetApp
 {
-    internal class Contribution
+    public class Contribution
     {
         public int ContributionID { get; set; }
         public int GoalID { get;  set; } 

@@ -63,21 +63,22 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.FinancialGoalsService
             {
                 throw new ArgumentException("Invalid financial goal data");
             }
-            string query = "UPDATE FinancialGoal SET Name = @GoalName, Max = @Amount, Description = @Description, Deadline = @Deadline WHERE GoalID = @GoalID";
+            string query = "UPDATE FinancialGoal SET Name = @Name, Amount = @MaxAmount, Description = @Description, Deadline = @Deadline WHERE GoalID = @GoalID";
 
             using(SqlConnection connection = new SqlConnection(dBConnection.ConnectionString))
             {
                 try
                 {
-                    connection.Open();
+                    
                     using(SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@GoalName", goal.Name);                        
-                        command.Parameters.AddWithValue("@Amount", goal.MaxAmount);
+                        command.Parameters.AddWithValue("@Name", goal.Name);                        
+                        command.Parameters.AddWithValue("@MaxAmount", goal.MaxAmount);
                         command.Parameters.AddWithValue("@Description", goal.Description ?? (object)DBNull.Value);
                         command.Parameters.AddWithValue("@Deadline", goal.Deadline);
                         command.Parameters.AddWithValue("@GoalID", id);
-
+                       
+                        connection.Open();
                         int rowsAffected = command.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
