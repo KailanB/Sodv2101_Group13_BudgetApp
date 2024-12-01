@@ -250,12 +250,14 @@
             toolStripMenuItemRemoveContribution.Name = "toolStripMenuItemRemoveContribution";
             toolStripMenuItemRemoveContribution.Size = new Size(188, 22);
             toolStripMenuItemRemoveContribution.Text = "Remove Contribution";
+            toolStripMenuItemRemoveContribution.Click += toolStripMenuItemRemoveContribution_Click;
             // 
             // toolStripMenuItemUpdateContribution
             // 
             toolStripMenuItemUpdateContribution.Name = "toolStripMenuItemUpdateContribution";
             toolStripMenuItemUpdateContribution.Size = new Size(188, 22);
             toolStripMenuItemUpdateContribution.Text = "Update Contribution";
+            toolStripMenuItemUpdateContribution.Click += toolStripMenuItemUpdateContribution_Click;
             // 
             // toolStripMenuItemAddGoal
             // 

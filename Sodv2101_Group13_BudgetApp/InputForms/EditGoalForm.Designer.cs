@@ -52,7 +52,7 @@
             // 
             // btnEditGoalSave
             // 
-            btnEditGoalSave.Location = new Point(100, 343);
+            btnEditGoalSave.Location = new Point(105, 373);
             btnEditGoalSave.Name = "btnEditGoalSave";
             btnEditGoalSave.Size = new Size(146, 36);
             btnEditGoalSave.TabIndex = 2;

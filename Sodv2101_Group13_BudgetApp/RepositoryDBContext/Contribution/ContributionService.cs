@@ -51,38 +51,41 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.ContributionServices
         //----------------------------------------------------------------
         // Kinda Confused about this
         //----------------------------------------------------------------
-        //public bool UpdateContribution(Contribution contribution, int id)
-        //{
-        //    string query = "UPDATE Contribution SET GoalID = @GoalID, Amount = @Amount, Description = @Description, Deadline = @Deadline WHERE GoalID = @GoalID";
+        public bool UpdateContribution(Contribution contribution, int id)
+        {
+            
+            string query = "UPDATE Contribution SET GoalID = @GoalID, Amount = @Amount, Description = @Description, Date = @Date WHERE ContributionID = @ContributionID";
 
-        //    using (SqlConnection connection = new SqlConnection(dBConnection.ConnectionString))
-        //    {
-        //        try
-        //        {
-        //            connection.Open();
-        //            using (SqlCommand command = new SqlCommand(query, connection))
-        //            {
-        //                command.Parameters.AddWithValue("@GoalName", goal.Name);
-        //                command.Parameters.AddWithValue("@Amount", goal.Max);
-        //                command.Parameters.AddWithValue("@Description", goal.Description);
-        //                command.Parameters.AddWithValue("@Deadline", goal.Deadline);
-        //                command.Parameters.AddWithValue("@GoalID", id);
+            using (SqlConnection connection = new SqlConnection(dBConnection.ConnectionString))
+            {
+                try
+                {
+                    connection.Open();
 
-        //                int rowsAffected = command.ExecuteNonQuery();
-        //                if (rowsAffected > 0)
-        //                {
-        //                    return true;
-        //                }
-        //            }
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            Console.WriteLine(ex.ToString);
-        //        }
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        // Set parameters based on Contribution class properties
+                        command.Parameters.AddWithValue("@GoalID", contribution.GoalID);
+                        command.Parameters.AddWithValue("@Amount", contribution.Amount);
+                        command.Parameters.AddWithValue("@Description", contribution.Description);
+                        command.Parameters.AddWithValue("@Date", contribution.Date);
+                        command.Parameters.AddWithValue("@ContributionID", id);
 
-        //    }
-        //    return false;
-        //}
+                        // Execute the query and check rows affected
+                        int rowsAffected = command.ExecuteNonQuery();
+                        return rowsAffected > 0;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Log the exception (or rethrow it based on your needs)
+                    Console.WriteLine(ex.ToString());
+                }
+            }
+
+            return false;
+        }
+
 
         public bool RemoveContribution(int ContributionID)
         {

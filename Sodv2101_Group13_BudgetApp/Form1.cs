@@ -10,9 +10,6 @@ namespace Sodv2101_Group13_BudgetApp
 {
     public partial class Form1 : Form
     {
-
-
-
         private BudgetService budgetService = new BudgetService();
         private FinancialGoalService goalService = new FinancialGoalService();
         private List<FinancialGoal> goalList = new List<FinancialGoal>();
@@ -118,7 +115,8 @@ namespace Sodv2101_Group13_BudgetApp
         // GOAL SECTION
         private void toolStripDropDownButtonGoals_Click(object sender, EventArgs e)
         {
-
+            GoalPageForm goalForm = new GoalPageForm();
+            goalForm.ShowDialog();
         }
 
         private void toolStripMenuItemAddGoal_Click(object sender, EventArgs e)
@@ -181,13 +179,13 @@ namespace Sodv2101_Group13_BudgetApp
                     }
                 }
             }
-            
+
         }
         private void OpenAddContributionForm()
         {
             goalList = goalPageForm.GetGoals();
 
-            if(goalList == null || !goalList.Any())
+            if (goalList == null || !goalList.Any())
             {
                 MessageBox.Show("No goals available . Please add a financial goal first.", "No Goals", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -199,6 +197,53 @@ namespace Sodv2101_Group13_BudgetApp
         private void toolStripMenuItemAddContribution_Click(object sender, EventArgs e)
         {
             OpenAddContributionForm();
+        }
+        //private void RefreshContributions()
+        //{
+        //    FinancialGoal selectedGoal = goalForm.SelectedGoal;
+        //    var contributions = ContributionService.GetContributionList(SelectedGoal);
+        //    contributionsGridView.DataSource = contributions;
+        //}
+        private void toolStripMenuItemRemoveContribution_Click(object sender, EventArgs e)
+        {
+            goalList = goalPageForm.GetGoals();
+
+            if (goalList == null || !goalList.Any())
+            {
+                MessageBox.Show("No goals available . Please add a financial goal first.", "No Goals", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            FinancialGoal selectedGoal = goalPageForm.SelectedGoal;
+            if (selectedGoal == null)
+            {
+                MessageBox.Show("Please select a goal to remove a contribution from.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            RemoveContribution removeContribution = new RemoveContribution(selectedGoal);
+            removeContribution.ShowDialog();
+
+            goalPageForm.LoadGoals();
+        }
+
+        private void toolStripMenuItemUpdateContribution_Click(object sender, EventArgs e)
+        {
+            goalList = goalPageForm.GetGoals();
+
+            if (goalList == null || !goalList.Any())
+            {
+                MessageBox.Show("No goals available . Please add a financial goal first.", "No Goals", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            FinancialGoal selectedGoal = goalPageForm.SelectedGoal;
+            if (selectedGoal == null)
+            {
+                MessageBox.Show("Please select a goal to remove a contribution from.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            UpdateContribution updateContribution = new UpdateContribution(selectedGoal);
+            updateContribution.ShowDialog();
+
+            goalPageForm.LoadGoals();
         }
     }
 }

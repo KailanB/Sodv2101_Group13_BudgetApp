@@ -208,6 +208,7 @@
             toolStripMenuItemUpdateContribution.Name = "toolStripMenuItemUpdateContribution";
             toolStripMenuItemUpdateContribution.Size = new Size(188, 22);
             toolStripMenuItemUpdateContribution.Text = "Update Contribution";
+            toolStripMenuItemUpdateContribution.Click += toolStripMenuItemUpdateContribution_Click;
             // 
             // toolStripMenuItemAddGoal
             // 
@@ -221,12 +222,14 @@
             toolStripMenuItemEditGoal.Name = "toolStripMenuItemEditGoal";
             toolStripMenuItemEditGoal.Size = new Size(188, 22);
             toolStripMenuItemEditGoal.Text = "Edit Goal";
+            toolStripMenuItemEditGoal.Click += toolStripMenuItemEditGoal_Click;
             // 
             // toolStripMenuItemDeleteGoal
             // 
             toolStripMenuItemDeleteGoal.Name = "toolStripMenuItemDeleteGoal";
             toolStripMenuItemDeleteGoal.Size = new Size(188, 22);
             toolStripMenuItemDeleteGoal.Text = "Delete Goal";
+            toolStripMenuItemDeleteGoal.Click += toolStripMenuItemDeleteGoal_Click;
             // 
             // toolStripSeparator8
             // 

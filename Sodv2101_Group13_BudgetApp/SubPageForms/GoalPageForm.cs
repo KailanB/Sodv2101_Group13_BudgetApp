@@ -23,7 +23,7 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
         private FinancialGoalService goalService = new FinancialGoalService();
         private ContributionService contributionService = new ContributionService();
         private List<Contribution> contributionsList = new List<Contribution>();
-        
+
         public GoalPageForm()
         {
             InitializeComponent();
@@ -74,7 +74,7 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
                     dataGridViewContributions.Columns["ContributionID"].Visible = false;
                 }
             }
-            
+
 
 
             //DataTable contributionTable = new DataTable();
@@ -205,12 +205,38 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
 
         private void toolStripMenuItemRemoveContribution_Click(object sender, EventArgs e)
         {
-            //Open Goal List
-            //User must click on a goal to remove
-            // Confirm User wants to remove the goal
-            //Remove close
-            //Close Form
+            goalList = GetGoals();
+
+            if (goalList == null || !goalList.Any())
+            {
+                MessageBox.Show("No goals available . Please add a financial goal first.", "No Goals", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (dataGridViewFinancialGoals.SelectedRows.Count > 0)
+            {
+                var selectedRow = dataGridViewFinancialGoals.SelectedRows[0];
+                int goalIndex = dataGridViewFinancialGoals.CurrentCell.RowIndex;
+                SelectedGoal = goalList[goalIndex];
+                if (SelectedGoal != null)
+                {
+                    // Open the RemoveContribution form and pass the selected goal
+                    RemoveContribution removeContribution = new RemoveContribution(SelectedGoal);
+                    removeContribution.ShowDialog();
+
+                    // Reload the contributions and goals after the dialog is closed
+                    LoadGoals();
+                }
+                else
+                {
+                    MessageBox.Show("Failed to retrieve the selected goal. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a goal to manage contributions.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
+        
 
         private void btnGFPViewGoal_Click(object sender, EventArgs e)
         {
@@ -242,19 +268,9 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
         }
         private void toolStripMenuItemAddContribution_Click(object sender, EventArgs e)
         {
-            if(SelectedGoal == null)
-            {
 
-            }
             AddContribution addContributionForm = new AddContribution(goalList);
-            if (addContributionForm.ShowDialog() == DialogResult.OK)
-            {
-                // Reload contributions for the selected goal
-                //if (SelectedGoal != null)
-                //{
-                //    LoadContribution(SelectedGoal.GoalID);
-                //}
-            }
+            addContributionForm.ShowDialog();
         }
 
         private void dataGridViewFinancialGoals_SelectionChanged(object sender, EventArgs e)
@@ -267,6 +283,95 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
             else
             {
                 SelectedGoal = null;
+            }
+        }
+
+        private void toolStripMenuItemUpdateContribution_Click(object sender, EventArgs e)
+        {
+            goalList = GetGoals();
+
+            if (goalList == null || !goalList.Any())
+            {
+                MessageBox.Show("No goals available . Please add a financial goal first.", "No Goals", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (dataGridViewFinancialGoals.SelectedRows.Count > 0)
+            {
+                var selectedRow = dataGridViewFinancialGoals.SelectedRows[0];
+                int goalIndex = dataGridViewFinancialGoals.CurrentCell.RowIndex;
+                SelectedGoal = goalList[goalIndex];
+                if (SelectedGoal != null)
+                {
+                    // Open the UpdateContribution form and pass the selected goal
+                    UpdateContribution updateContribution = new UpdateContribution(SelectedGoal);
+                    updateContribution.ShowDialog();
+
+                    // Reload the contributions and goals after the dialog is closed
+                    LoadGoals();
+                }
+                else
+                {
+                    lblGPFError.Text = "Please select a goal to edit";
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a goal to manage contributions.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void toolStripMenuItemEditGoal_Click(object sender, EventArgs e)
+        {
+
+            if (dataGridViewFinancialGoals.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dataGridViewFinancialGoals.SelectedRows[0];
+
+                int goalIndex = dataGridViewFinancialGoals.CurrentCell.RowIndex;
+                SelectedGoal = goalList[goalIndex];
+
+
+                string goalName = selectedRow.Cells["Name"].Value.ToString();
+                double amount = Convert.ToDouble(selectedRow.Cells["Max Amount"].Value);
+                string description = selectedRow.Cells["Description"].Value.ToString();
+                DateTime deadline = Convert.ToDateTime(selectedRow.Cells["Deadline"].Value.ToString());
+
+                FinancialGoal goal = new FinancialGoal(goalName, amount, description, deadline);
+
+                EditGoalForm editGoal = new EditGoalForm();
+                editGoal.PopulateInput(goal, SelectedGoal.GoalID);
+                DialogResult newGoalResult = editGoal.ShowDialog();
+                if (newGoalResult == DialogResult.OK)
+                {
+                    LoadGoals();
+                }
+            }
+            else
+            {
+                lblGPFError.Text = "Please select a goal to edit";
+            }
+
+
+        }
+
+        private void toolStripMenuItemDeleteGoal_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewFinancialGoals.SelectedRows.Count > 0)
+            {
+                //Still working on the Logic
+                int selectedIndex = dataGridViewFinancialGoals.SelectedRows[0].Index;
+                SelectedGoal = goalList[selectedIndex];
+
+                DialogResult confirmResult = MessageBox.Show("Are you sure you want to delete this goal?", "Confirm Deletion", MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    goalService.DeleteFinancialGoal(SelectedGoal.GoalID);
+                    LoadGoals();
+                }
+            }
+            else
+            {
+                lblGPFError.Text = "Please Select a Goal to Delete!";
             }
         }
     }
