@@ -178,67 +178,67 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
 			}
 		}
 
-	//still not showing it
+	//still not showing in the dataviewGrid for Expenses in Budget Goal Formit NOV 11:13pm 
 
 		private void btnEditExpense_Click(object sender, EventArgs e)
         {
-            //if (dataGridViewExpenses.SelectedRows.Count > 0)
-            //{
-            //    // Get selected expense row from dataGridViewExpenses
-            //    DataGridViewRow selectedRow = dataGridViewExpenses.SelectedRows[0];
+			if (dataGridViewExpenses.SelectedRows.Count > 0)
+			{
+				// Get selected expense row from dataGridViewExpenses
+				DataGridViewRow selectedRow = dataGridViewExpenses.SelectedRows[0];
 
-            //    // Get the budgetId from the corresponding selected budget in the dataGridViewBudgets
-            //    int budgetListIndex = dataGridViewBudgets.CurrentCell.RowIndex;
-            //    int budgetId = budgetList[budgetListIndex].BudgetID;
+				// Get the budgetId from the corresponding selected budget in the dataGridViewBudgets
+				int budgetListIndex = dataGridViewBudgets.CurrentCell.RowIndex;
+				int budgetId = budgetList[budgetListIndex].BudgetID;
 
-            //    // Retrieve the selected expense's data
-            //    int expenseId = Convert.ToInt32(selectedRow.Cells["Expense ID"].Value);
-            //    string name = selectedRow.Cells["Name"].Value.ToString();
-            //    double amount = Convert.ToDouble(selectedRow.Cells["Amount"].Value);
-            //    string description = selectedRow.Cells["Description"].Value.ToString();
-            //    string dateString = selectedRow.Cells["Time Period"].Value?.ToString(); // Handle possible null
+				// Retrieve the selected expense's data
+				int expenseId = Convert.ToInt32(selectedRow.Cells["Expense ID"].Value);
+				string name = selectedRow.Cells["Name"].Value.ToString();
+				double amount = Convert.ToDouble(selectedRow.Cells["Amount"].Value);
+				string description = selectedRow.Cells["Description"].Value.ToString();
+				string dateString = selectedRow.Cells["Time Period"].Value?.ToString(); // Handle possible null
 
-            //    DateTime timePeriod = DateTime.MinValue; // Default value if parsing fails
+				DateTime timePeriod = DateTime.MinValue; // Default value if parsing fails
 
-            //    // Check if the dateString is not null or empty before parsing
-            //    if (!string.IsNullOrEmpty(dateString))
-            //    {
-            //        if (DateTime.TryParse(dateString, out timePeriod))
-            //        {
-            //            // Create Expense object
-            //            Expense expense = new Expense(expenseId, budgetId, name, amount, description, timePeriod);
+				// Check if the dateString is not null or empty before parsing
+				if (!string.IsNullOrEmpty(dateString))
+				{
+					if (DateTime.TryParse(dateString, out timePeriod))
+					{
+						// Create Expense object
+						Expense expense = new Expense(expenseId, budgetId, name, amount, description, timePeriod);
 
-            //            // Open the EditExpenseForm with populated data
-            //            UpdateExpense editExpenseForm = new UpdateExpense();
-            //            editExpenseForm.PopulateInputs(expense, budgetId);
+						// Open the EditExpenseForm with populated data
+						UpdateExpense editExpenseForm = new UpdateExpense();
+						editExpenseForm.PopulateInputs(expense, budgetId);
 
-            //            if (editExpenseForm.ShowDialog() == DialogResult.OK)
-            //            {
-            //                // Reload the expenses after editing
-            //                LoadExpenses(budgetId);
-            //            }
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("The date format is incorrect or cannot be parsed. Please check the date format.");
-            //        }
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("The selected expense does not have a valid date.");
-            //    }
-            //}
-            //else
-            //{
-            //    // No expense selected
-            //    MessageBox.Show("Please select a single expense to edit.");
-            //}
-        }
+						if (editExpenseForm.ShowDialog() == DialogResult.OK)
+						{
+							// Reload the expenses after editing
+							LoadExpenses(budgetId);
+						}
+					}
+					else
+					{
+						MessageBox.Show("The date format is incorrect or cannot be parsed. Please check the date format.");
+					}
+				}
+				else
+				{
+					MessageBox.Show("The selected expense does not have a valid date.");
+				}
+			}
+			else
+			{
+				// No expense selected
+				MessageBox.Show("Please select a single expense to edit.");
+			}
+		}
 
 
-    
 
-    private void btnDeleteExpense_Click(object sender, EventArgs e)
+
+		private void btnDeleteExpense_Click(object sender, EventArgs e)
 		{
 
             //if (dataGridViewExpenses.SelectedRows.Count > 0)
