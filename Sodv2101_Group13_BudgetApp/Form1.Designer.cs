@@ -243,6 +243,7 @@
             toolStripMenuItemAddContribution.Name = "toolStripMenuItemAddContribution";
             toolStripMenuItemAddContribution.Size = new Size(188, 22);
             toolStripMenuItemAddContribution.Text = "Add Contribution";
+            toolStripMenuItemAddContribution.Click += toolStripMenuItemAddContribution_Click;
             // 
             // toolStripMenuItemRemoveContribution
             // 

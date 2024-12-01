@@ -27,10 +27,10 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.ContributionServices
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@GoalID", contribution.Name);
+                        command.Parameters.AddWithValue("@GoalID", contribution.GoalID);
                         command.Parameters.AddWithValue("@Amount", contribution.Amount);
                         command.Parameters.AddWithValue("@Description", contribution.Description);
-                        command.Parameters.AddWithValue("@Date", contribution.Deadline);
+                        command.Parameters.AddWithValue("@Date", contribution.Date);
                         //command.Parameters.AddWithValue("@UserID", 1); Not sure if this is needed or not 
 
                         int rowsAffected = command.ExecuteNonQuery();
@@ -121,7 +121,7 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.ContributionServices
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    contributions.Add(new Contribution(reader[0].ToString(), double.Parse(reader[1].ToString()), reader[2].ToString(), (DateTime)reader[3]));                    
+                    contributions.Add(new Contribution(int.Parse(reader[0].ToString()), int.Parse(reader[1].ToString()), double.Parse(reader[2].ToString()), reader[3].ToString(), (DateTime)reader[4]));                    
                 }
                 reader.Close();
                                 
@@ -135,5 +135,85 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.ContributionServices
             return contributions;
 
         }
+        public List<Contribution> GetContributionList(int goalID)
+        {
+            List<Contribution> contributions = new List<Contribution>();
+            string query = "SELECT ContributionID, GoalID, Amount, Description, Date FROM Contribution WHERE GoalID = @GoalID";
+
+            using (SqlConnection connection = new SqlConnection(dBConnection.ConnectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@GoalID", goalID);
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                contributions.Add(new Contribution((Int32)reader[0], (Int32)reader[1], double.Parse(reader[2].ToString()), reader[3].ToString(), Convert.ToDateTime(reader[4].ToString())));
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error loading contributions: {ex.Message}");
+                }
+            }
+            return contributions;
+        }
+        //public List<Contribution> GetFinancialGoalList()
+        //{
+        //    // default of 1 for now so that we can add login later if we want
+        //    int GoalID = 1;
+        //    // might change this method to return a list of objects instead of a table
+        //    // List<Budget> budgets = new List<Budget>();
+        //    string query = "SELECT ContributionID, GoalID, Amount, Description, Deadline  FROM Contribution WHERE GoalID = @GoalID";
+        //    List<Contribution> contributionList = new List<Contribution>();
+        //    using (SqlConnection connection = new SqlConnection(dBConnection.ConnectionString))
+        //    {
+
+        //        try
+        //        {
+        //            connection.Open();
+        //            using (SqlCommand cmd = new SqlCommand(query, connection))
+        //            {
+        //                cmd.Parameters.AddWithValue("@GoalID", GoalID);
+        //                SqlDataReader result = cmd.ExecuteReader();
+
+        //                while (result.Read())
+        //                {
+        //                    Contribution contribution = new Contribution
+        //                    {
+        //                        ContributionID = Convert.ToInt32(result["ContributionID"]),
+        //                        GoalID = Convert.ToInt32(result["GoalID"]),
+        //                        Amount = Convert.ToDouble(result["Amount"]),
+        //                        Description = result["Description"].ToString(),
+        //                        Deadline = Convert.ToDateTime(result["Deadline"])
+        //                    };
+        //                    goal.Contributions = contributionService.GetContributionByGoalName(goal.Name);
+        //                    goalList.Add(goal);
+
+        //                }
+
+
+
+        //                //foreach (FinancialGoal goal in goalList)
+        //                //{
+        //                //    goal.Contributions = contributionService.GetContributionByGoalName(goal.Name);
+        //                //}
+        //                // pull Expense data for each budget and load data into each budget list
+
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            Console.WriteLine(ex.ToString());
+        //        }
+        //    }
+        //    return goalList;
+        //}
     }
 }

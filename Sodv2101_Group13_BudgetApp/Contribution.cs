@@ -8,12 +8,12 @@ namespace Sodv2101_Group13_BudgetApp
 {
     public class Contribution
     {
+        public int ContributionID { get; set; }
+        public int GoalID { get;  set; } 
+        public double Amount { get;  set; }
+        public string Description { get;  set; }
 
-        public string Name { get; private set; } // Should the Name be a comboBox of Categories with options of (Budget, Financial Goal, Expense)
-        public double Amount { get; private set; }
-        public string Description { get; private set; }
-
-        public DateTime Deadline { get; private set; }
+        public DateTime Date { get;  set; }
 
 
         public Contribution()
@@ -21,12 +21,20 @@ namespace Sodv2101_Group13_BudgetApp
 
         }
 
-        public Contribution(string name, double amount, string description, DateTime deadline)
+        public Contribution(int goalId, double amount, string description, DateTime date)
         {
-            Name = name;
+            GoalID = goalId;
             Amount = amount;
             Description = description;
-            Deadline = deadline;
+            Date = date;
+        }
+        public Contribution(int contributionId, int goalId, double amount, string description, DateTime date)
+        {
+            ContributionID = contributionId;
+            GoalID = goalId;
+            Amount = amount;
+            Description = description;
+            Date = date;
         }
 
     }

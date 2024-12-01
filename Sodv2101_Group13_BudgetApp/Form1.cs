@@ -1,6 +1,7 @@
 using Microsoft.Data.SqlClient;
 using Sodv2101_Group13_BudgetApp.InputForms;
 using Sodv2101_Group13_BudgetApp.RepositoryDBContext.BudgetServices;
+using Sodv2101_Group13_BudgetApp.RepositoryDBContext.ContributionServices;
 using Sodv2101_Group13_BudgetApp.RepositoryDBContext.FinancialGoalsService;
 using Sodv2101_Group13_BudgetApp.SubPageForms;
 using System.Drawing;
@@ -14,6 +15,9 @@ namespace Sodv2101_Group13_BudgetApp
 
         private BudgetService budgetService = new BudgetService();
         private FinancialGoalService goalService = new FinancialGoalService();
+        private List<FinancialGoal> goalList = new List<FinancialGoal>();
+        private ContributionService ContributionService = new ContributionService();
+        private GoalPageForm goalPageForm = new GoalPageForm();
         public Form1()
         {
             InitializeComponent();
@@ -173,11 +177,28 @@ namespace Sodv2101_Group13_BudgetApp
                     {
                         goalService.DeleteFinancialGoal(selectedGoal.GoalID);
                         goalForm.LoadGoals();
-                        
+
                     }
                 }
             }
-            goalForm.Close();
+            
+        }
+        private void OpenAddContributionForm()
+        {
+            goalList = goalPageForm.GetGoals();
+
+            if(goalList == null || !goalList.Any())
+            {
+                MessageBox.Show("No goals available . Please add a financial goal first.", "No Goals", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            AddContribution addContribution = new AddContribution(goalList);
+            addContribution.ShowDialog();
+        }
+        private void toolStripMenuItemAddContribution_Click(object sender, EventArgs e)
+        {
+            OpenAddContributionForm();
         }
     }
 }

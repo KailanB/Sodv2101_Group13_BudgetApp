@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GoalPageForm));
             dataGridViewFinancialGoals = new DataGridView();
-            dataGridView2 = new DataGridView();
+            dataGridViewContributions = new DataGridView();
             toolStrip2 = new ToolStrip();
             toolStripDropDownButtonAddExpenses = new ToolStripDropDownButton();
             toolBtnAddBudget = new ToolStripMenuItem();
@@ -56,10 +57,14 @@
             btnGFPDeleteGoal = new Button();
             btnGFPEditGoal = new Button();
             btnGFPViewGoal = new Button();
+            contextMenuStripView = new ContextMenuStrip(components);
+            toolStripMenuItemViewGoals = new ToolStripMenuItem();
+            toolStripMenuItemViewContribution = new ToolStripMenuItem();
             lblGPFError = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewFinancialGoals).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewContributions).BeginInit();
             toolStrip2.SuspendLayout();
+            contextMenuStripView.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridViewFinancialGoals
@@ -70,15 +75,16 @@
             dataGridViewFinancialGoals.Name = "dataGridViewFinancialGoals";
             dataGridViewFinancialGoals.Size = new Size(371, 310);
             dataGridViewFinancialGoals.TabIndex = 0;
+            dataGridViewFinancialGoals.SelectionChanged += dataGridViewFinancialGoals_SelectionChanged;
             // 
-            // dataGridView2
+            // dataGridViewContributions
             // 
-            dataGridView2.AllowUserToOrderColumns = true;
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(490, 65);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(371, 310);
-            dataGridView2.TabIndex = 1;
+            dataGridViewContributions.AllowUserToOrderColumns = true;
+            dataGridViewContributions.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewContributions.Location = new Point(490, 65);
+            dataGridViewContributions.Name = "dataGridViewContributions";
+            dataGridViewContributions.Size = new Size(371, 310);
+            dataGridViewContributions.TabIndex = 1;
             // 
             // toolStrip2
             // 
@@ -188,6 +194,7 @@
             toolStripMenuItemAddContribution.Name = "toolStripMenuItemAddContribution";
             toolStripMenuItemAddContribution.Size = new Size(188, 22);
             toolStripMenuItemAddContribution.Text = "Add Contribution";
+            toolStripMenuItemAddContribution.Click += toolStripMenuItemAddContribution_Click;
             // 
             // toolStripMenuItemRemoveContribution
             // 
@@ -269,12 +276,35 @@
             // 
             // btnGFPViewGoal
             // 
+            btnGFPViewGoal.ContextMenuStrip = contextMenuStripView;
             btnGFPViewGoal.Location = new Point(837, 422);
             btnGFPViewGoal.Name = "btnGFPViewGoal";
             btnGFPViewGoal.Size = new Size(132, 23);
             btnGFPViewGoal.TabIndex = 8;
             btnGFPViewGoal.Text = "VIEW";
             btnGFPViewGoal.UseVisualStyleBackColor = true;
+            btnGFPViewGoal.Click += btnGFPViewGoal_Click;
+            // 
+            // contextMenuStripView
+            // 
+            contextMenuStripView.Items.AddRange(new ToolStripItem[] { toolStripMenuItemViewGoals, toolStripMenuItemViewContribution });
+            contextMenuStripView.Name = "contextMenuStripView";
+            contextMenuStripView.Size = new Size(176, 48);
+            contextMenuStripView.Text = "View Goals";
+            // 
+            // toolStripMenuItemViewGoals
+            // 
+            toolStripMenuItemViewGoals.Name = "toolStripMenuItemViewGoals";
+            toolStripMenuItemViewGoals.Size = new Size(175, 22);
+            toolStripMenuItemViewGoals.Text = "View Goals";
+            toolStripMenuItemViewGoals.Click += toolStripMenuItemViewGoals_Click;
+            // 
+            // toolStripMenuItemViewContribution
+            // 
+            toolStripMenuItemViewContribution.Name = "toolStripMenuItemViewContribution";
+            toolStripMenuItemViewContribution.Size = new Size(175, 22);
+            toolStripMenuItemViewContribution.Text = "View Contributions";
+            toolStripMenuItemViewContribution.Click += toolStripMenuItemViewContribution_Click;
             // 
             // lblGPFError
             // 
@@ -296,14 +326,15 @@
             Controls.Add(btnGFPDeleteGoal);
             Controls.Add(btnGFPAddGoal);
             Controls.Add(toolStrip2);
-            Controls.Add(dataGridView2);
+            Controls.Add(dataGridViewContributions);
             Controls.Add(dataGridViewFinancialGoals);
             Name = "GoalPageForm";
             Text = "GoalPageForm";
             ((System.ComponentModel.ISupportInitialize)dataGridViewFinancialGoals).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewContributions).EndInit();
             toolStrip2.ResumeLayout(false);
             toolStrip2.PerformLayout();
+            contextMenuStripView.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -311,7 +342,7 @@
         #endregion
 
         private DataGridView dataGridViewFinancialGoals;
-        private DataGridView dataGridView2;
+        private DataGridView dataGridViewContributions;
         private ToolStrip toolStrip2;
         private ToolStripDropDownButton toolStripDropDownButtonAddExpenses;
         private ToolStripMenuItem toolBtnAddBudget;
@@ -338,5 +369,8 @@
         private Button btnGFPEditGoal;
         private Button btnGFPViewGoal;
         private Label lblGPFError;
+        private ContextMenuStrip contextMenuStripView;
+        private ToolStripMenuItem toolStripMenuItemViewGoals;
+        private ToolStripMenuItem toolStripMenuItemViewContribution;
     }
 }
