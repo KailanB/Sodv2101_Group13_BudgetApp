@@ -29,13 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            btnCreateBudget = new Button();
-            comboBudgets = new ComboBox();
-            button1 = new Button();
             label1 = new Label();
             label2 = new Label();
             picBudgetGraphs = new PictureBox();
             toolStripDropDownButtonAddExpenses = new ToolStripDropDownButton();
+            addExpenseToolStripMenuItem = new ToolStripMenuItem();
+            addGoalContributionToolStripMenuItem = new ToolStripMenuItem();
             toolBtnAddBudget = new ToolStripMenuItem();
             toolStripMenuItemAddFinanceGoal = new ToolStripMenuItem();
             toolStripMenuItemAddIncome = new ToolStripMenuItem();
@@ -46,54 +45,57 @@
             toolStripSeparator4 = new ToolStripSeparator();
             btnToolStripReports = new ToolStripButton();
             toolStrip1 = new ToolStrip();
-            btnToolStripBudget = new ToolStripDropDownButton();
-            toolStripMenuItemCreateBudget = new ToolStripMenuItem();
-            toolStripMenuItemEditBudget = new ToolStripMenuItem();
-            newExpenseToolStripMenuItem = new ToolStripMenuItem();
-            editExpenseToolStripMenuItem = new ToolStripMenuItem();
-            toolStripDropDownButtonGoals = new ToolStripDropDownButton();
-            toolStripMenuItemAddContribution = new ToolStripMenuItem();
-            toolStripMenuItemRemoveContribution = new ToolStripMenuItem();
-            toolStripMenuItemUpdateContribution = new ToolStripMenuItem();
-            toolStripMenuItemAddGoal = new ToolStripMenuItem();
-            toolStripMenuItemEditGoal = new ToolStripMenuItem();
-            toolStripMenuItemDeleteGoal = new ToolStripMenuItem();
+            // btnToolStripBudget = new ToolStripDropDownButton();
+            // toolStripMenuItemCreateBudget = new ToolStripMenuItem();
+            // toolStripMenuItemEditBudget = new ToolStripMenuItem();
+            // newExpenseToolStripMenuItem = new ToolStripMenuItem();
+            // editExpenseToolStripMenuItem = new ToolStripMenuItem();
+            // toolStripDropDownButtonGoals = new ToolStripDropDownButton();
+            // toolStripMenuItemAddContribution = new ToolStripMenuItem();
+            // toolStripMenuItemRemoveContribution = new ToolStripMenuItem();
+            // toolStripMenuItemUpdateContribution = new ToolStripMenuItem();
+            // toolStripMenuItemAddGoal = new ToolStripMenuItem();
+            // toolStripMenuItemEditGoal = new ToolStripMenuItem();
+            // toolStripMenuItemDeleteGoal = new ToolStripMenuItem();
+            // toolStripButtonBudget = new ToolStripButton();
+            toolStripButton1 = new ToolStripButton();
+            toolStripSeparator5 = new ToolStripSeparator();
             label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)picBudgetGraphs).BeginInit();
             toolStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // btnCreateBudget
-            // 
-            btnCreateBudget.Location = new Point(854, 89);
-            btnCreateBudget.Margin = new Padding(3, 4, 3, 4);
-            btnCreateBudget.Name = "btnCreateBudget";
-            btnCreateBudget.Size = new Size(121, 31);
-            btnCreateBudget.TabIndex = 0;
-            btnCreateBudget.Text = "Create Budget";
-            btnCreateBudget.UseVisualStyleBackColor = true;
-            btnCreateBudget.Click += btnCreateBudget_Click;
-            // 
-            // comboBudgets
-            // 
-            comboBudgets.FormattingEnabled = true;
-            comboBudgets.Location = new Point(837, 176);
-            comboBudgets.Margin = new Padding(3, 4, 3, 4);
-            comboBudgets.Name = "comboBudgets";
-            comboBudgets.Size = new Size(138, 28);
-            comboBudgets.TabIndex = 1;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(1026, 280);
-            button1.Margin = new Padding(3, 4, 3, 4);
-            button1.Name = "button1";
-            button1.Size = new Size(86, 31);
-            button1.TabIndex = 3;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
+            
+            // btnCreateBudget.Location = new Point(854, 89);
+            // btnCreateBudget.Margin = new Padding(3, 4, 3, 4);
+            // btnCreateBudget.Name = "btnCreateBudget";
+            // btnCreateBudget.Size = new Size(121, 31);
+            // btnCreateBudget.TabIndex = 0;
+            // btnCreateBudget.Text = "Create Budget";
+            // btnCreateBudget.UseVisualStyleBackColor = true;
+            // btnCreateBudget.Click += btnCreateBudget_Click;
+            // // 
+            // // comboBudgets
+            // // 
+            // comboBudgets.FormattingEnabled = true;
+            // comboBudgets.Location = new Point(837, 176);
+            // comboBudgets.Margin = new Padding(3, 4, 3, 4);
+            // comboBudgets.Name = "comboBudgets";
+            // comboBudgets.Size = new Size(138, 28);
+            // comboBudgets.TabIndex = 1;
+            // // 
+            // // button1
+            // // 
+            // button1.Location = new Point(1026, 280);
+            // button1.Margin = new Padding(3, 4, 3, 4);
+            // button1.Name = "button1";
+            // button1.Size = new Size(86, 31);
+            // button1.TabIndex = 3;
+            // button1.Text = "button1";
+            // button1.UseVisualStyleBackColor = true;
+            // button1.Click += button1_Click;
+            
             // label1
             // 
             label1.AutoSize = true;
@@ -116,41 +118,58 @@
             // 
             // picBudgetGraphs
             // 
-            picBudgetGraphs.Location = new Point(122, 300);
-            picBudgetGraphs.Margin = new Padding(3, 4, 3, 4);
+            picBudgetGraphs.Location = new Point(104, 220);
             picBudgetGraphs.Name = "picBudgetGraphs";
-            picBudgetGraphs.Size = new Size(286, 200);
+            picBudgetGraphs.Size = new Size(258, 150);
             picBudgetGraphs.TabIndex = 6;
             picBudgetGraphs.TabStop = false;
             // 
             // toolStripDropDownButtonAddExpenses
             // 
+            toolStripDropDownButtonAddExpenses.AutoSize = false;
             toolStripDropDownButtonAddExpenses.BackColor = Color.Plum;
             toolStripDropDownButtonAddExpenses.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            toolStripDropDownButtonAddExpenses.DropDownItems.AddRange(new ToolStripItem[] { toolBtnAddBudget, toolStripMenuItemAddFinanceGoal, toolStripMenuItemAddIncome });
+            toolStripDropDownButtonAddExpenses.DropDownItems.AddRange(new ToolStripItem[] { addExpenseToolStripMenuItem, addGoalContributionToolStripMenuItem, toolBtnAddBudget, toolStripMenuItemAddFinanceGoal, toolStripMenuItemAddIncome });
             toolStripDropDownButtonAddExpenses.Image = (Image)resources.GetObject("toolStripDropDownButtonAddExpenses.Image");
             toolStripDropDownButtonAddExpenses.ImageTransparentColor = Color.Magenta;
             toolStripDropDownButtonAddExpenses.Name = "toolStripDropDownButtonAddExpenses";
-            toolStripDropDownButtonAddExpenses.Size = new Size(109, 24);
-            toolStripDropDownButtonAddExpenses.Text = "Add Expense";
+            toolStripDropDownButtonAddExpenses.Size = new Size(100, 22);
+            toolStripDropDownButtonAddExpenses.Text = "Add New";
+            // 
+            // addExpenseToolStripMenuItem
+            // 
+            addExpenseToolStripMenuItem.Name = "addExpenseToolStripMenuItem";
+            addExpenseToolStripMenuItem.Size = new Size(194, 22);
+            addExpenseToolStripMenuItem.Text = "Add Expense";
+            addExpenseToolStripMenuItem.Click += addExpenseToolStripMenuItem_Click;
+            // 
+            // addGoalContributionToolStripMenuItem
+            // 
+            addGoalContributionToolStripMenuItem.Name = "addGoalContributionToolStripMenuItem";
+            addGoalContributionToolStripMenuItem.Size = new Size(194, 22);
+            addGoalContributionToolStripMenuItem.Text = "Add Goal Contribution";
+            addGoalContributionToolStripMenuItem.Click += addGoalContributionToolStripMenuItem_Click;
             // 
             // toolBtnAddBudget
             // 
             toolBtnAddBudget.Name = "toolBtnAddBudget";
-            toolBtnAddBudget.Size = new Size(217, 26);
+            toolBtnAddBudget.Size = new Size(194, 22);
             toolBtnAddBudget.Text = "Add Budget";
+            toolBtnAddBudget.Click += toolBtnAddBudget_Click;
             // 
             // toolStripMenuItemAddFinanceGoal
             // 
             toolStripMenuItemAddFinanceGoal.Name = "toolStripMenuItemAddFinanceGoal";
-            toolStripMenuItemAddFinanceGoal.Size = new Size(217, 26);
+            toolStripMenuItemAddFinanceGoal.Size = new Size(194, 22);
             toolStripMenuItemAddFinanceGoal.Text = "Add Financial Goal";
+            toolStripMenuItemAddFinanceGoal.Click += toolStripMenuItemAddFinanceGoal_Click;
             // 
             // toolStripMenuItemAddIncome
             // 
             toolStripMenuItemAddIncome.Name = "toolStripMenuItemAddIncome";
-            toolStripMenuItemAddIncome.Size = new Size(217, 26);
+            toolStripMenuItemAddIncome.Size = new Size(194, 22);
             toolStripMenuItemAddIncome.Text = "Add Income";
+            toolStripMenuItemAddIncome.Click += toolStripMenuItemAddIncome_Click;
             // 
             // toolStripSeparator2
             // 
@@ -172,6 +191,7 @@
             btnToolStripIncome.Size = new Size(100, 22);
             btnToolStripIncome.Text = "Income";
             btnToolStripIncome.TextImageRelation = TextImageRelation.TextAboveImage;
+            btnToolStripIncome.Click += btnToolStripIncome_Click;
             // 
             // toolStripSeparator3
             // 
@@ -197,105 +217,42 @@
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(20, 20);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripDropDownButtonAddExpenses, toolStripSeparator2, btnToolStripBudget, toolStripSeparator1, btnToolStripIncome, toolStripSeparator3, toolStripDropDownButtonGoals, toolStripSeparator4, btnToolStripReports });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripDropDownButtonAddExpenses, toolStripSeparator2, toolStripButtonBudget, toolStripSeparator1, btnToolStripIncome, toolStripSeparator3, toolStripButton1, toolStripSeparator4, btnToolStripReports, toolStripSeparator5 });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(1141, 27);
             toolStrip1.TabIndex = 2;
             toolStrip1.Text = "toolStrip1";
             // 
-            // btnToolStripBudget
+            // toolStripButtonBudget
             // 
-            btnToolStripBudget.AutoSize = false;
-            btnToolStripBudget.BackColor = Color.Plum;
-            btnToolStripBudget.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            btnToolStripBudget.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItemCreateBudget, toolStripMenuItemEditBudget, newExpenseToolStripMenuItem, editExpenseToolStripMenuItem });
-            btnToolStripBudget.ImageTransparentColor = Color.Magenta;
-            btnToolStripBudget.Name = "btnToolStripBudget";
-            btnToolStripBudget.Size = new Size(100, 22);
-            btnToolStripBudget.Text = "Budget";
-            btnToolStripBudget.TextImageRelation = TextImageRelation.TextAboveImage;
-            btnToolStripBudget.Click += btnToolStripBudget_Click;
+            toolStripButtonBudget.AutoSize = false;
+            toolStripButtonBudget.BackColor = Color.Plum;
+            toolStripButtonBudget.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            toolStripButtonBudget.Image = (Image)resources.GetObject("toolStripButtonBudget.Image");
+            toolStripButtonBudget.ImageTransparentColor = Color.Magenta;
+            toolStripButtonBudget.Name = "toolStripButtonBudget";
+            toolStripButtonBudget.Size = new Size(100, 22);
+            toolStripButtonBudget.Text = "Budget";
+            toolStripButtonBudget.Click += btnToolStripBudget_Click;
             // 
-            // toolStripMenuItemCreateBudget
+            // toolStripButton1
             // 
-            toolStripMenuItemCreateBudget.Name = "toolStripMenuItemCreateBudget";
-            toolStripMenuItemCreateBudget.Size = new Size(224, 26);
-            toolStripMenuItemCreateBudget.Text = "Create Budget";
-            toolStripMenuItemCreateBudget.Click += toolStripMenuItemCreateBudget_Click;
+            toolStripButton1.AutoSize = false;
+            toolStripButton1.BackColor = Color.Plum;
+            toolStripButton1.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            toolStripButton1.ForeColor = Color.Black;
+            toolStripButton1.Image = (Image)resources.GetObject("toolStripButton1.Image");
+            toolStripButton1.ImageTransparentColor = Color.Magenta;
+            toolStripButton1.Name = "toolStripButton1";
+            toolStripButton1.Size = new Size(100, 22);
+            toolStripButton1.Text = "Goals";
+            toolStripButton1.Click += toolStripButton1_Click;
             // 
-            // toolStripMenuItemEditBudget
+            // toolStripSeparator5
             // 
-            toolStripMenuItemEditBudget.Name = "toolStripMenuItemEditBudget";
-            toolStripMenuItemEditBudget.Size = new Size(224, 26);
-            toolStripMenuItemEditBudget.Text = "Edit Budget";
-            // 
-            // newExpenseToolStripMenuItem
-            // 
-            newExpenseToolStripMenuItem.Name = "newExpenseToolStripMenuItem";
-            newExpenseToolStripMenuItem.Size = new Size(224, 26);
-            newExpenseToolStripMenuItem.Text = "New Expense";
-            newExpenseToolStripMenuItem.Click += newExpenseToolStripMenuItem_Click;
-            // 
-            // editExpenseToolStripMenuItem
-            // 
-            editExpenseToolStripMenuItem.Name = "editExpenseToolStripMenuItem";
-            editExpenseToolStripMenuItem.Size = new Size(224, 26);
-            editExpenseToolStripMenuItem.Text = "Edit Expense";
-            editExpenseToolStripMenuItem.Click += editExpenseToolStripMenuItem_Click;
-            // 
-            // toolStripDropDownButtonGoals
-            // 
-            toolStripDropDownButtonGoals.AutoSize = false;
-            toolStripDropDownButtonGoals.BackColor = Color.Plum;
-            toolStripDropDownButtonGoals.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            toolStripDropDownButtonGoals.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItemAddContribution, toolStripMenuItemRemoveContribution, toolStripMenuItemUpdateContribution, toolStripMenuItemAddGoal, toolStripMenuItemEditGoal, toolStripMenuItemDeleteGoal });
-            toolStripDropDownButtonGoals.Image = (Image)resources.GetObject("toolStripDropDownButtonGoals.Image");
-            toolStripDropDownButtonGoals.ImageTransparentColor = Color.Magenta;
-            toolStripDropDownButtonGoals.Name = "toolStripDropDownButtonGoals";
-            toolStripDropDownButtonGoals.Size = new Size(100, 22);
-            toolStripDropDownButtonGoals.Text = "Goals";
-            toolStripDropDownButtonGoals.Click += toolStripDropDownButtonGoals_Click;
-            toolStripDropDownButtonGoals.DoubleClick += toolStripDropDownButtonGoals_DoubleClick;
-            // 
-            // toolStripMenuItemAddContribution
-            // 
-            toolStripMenuItemAddContribution.Name = "toolStripMenuItemAddContribution";
-            toolStripMenuItemAddContribution.Size = new Size(233, 26);
-            toolStripMenuItemAddContribution.Text = "Add Contribution";
-            // 
-            // toolStripMenuItemRemoveContribution
-            // 
-            toolStripMenuItemRemoveContribution.Name = "toolStripMenuItemRemoveContribution";
-            toolStripMenuItemRemoveContribution.Size = new Size(233, 26);
-            toolStripMenuItemRemoveContribution.Text = "Remove Contribution";
-            // 
-            // toolStripMenuItemUpdateContribution
-            // 
-            toolStripMenuItemUpdateContribution.Name = "toolStripMenuItemUpdateContribution";
-            toolStripMenuItemUpdateContribution.Size = new Size(233, 26);
-            toolStripMenuItemUpdateContribution.Text = "Update Contribution";
-            // 
-            // toolStripMenuItemAddGoal
-            // 
-            toolStripMenuItemAddGoal.Name = "toolStripMenuItemAddGoal";
-            toolStripMenuItemAddGoal.Size = new Size(233, 26);
-            toolStripMenuItemAddGoal.Text = "Add Goal";
-            toolStripMenuItemAddGoal.Click += toolStripMenuItemAddGoal_Click;
-            // 
-            // toolStripMenuItemEditGoal
-            // 
-            toolStripMenuItemEditGoal.Name = "toolStripMenuItemEditGoal";
-            toolStripMenuItemEditGoal.Size = new Size(233, 26);
-            toolStripMenuItemEditGoal.Text = "Edit Goal";
-            toolStripMenuItemEditGoal.Click += toolStripMenuItemEditGoal_Click;
-            // 
-            // toolStripMenuItemDeleteGoal
-            // 
-            toolStripMenuItemDeleteGoal.Name = "toolStripMenuItemDeleteGoal";
-            toolStripMenuItemDeleteGoal.Size = new Size(233, 26);
-            toolStripMenuItemDeleteGoal.Text = "Delete Goal";
-            toolStripMenuItemDeleteGoal.Click += toolStripMenuItemDeleteGoal_Click;
+            toolStripSeparator5.Name = "toolStripSeparator5";
+            toolStripSeparator5.Size = new Size(6, 25);
             // 
             // label3
             // 
@@ -317,10 +274,7 @@
             Controls.Add(picBudgetGraphs);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(button1);
             Controls.Add(toolStrip1);
-            Controls.Add(comboBudgets);
-            Controls.Add(btnCreateBudget);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
@@ -332,17 +286,8 @@
             PerformLayout();
         }
 
-        /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
-        /// </summary>
-
         #endregion
-
-        private Button btnCreateBudget;
-        private ComboBox comboBudgets;
-        private Button button1;
-		private Label label1;
+        private Label label1;
 		private Label label2;
 		private PictureBox picBudgetGraphs;
 		private ToolStripDropDownButton toolStripDropDownButtonAddExpenses;
@@ -355,27 +300,13 @@
 		private ToolStripButton btnToolStripReports;
 		private ToolStrip toolStrip1;
 		private Label label3;
-        //private ToolStripDropDownButton btnToolStripDropDownButtonGoals;
-        //private ToolStripMenuItem toolStripMenuItemAddContribution;
-        //private ToolStripMenuItem toolStripMenuItemRemoveContribution;
-        //private ToolStripMenuItem toolStripMenuItemUpdateContribution;
-        //private ToolStripMenuItem toolStripMenuItemAddGoal;
-        //private ToolStripMenuItem toolStripMenuItemEditGoal;
-        //private ToolStripMenuItem toolStripMenuItemDeleteGoal;
-        private ToolStripDropDownButton toolStripDropDownButtonGoals;
-        private ToolStripMenuItem toolStripMenuItemAddContribution;
-        private ToolStripMenuItem toolStripMenuItemRemoveContribution;
         private ToolStripMenuItem toolStripMenuItemAddFinanceGoal;
         private ToolStripMenuItem toolStripMenuItemAddIncome;
-        private ToolStripDropDownButton btnToolStripBudget;
-        private ToolStripMenuItem toolStripMenuItemCreateBudget;
-        private ToolStripMenuItem toolStripMenuItemEditBudget;
-        private ToolStripMenuItem toolStripMenuItemUpdateContribution;
-        private ToolStripMenuItem toolStripMenuItemAddGoal;
-        private ToolStripMenuItem toolStripMenuItemEditGoal;
-        private ToolStripMenuItem toolStripMenuItemDeleteGoal;
-        private ToolStripMenuItem newExpenseToolStripMenuItem;
-        private ToolStripMenuItem editExpenseToolStripMenuItem;
+		private ToolStripMenuItem addExpenseToolStripMenuItem;
+		private ToolStripMenuItem addGoalContributionToolStripMenuItem;
+		private ToolStripButton toolStripButton1;
+		private ToolStripSeparator toolStripSeparator5;
+		private ToolStripButton toolStripButtonBudget;
     }
 }
 

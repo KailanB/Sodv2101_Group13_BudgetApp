@@ -52,11 +52,13 @@
             // 
             // comboBox1
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(206, 80);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(197, 23);
-            comboBox1.TabIndex = 1;
+            btnEditGoalSave.Location = new Point(105, 373);
+            btnEditGoalSave.Name = "btnEditGoalSave";
+            btnEditGoalSave.Size = new Size(146, 36);
+            btnEditGoalSave.TabIndex = 2;
+            btnEditGoalSave.Text = "Save";
+            btnEditGoalSave.UseVisualStyleBackColor = true;
+            btnEditGoalSave.Click += btnEditGoalSave_Click;
             // 
             // btnEGFSave
             // 

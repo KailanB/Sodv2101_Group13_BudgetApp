@@ -8,7 +8,7 @@ namespace Sodv2101_Group13_BudgetApp
 {
     internal class IncomeHourly : Income
     {
-        public double Hours { get; private set; }
+        public double Hours { get; set; }
 
         public IncomeHourly(string name, double amount, string timePeriod) : base(name, amount)
         {

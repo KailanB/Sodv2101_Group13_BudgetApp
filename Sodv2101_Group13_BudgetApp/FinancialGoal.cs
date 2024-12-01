@@ -33,9 +33,9 @@ namespace Sodv2101_Group13_BudgetApp
         }
 
 
-        public void AddNewExpense(string name, double amount, string description, DateTime timePeriod)
+        public void AddNewExpense(int goalID, double amount, string description, DateTime timePeriod)
         {
-            Contribution newContribution = new Contribution(name, amount, description, timePeriod);
+            Contribution newContribution = new Contribution(goalID, amount, description, timePeriod);
             Contributions.Add(newContribution);
 
 

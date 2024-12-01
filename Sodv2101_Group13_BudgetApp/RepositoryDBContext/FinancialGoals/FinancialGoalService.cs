@@ -7,7 +7,8 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
-using DBConnectionClass;
+using Microsoft.VisualBasic.ApplicationServices;
+using Sodv2101_Group13_BudgetApp.DBConnectionClass;
 using Sodv2101_Group13_BudgetApp.InputForms;
 using Sodv2101_Group13_BudgetApp.RepositoryDBContext.ContributionServices;
 
@@ -213,5 +214,43 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.FinancialGoalsService
             }
             return goalList;
         }
-    }
+
+
+        public FinancialGoal GetFinancialGoalById(int GoalID)
+        {
+			FinancialGoal financialGoal = new FinancialGoal();
+			string query = "SELECT GoalID, Name, Amount, Description, Deadline  FROM FinancialGoal WHERE GoalID = @GoalID";   
+			using (SqlConnection connection = new SqlConnection(dBConnection.ConnectionString))
+			{
+				try
+				{
+					connection.Open();
+					using (SqlCommand cmd = new SqlCommand(query, connection))
+					{
+						cmd.Parameters.AddWithValue("@GoalID", GoalID);
+						SqlDataReader result = cmd.ExecuteReader();
+
+						while (result.Read())
+						{
+                            financialGoal.GoalID = Convert.ToInt32(result["GoalID"]);
+                            financialGoal.Name = result["Name"].ToString();
+                            financialGoal.MaxAmount = Convert.ToDouble(result["Amount"]);
+                            financialGoal.Description = result["Description"].ToString();
+							financialGoal.Deadline = Convert.ToDateTime(result["Deadline"]);	
+
+						}
+
+					}
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine(ex.ToString());
+				}
+			}
+
+
+			return financialGoal;
+        }
+
+	}
 }
