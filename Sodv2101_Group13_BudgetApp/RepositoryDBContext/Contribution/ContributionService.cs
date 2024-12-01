@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 using Sodv2101_Group13_BudgetApp.InputForms;
 using System.Data.Common;
-using DBConnectionClass;
+using Sodv2101_Group13_BudgetApp.DBConnectionClass;
 using System.Data;
 
 namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.ContributionServices
@@ -118,7 +118,7 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.ContributionServices
             {
                 con.Open();
 
-                SqlCommand cmd = new SqlCommand("SELECT ContributionID, GoalID, Amount, Description, Date FROM Contribution c JOIN FinancialGoal fg ON c.GoalID = fg.GoalID WHERE fg.Name = @goalName", con);
+                SqlCommand cmd = new SqlCommand("SELECT ContributionID, fg.GoalID, c.Amount, c.Description, Date FROM Contribution c JOIN FinancialGoal fg ON c.GoalID = fg.GoalID WHERE fg.Name = @goalName", con);
                 cmd.Parameters.AddWithValue("@goalName", goalName);
 
                 SqlDataReader reader = cmd.ExecuteReader();
