@@ -57,9 +57,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 16F);
-            label1.Location = new Point(14, 49);
+            label1.Location = new Point(12, 37);
             label1.Name = "label1";
-            label1.Size = new Size(360, 37);
+            label1.Size = new Size(295, 30);
             label1.TabIndex = 4;
             label1.Text = "Welcome to the Budget App!";
             // 
@@ -67,18 +67,17 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F);
-            label2.Location = new Point(14, 179);
+            label2.Location = new Point(12, 134);
             label2.Name = "label2";
-            label2.Size = new Size(159, 28);
+            label2.Size = new Size(126, 21);
             label2.TabIndex = 5;
             label2.Text = "Monthly Income:";
             // 
             // picBudgetGraphs
             // 
-            picBudgetGraphs.Location = new Point(122, 300);
-            picBudgetGraphs.Margin = new Padding(3, 4, 3, 4);
+            picBudgetGraphs.Location = new Point(104, 220);
             picBudgetGraphs.Name = "picBudgetGraphs";
-            picBudgetGraphs.Size = new Size(286, 200);
+            picBudgetGraphs.Size = new Size(258, 150);
             picBudgetGraphs.TabIndex = 6;
             picBudgetGraphs.TabStop = false;
             // 
@@ -97,35 +96,35 @@
             // addExpenseToolStripMenuItem
             // 
             addExpenseToolStripMenuItem.Name = "addExpenseToolStripMenuItem";
-            addExpenseToolStripMenuItem.Size = new Size(242, 26);
+            addExpenseToolStripMenuItem.Size = new Size(194, 22);
             addExpenseToolStripMenuItem.Text = "Add Expense";
             addExpenseToolStripMenuItem.Click += addExpenseToolStripMenuItem_Click;
             // 
             // addGoalContributionToolStripMenuItem
             // 
             addGoalContributionToolStripMenuItem.Name = "addGoalContributionToolStripMenuItem";
-            addGoalContributionToolStripMenuItem.Size = new Size(242, 26);
+            addGoalContributionToolStripMenuItem.Size = new Size(194, 22);
             addGoalContributionToolStripMenuItem.Text = "Add Goal Contribution";
             addGoalContributionToolStripMenuItem.Click += addGoalContributionToolStripMenuItem_Click;
             // 
             // toolBtnAddBudget
             // 
             toolBtnAddBudget.Name = "toolBtnAddBudget";
-            toolBtnAddBudget.Size = new Size(242, 26);
+            toolBtnAddBudget.Size = new Size(194, 22);
             toolBtnAddBudget.Text = "Add Budget";
             toolBtnAddBudget.Click += toolBtnAddBudget_Click;
             // 
             // toolStripMenuItemAddFinanceGoal
             // 
             toolStripMenuItemAddFinanceGoal.Name = "toolStripMenuItemAddFinanceGoal";
-            toolStripMenuItemAddFinanceGoal.Size = new Size(242, 26);
+            toolStripMenuItemAddFinanceGoal.Size = new Size(194, 22);
             toolStripMenuItemAddFinanceGoal.Text = "Add Financial Goal";
             toolStripMenuItemAddFinanceGoal.Click += toolStripMenuItemAddFinanceGoal_Click;
             // 
             // toolStripMenuItemAddIncome
             // 
             toolStripMenuItemAddIncome.Name = "toolStripMenuItemAddIncome";
-            toolStripMenuItemAddIncome.Size = new Size(242, 26);
+            toolStripMenuItemAddIncome.Size = new Size(194, 22);
             toolStripMenuItemAddIncome.Text = "Add Income";
             toolStripMenuItemAddIncome.Click += toolStripMenuItemAddIncome_Click;
             // 
@@ -149,6 +148,7 @@
             btnToolStripIncome.Size = new Size(100, 22);
             btnToolStripIncome.Text = "Income";
             btnToolStripIncome.TextImageRelation = TextImageRelation.TextAboveImage;
+            btnToolStripIncome.Click += btnToolStripIncome_Click;
             // 
             // toolStripSeparator3
             // 
@@ -177,7 +177,7 @@
             toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripDropDownButtonAddExpenses, toolStripSeparator2, toolStripButtonBudget, toolStripSeparator1, btnToolStripIncome, toolStripSeparator3, toolStripButton1, toolStripSeparator4, btnToolStripReports, toolStripSeparator5 });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(1141, 25);
+            toolStrip1.Size = new Size(998, 25);
             toolStrip1.TabIndex = 2;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -215,25 +215,24 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F);
-            label3.Location = new Point(14, 265);
+            label3.Location = new Point(12, 199);
             label3.Name = "label3";
-            label3.Size = new Size(83, 28);
+            label3.Size = new Size(66, 21);
             label3.TabIndex = 7;
             label3.Text = "Budgets";
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
-            ClientSize = new Size(1141, 787);
+            ClientSize = new Size(998, 590);
             Controls.Add(label3);
             Controls.Add(picBudgetGraphs);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(toolStrip1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)picBudgetGraphs).EndInit();
@@ -264,7 +263,7 @@
 		private ToolStripButton toolStripButton1;
 		private ToolStripSeparator toolStripSeparator5;
 		private ToolStripButton toolStripButtonBudget;
-	}
+    }
 }
 
 

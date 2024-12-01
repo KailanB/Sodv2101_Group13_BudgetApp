@@ -8,8 +8,9 @@ namespace Sodv2101_Group13_BudgetApp
 {
     abstract class Income
     {
-        public string Name { get; private set; }
-        public double Amount { get; private set; }
+        public string Name { get; set; }
+        public double Amount { get; set; }
+        public int IncomeTypeID { get; set; }
 
         public Income()
         {
