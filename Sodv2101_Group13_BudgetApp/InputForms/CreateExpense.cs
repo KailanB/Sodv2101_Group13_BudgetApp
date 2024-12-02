@@ -19,7 +19,8 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
 
         private BudgetService budgetService = new BudgetService();
 
-
+        public int BudgetId;
+        public bool CreatedExpense = false;
 
         public CreateExpense()
         {
@@ -99,7 +100,9 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
 
                 if (isAdded)
                 {
+                    BudgetId = selectedBudgetId;
                     lblExpenseOutput.Text = "Expense added successfully.";
+                    CreatedExpense = true;
                     //MessageBox.Show("Expense added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.DialogResult = DialogResult.OK;
                     this.Close();
@@ -115,20 +118,6 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-
-            //HAD THIS BELOW BEFORE
-            //if (txtExpenseName.Text != " ")
-            //{
-            //    int BudgetID = 1; //figure this out
-            //    string Name = txtExpenseName.Text;
-            //    double Amount = (double)numExpenseAmount.Value;
-            //    string Description = txtDescription.Text;
-            //    string DateString = dateTimePicker1.Text;
-
-
-            //    Expense expense = new Expense(BudgetID, Name, Amount, Description, DateString);
-
-            //    expenseService.NewExpense(expense);
 
         }
 
@@ -157,14 +146,6 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
                 {
                     MessageBox.Show($"Failed to load budget list: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                //Had this below before
-                //List<Budget> budgets = new List<Budget>();
-
-                //budgets = budgetService.GetBudgetList();
-                //var budgetBindingList = new BindingList<Budget>(budgets);
-
-                //cmbBudgetList.DataSource = budgetBindingList;
-                //cmbBudgetList.DisplayMember = "Name";
 
             }
         }

@@ -75,6 +75,7 @@
             // 
             // dataGridViewBudgets
             // 
+            dataGridViewBudgets.AllowUserToAddRows = false;
             dataGridViewBudgets.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewBudgets.Location = new Point(22, 79);
             dataGridViewBudgets.Name = "dataGridViewBudgets";
@@ -84,6 +85,7 @@
             // 
             // dataGridViewExpenses
             // 
+            dataGridViewExpenses.AllowUserToAddRows = false;
             dataGridViewExpenses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewExpenses.Location = new Point(421, 79);
             dataGridViewExpenses.Name = "dataGridViewExpenses";
@@ -133,7 +135,6 @@
             btnNewExpense.TabIndex = 12;
             btnNewExpense.Text = "New Expense";
             btnNewExpense.UseVisualStyleBackColor = false;
-            btnNewExpense.UseWaitCursor = true;
             btnNewExpense.Click += btnNewExpense_Click;
             // 
             // btnEditExpense

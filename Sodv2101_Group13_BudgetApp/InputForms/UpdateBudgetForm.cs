@@ -36,22 +36,27 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            if (txtBudgetName.Text != "" && numBudgetAmount.Value > 0)
+            {
+                // retrieve data from form
+                string name = txtBudgetName.Text;
+                double amount = Convert.ToDouble(numBudgetAmount.Value);
+                string descript = txtBudgetDescription.Text;
 
-            // retrieve data from form
-            string name = txtBudgetName.Text;
-            double amount = Convert.ToDouble(numBudgetAmount.Value);
-            string descript = txtBudgetDescription.Text;
+                // create a new budget class object
+                Budget budget = new Budget(name, amount, descript);
 
-            // create a new budget class object
-            Budget budget = new Budget(name, amount, descript);
-
-            // pass the object AND ID to the edit budget method of budget service
-            // proceed to budget service class
-            budgetService.EditBudget(budget, budgetId);
-            this.DialogResult = DialogResult.OK;
-            this.Close();
-
-
+                // pass the object AND ID to the edit budget method of budget service
+                // proceed to budget service class
+                budgetService.EditBudget(budget, budgetId);
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                lblBudgetError.Text = "Please fill in a name and value.";
+            }
+           
 
         }
 

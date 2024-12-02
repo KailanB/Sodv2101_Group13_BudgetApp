@@ -34,7 +34,7 @@
             btnEditIncome = new Button();
             btnDeleteIncome = new Button();
             lblIncomeOutput = new Label();
-            button1 = new Button();
+            btnViewhours = new Button();
             dataGridViewHours = new DataGridView();
             label2 = new Label();
             label3 = new Label();
@@ -44,6 +44,7 @@
             // 
             // dataGridViewIncome
             // 
+            dataGridViewIncome.AllowUserToAddRows = false;
             dataGridViewIncome.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewIncome.Location = new Point(19, 70);
             dataGridViewIncome.Name = "dataGridViewIncome";
@@ -100,19 +101,20 @@
             lblIncomeOutput.Size = new Size(0, 15);
             lblIncomeOutput.TabIndex = 5;
             // 
-            // button1
+            // btnViewhours
             // 
-            button1.BackColor = Color.Plum;
-            button1.Location = new Point(270, 41);
-            button1.Name = "button1";
-            button1.Size = new Size(84, 23);
-            button1.TabIndex = 6;
-            button1.Text = "View Hours";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            btnViewhours.BackColor = Color.Plum;
+            btnViewhours.Location = new Point(270, 41);
+            btnViewhours.Name = "btnViewhours";
+            btnViewhours.Size = new Size(84, 23);
+            btnViewhours.TabIndex = 6;
+            btnViewhours.Text = "View Hours";
+            btnViewhours.UseVisualStyleBackColor = false;
+            btnViewhours.Click += btnViewhours_Click;
             // 
             // dataGridViewHours
             // 
+            dataGridViewHours.AllowUserToAddRows = false;
             dataGridViewHours.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewHours.Location = new Point(389, 70);
             dataGridViewHours.Name = "dataGridViewHours";
@@ -147,7 +149,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(dataGridViewHours);
-            Controls.Add(button1);
+            Controls.Add(btnViewhours);
             Controls.Add(lblIncomeOutput);
             Controls.Add(btnDeleteIncome);
             Controls.Add(btnEditIncome);
@@ -170,7 +172,7 @@
         private Button btnEditIncome;
         private Button btnDeleteIncome;
         private Label lblIncomeOutput;
-        private Button button1;
+        private Button btnViewhours;
         private DataGridView dataGridViewHours;
         private Label label2;
         private Label label3;

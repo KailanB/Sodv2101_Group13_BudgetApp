@@ -46,6 +46,7 @@
             // 
             // dataGridViewFinancialGoals
             // 
+            dataGridViewFinancialGoals.AllowUserToAddRows = false;
             dataGridViewFinancialGoals.AllowUserToOrderColumns = true;
             dataGridViewFinancialGoals.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewFinancialGoals.Location = new Point(12, 70);
@@ -56,6 +57,7 @@
             // 
             // dataGridViewContributions
             // 
+            dataGridViewContributions.AllowUserToAddRows = false;
             dataGridViewContributions.AllowUserToOrderColumns = true;
             dataGridViewContributions.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewContributions.Location = new Point(515, 70);

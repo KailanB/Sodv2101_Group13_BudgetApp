@@ -16,6 +16,8 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
 
         // create budget form has a class with methods that run CRUD
         private BudgetService budgetService = new BudgetService();
+
+        public bool CreatedBudget = false;
         public CreateBudget()
         {
             InitializeComponent();
@@ -23,7 +25,7 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
         // on create button click
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            if (txtBudgetName.Text != "" && txtBudgetDescription.Text != "" && numBudgetAmount.Value != 0)
+            if (txtBudgetName.Text != "" && numBudgetAmount.Value != 0)
             {
                 // retrieve data from form
                 string name = txtBudgetName.Text;
@@ -35,7 +37,7 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
 
                 // pass the object to the create budget method of budget service
                 // proceed to budget service class
-                budgetService.CreateBudget(budget);
+                CreatedBudget = budgetService.CreateBudget(budget);
 
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -43,7 +45,7 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
             }
             else
             {
-                lblBudgetError.Text = "Please Fill in all Fields";
+                lblBudgetError.Text = "Please fill in a name and value";
             }
 
 

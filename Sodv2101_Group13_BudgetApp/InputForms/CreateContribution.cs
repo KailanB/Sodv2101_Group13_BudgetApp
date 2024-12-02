@@ -22,6 +22,7 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
 
         public int GoalId;
 
+
         // added paramterless constructor so that we can use this Form outside of the GoalPageForm.
         // instead of passing a value into the constructor simply use financialGoalService to pull goal list and populate form combo box
         public CreateContribution()

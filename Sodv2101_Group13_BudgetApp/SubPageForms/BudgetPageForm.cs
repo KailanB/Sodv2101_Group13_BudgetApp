@@ -47,11 +47,15 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
             //budgetTable.Columns.Add("Budget ID", typeof(int));
             // , budg.BudgetID
 
-            foreach (var budg in budgetList)
+            if(budgetList != null && budgetList.Count != 0)
             {
-                budgetTable.Rows.Add(budg.Name, budg.Max, budg.Description);
+                foreach (var budg in budgetList)
+                {
+                    budgetTable.Rows.Add(budg.Name, budg.Max, budg.Description);
+                }
+                dataGridViewBudgets.DataSource = budgetTable;
             }
-            dataGridViewBudgets.DataSource = budgetTable;
+           
 
         }
 
@@ -83,6 +87,10 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
             DialogResult result = budgetForm.ShowDialog();
             if (result == DialogResult.OK)
             {
+                if(!budgetForm.CreatedBudget)
+                {
+                    MessageBox.Show("Error creating budget in DB");
+                }
                 LoadBudgets();
             }
         }
@@ -116,6 +124,10 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
 
                 
             }
+            else
+            {
+                lblBudgetOutput.Text = "Please select a budget to delete";
+            }
         }
         //to VIEW ALL EXPENSES IN THE BUDGET PAGE FORM
         private void btnViewExpenses_Click(object sender, EventArgs e)
@@ -147,6 +159,10 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
 
                 dataGridViewExpenses.DataSource = expenseTable;
 
+            }
+            else
+            {
+                lblBudgetOutput.Text = "Please select a budget to view expenses for";
             }
 
         }
@@ -187,7 +203,11 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
             DialogResult result = expenseForm.ShowDialog();
             if (result == DialogResult.OK)
             {
-
+                if (!expenseForm.CreatedExpense)
+                {
+                    MessageBox.Show("Error creating expense in DB");
+                }
+                LoadExpenses(expenseForm.BudgetId);
             }
         }
 

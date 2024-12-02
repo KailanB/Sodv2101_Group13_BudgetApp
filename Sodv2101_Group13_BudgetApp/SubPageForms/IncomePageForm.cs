@@ -36,11 +36,15 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
             incomeTable.Columns.Add("Name", typeof(string));
             incomeTable.Columns.Add("Amount", typeof(double));
             incomeTable.Columns.Add("Type", typeof(string));
-            foreach (var income in incomeList)
+            if(incomeList != null && incomeList.Count > 0)
             {
-                incomeTable.Rows.Add(income.Name, income.Amount, income.Type);
+                foreach (var income in incomeList)
+                {
+                    incomeTable.Rows.Add(income.Name, income.Amount, income.Type);
+                }
+                dataGridViewIncome.DataSource = incomeTable;
             }
-            dataGridViewIncome.DataSource = incomeTable;
+            
 
         }
 
@@ -51,8 +55,9 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
             if (result == DialogResult.OK)
             {
                 LoadIncomes();
-                lblIncomeOutput.Text = $"Income created successfully!";
+                lblIncomeOutput.Text = "Income created successfully!";
             }
+
         }
 
         private void btnDeleteIncome_Click(object sender, EventArgs e)
@@ -69,6 +74,11 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
                     LoadIncomes();
                     lblIncomeOutput.Text = "Income deleted successfully";
                 }
+                else
+                {
+                    lblIncomeOutput.Text = "Error deleting income!";
+                }
+
             }
         }
 
@@ -101,9 +111,9 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnViewhours_Click(object sender, EventArgs e)
         {
-            if(dataGridViewIncome.SelectedRows.Count > 0)
+            if (dataGridViewIncome.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = dataGridViewIncome.SelectedRows[0];
                 int incomeListIndex = dataGridViewIncome.CurrentCell.RowIndex;
@@ -132,9 +142,6 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
             {
                 lblIncomeOutput.Text = "Please select an hourly income to view hours!";
             }
-            
-
-
         }
     }
 }

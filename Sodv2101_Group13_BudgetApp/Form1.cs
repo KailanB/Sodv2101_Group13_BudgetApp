@@ -92,7 +92,15 @@ namespace Sodv2101_Group13_BudgetApp
             DialogResult result = budgetForm.ShowDialog();
             if (result == DialogResult.OK)
             {
-                LoadDashboardData();
+               
+                if(budgetForm.CreatedBudget)
+                {
+                    LoadDashboardData();
+                }
+                else
+                {
+                    MessageBox.Show("Error adding budget to DB!");
+                }
             }
         }
 
@@ -102,7 +110,16 @@ namespace Sodv2101_Group13_BudgetApp
             DialogResult result = newExpense.ShowDialog();
             if (result == DialogResult.OK)
             {
-                LoadDashboardData();
+
+                if (newExpense.CreatedExpense)
+                {
+                    LoadDashboardData();
+                }
+                else
+                {
+                    MessageBox.Show("Error adding expense to DB!");
+                }
+
             }
         }
 
@@ -122,7 +139,22 @@ namespace Sodv2101_Group13_BudgetApp
             DialogResult result = addGoalForm.ShowDialog();
             if (result == DialogResult.OK)
             {
-                LoadDashboardData();
+                
+                FinancialGoal newGoal = addGoalForm.NewGoal;
+
+                if (newGoal != null)
+                {
+                    bool GoalAdded = goalService.CreateFinancialGoal(newGoal);
+                    if (GoalAdded)
+                    {
+                        LoadDashboardData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error adding goal to DB");
+                    }
+
+                }
             }
         }
 
@@ -132,7 +164,14 @@ namespace Sodv2101_Group13_BudgetApp
             DialogResult result = createIncome.ShowDialog();
             if (result == DialogResult.OK)
             {
-                LoadDashboardData();
+                if (createIncome.CreatedIncome)
+                {
+                    LoadDashboardData();
+                }
+                else
+                {
+                    MessageBox.Show("Error adding income to DB!");
+                }
             }
         }
 
@@ -140,6 +179,7 @@ namespace Sodv2101_Group13_BudgetApp
         {
 
             List<Budget> budgets = budgetService.GetBudgetList();
+
             int locationYIncrease = 0;
             Bitmap bitmap = new Bitmap(250, 250);
 
@@ -151,62 +191,78 @@ namespace Sodv2101_Group13_BudgetApp
 
             // The dashboard can onyl display a maximum of 8 budgets
             int maxBudgetDisplayCounter = 1;
-            foreach (Budget budget in budgets)
+            if(budgets != null && budgets.Count != 0)
             {
-                Label label = new Label();
-                label.Location = new Point(40, 135 + locationYIncrease);
-                label.Text = budget.Name;
-                this.Controls.Add(label);
-                formLabels.Add(label);
-
-                // get current date
-                DateTime date = DateTime.Now;
-                // pass month to get only expenses for that month
-                double expensesTotal = budget.GetExpenseTotalByMonth(date.Month);
-                Label labelExpense = new Label();
-                labelExpense.AutoSize = false;
-                labelExpense.Width = 300;
-                labelExpense.Location = new Point(420, 135 + locationYIncrease);
-                labelExpense.Text = $"Max: {budget.Max} | Spent: {expensesTotal} | {(budget.Max - expensesTotal >= 0 ? "Remaining: " + (budget.Max - expensesTotal).ToString() : "OVER BUDGET!" )}";
-                formLabels.Add(labelExpense);
-
-                this.Controls.Add(labelExpense);
-
-                using (Graphics g = Graphics.FromImage(bitmap))
+                foreach (Budget budget in budgets)
                 {
-                    // calculate percentage spent
-                    double percentSpent = ((expensesTotal * 100) / budget.Max) / 100;
+                    Label label = new Label();
+                    label.Location = new Point(40, 135 + locationYIncrease);
+                    label.Text = budget.Name;
+                    this.Controls.Add(label);
+                    formLabels.Add(label);
 
-                    // define bar of spent amount
-                    int spent = (Int32)(percentSpent * 250);
-                    // define bar of remainder
-                    int remaining = 250 - spent;
-                    // rectangle x axis here start "spent" percent over since that portion will be red
-                    // recntangle width is then remaining amount
-                    Rectangle rectRemainder = new Rectangle(0 + spent, 0 + locationYIncrease + 5, remaining, 20);
-                    // rectangle here is simply width of spent
-                    Rectangle rectSpent = new Rectangle(0, 0 + locationYIncrease + 5, spent, 20);
+                    // get current date
+                    DateTime date = DateTime.Now;
+                    // pass month to get only expenses for that month
+                    double expensesTotal = budget.GetExpenseTotalByMonth(date.Month);
+                    Label labelExpense = new Label();
+                    labelExpense.AutoSize = false;
+                    labelExpense.Width = 300;
+                    labelExpense.Location = new Point(420, 135 + locationYIncrease);
+                    labelExpense.Text = $"Max: {budget.Max} | Spent: {expensesTotal} | {(budget.Max - expensesTotal >= 0 ? "Remaining: " + (budget.Max - expensesTotal).ToString() : "OVER BUDGET!")}";
+                    formLabels.Add(labelExpense);
 
-                    // draw green
-                    using (SolidBrush brush = new SolidBrush(Color.FromArgb(0, 150, 25)))
+                    this.Controls.Add(labelExpense);
+
+                    using (Graphics g = Graphics.FromImage(bitmap))
                     {
-                        g.FillRectangle(brush, rectRemainder);
+                        // calculate percentage spent
+                        double percentSpent = ((expensesTotal * 100) / budget.Max) / 100;
+
+                        // define bar of spent amount
+                        int spent = (Int32)(percentSpent * 250);
+                        // define bar of remainder
+                        int remaining = 250 - spent;
+                        // rectangle x axis here start "spent" percent over since that portion will be red
+                        // recntangle width is then remaining amount
+                        Rectangle rectRemainder = new Rectangle(0 + spent, 0 + locationYIncrease + 5, remaining, 20);
+                        // rectangle here is simply width of spent
+                        Rectangle rectSpent = new Rectangle(0, 0 + locationYIncrease + 5, spent, 20);
+
+                        // draw green
+                        using (SolidBrush brush = new SolidBrush(Color.FromArgb(0, 150, 25)))
+                        {
+                            g.FillRectangle(brush, rectRemainder);
+                        }
+                        // draw red
+                        using (SolidBrush brush = new SolidBrush(Color.FromArgb(210, 15, 15)))
+                        {
+                            g.FillRectangle(brush, rectSpent);
+                        }
                     }
-                    // draw red
-                    using (SolidBrush brush = new SolidBrush(Color.FromArgb(210, 15, 15)))
-                    {
-                        g.FillRectangle(brush, rectSpent);
-                    }
+                    locationYIncrease += 30;
+
+                    maxBudgetDisplayCounter++;
+                    // The dashboard can onyl display a maximum of 8 budgets
+                    if (maxBudgetDisplayCounter > 8)
+                        break;
                 }
-                locationYIncrease += 30;
+                picBoxBudgetGraph.Image = bitmap;
+            }
+            else
+            {
+                Label labelError = new Label();
+                labelError.AutoSize = false;
+                labelError.Width = 250;
+                labelError.Location = new Point(20, 140);
+                labelError.Text = "No budget data found";
+                formLabels.Add(labelError);
 
-                maxBudgetDisplayCounter++;
-                // The dashboard can onyl display a maximum of 8 budgets
-                if (maxBudgetDisplayCounter > 8)
-                    break;
+                this.Controls.Add(labelError);
             }
 
-            picBoxBudgetGraph.Image = bitmap;
+
+
 
         }
 
@@ -215,7 +271,7 @@ namespace Sodv2101_Group13_BudgetApp
 
             Label monthlyEarning = new Label();
             monthlyEarning.AutoSize = false;
-            monthlyEarning.Width = 250;
+            monthlyEarning.Width = 300;
             monthlyEarning.Location = new Point(20, 70);
             monthlyEarning.Font = new Font("Segoe UI", 12);
             formLabels.Add(monthlyEarning);
@@ -223,15 +279,24 @@ namespace Sodv2101_Group13_BudgetApp
             List<Income> incomes = incomeService.GetIncomeList();
 
             double incomeTotal = 0;
-            foreach (Income income in incomes)
+            if(incomes != null)
             {
-                // get current date
-                DateTime date = DateTime.Now;
-                // pass month to get only expenses for that month
-                incomeTotal += income.GetMonthlyEarnings(date.Month);
+                foreach (Income income in incomes)
+                {
+                    // get current date
+                    DateTime date = DateTime.Now;
+                    // pass month to get only expenses for that month
+                    incomeTotal += income.GetMonthlyEarnings(date.Month);
+
+                }
+                monthlyEarning.Text = $"Monthly Earnings: ${incomeTotal.ToString()}";
 
             }
-            monthlyEarning.Text = $"Monthly Earnings: ${incomeTotal.ToString()}";
+            else
+            {
+                monthlyEarning.Text = "Monthly Earnings: No data retrieved";
+
+            }
             this.Controls.Add(monthlyEarning);
 
         }
@@ -242,6 +307,8 @@ namespace Sodv2101_Group13_BudgetApp
         {
 
             List<FinancialGoal> goals = goalService.GetFinancialGoalList();
+
+
             int locationYIncrease = 0;
             int locationYStart = 500;
             int locationXStart = 20;
@@ -256,62 +323,77 @@ namespace Sodv2101_Group13_BudgetApp
 
             // The dashboard can onyl display a maximum of 8 budgets
             int maxGoalDisplayCounter = 1;
-            foreach (FinancialGoal goal in goals)
+            if(goals != null && goals.Count != 0)
             {
-                Label label = new Label();
-                label.Location = new Point(locationXStart, locationYStart + locationYIncrease);
-                label.Text = goal.Name;
-                this.Controls.Add(label);
-                formLabels.Add(label);
-
-                // get current date
-                DateTime date = DateTime.Now;
-                // pass month to get only expenses for that month
-                double totalContributions = goal.GetContributionTotal();
-                Label labelExpense = new Label();
-                labelExpense.AutoSize = false;
-                labelExpense.Width = 250;
-                labelExpense.Location = new Point(400 + locationXStart, locationYStart + locationYIncrease);
-                labelExpense.Text = $"Goal: {goal.MaxAmount} | Saved: {totalContributions} | {(goal.MaxAmount - totalContributions > 0 ? goal.MaxAmount - totalContributions + " To go!!" : "GOAL MET!" )}";
-                formLabels.Add(labelExpense);
-
-                this.Controls.Add(labelExpense);
-
-                using (Graphics g = Graphics.FromImage(bitmap))
+                foreach (FinancialGoal goal in goals)
                 {
-                    // calculate percentage spent
-                    double percentSpent = ((totalContributions * 100) / goal.MaxAmount) / 100;
+                    Label label = new Label();
+                    label.Location = new Point(locationXStart, locationYStart + locationYIncrease);
+                    label.Text = goal.Name;
+                    this.Controls.Add(label);
+                    formLabels.Add(label);
 
-                    // define bar of spent amount
-                    int spent = (Int32)(percentSpent * 250);
-                    // define bar of remainder
-                    int remaining = 250 - spent;
-                    // rectangle x axis here start "spent" percent over since that portion will be red
-                    // recntangle width is then remaining amount
-                    Rectangle rectRemainder = new Rectangle(0 + spent, 0 + locationYIncrease + 5, remaining, 20);
-                    // rectangle here is simply width of spent
-                    Rectangle rectSpent = new Rectangle(0, 0 + locationYIncrease + 5, spent, 20);
+                    // get current date
+                    DateTime date = DateTime.Now;
+                    // pass month to get only expenses for that month
+                    double totalContributions = goal.GetContributionTotal();
+                    Label labelExpense = new Label();
+                    labelExpense.AutoSize = false;
+                    labelExpense.Width = 250;
+                    labelExpense.Location = new Point(400 + locationXStart, locationYStart + locationYIncrease);
+                    labelExpense.Text = $"Goal: {goal.MaxAmount} | Saved: {totalContributions} | {(goal.MaxAmount - totalContributions > 0 ? goal.MaxAmount - totalContributions + " To go!!" : "GOAL MET!")}";
+                    formLabels.Add(labelExpense);
 
-                    // draw blue
-                    using (SolidBrush brush = new SolidBrush(Color.FromArgb(0, 25, 150)))
+                    this.Controls.Add(labelExpense);
+
+                    using (Graphics g = Graphics.FromImage(bitmap))
                     {
-                        g.FillRectangle(brush, rectRemainder);
+                        // calculate percentage spent
+                        double percentSpent = ((totalContributions * 100) / goal.MaxAmount) / 100;
+
+                        // define bar of spent amount
+                        int spent = (Int32)(percentSpent * 250);
+                        // define bar of remainder
+                        int remaining = 250 - spent;
+                        // rectangle x axis here start "spent" percent over since that portion will be red
+                        // recntangle width is then remaining amount
+                        Rectangle rectRemainder = new Rectangle(0 + spent, 0 + locationYIncrease + 5, remaining, 20);
+                        // rectangle here is simply width of spent
+                        Rectangle rectSpent = new Rectangle(0, 0 + locationYIncrease + 5, spent, 20);
+
+                        // draw blue
+                        using (SolidBrush brush = new SolidBrush(Color.FromArgb(0, 25, 150)))
+                        {
+                            g.FillRectangle(brush, rectRemainder);
+                        }
+                        // draw green
+                        using (SolidBrush brush = new SolidBrush(Color.FromArgb(0, 150, 25)))
+                        {
+                            g.FillRectangle(brush, rectSpent);
+                        }
                     }
-                    // draw green
-                    using (SolidBrush brush = new SolidBrush(Color.FromArgb(0, 150, 25)))
-                    {
-                        g.FillRectangle(brush, rectSpent);
-                    }
+                    locationYIncrease += 30;
+
+                    maxGoalDisplayCounter++;
+                    // The dashboard can onyl display a maximum of 8 budgets
+                    if (maxGoalDisplayCounter > 8)
+                        break;
                 }
-                locationYIncrease += 30;
 
-                maxGoalDisplayCounter++;
-                // The dashboard can onyl display a maximum of 8 budgets
-                if (maxGoalDisplayCounter > 8)
-                    break;
+                picBoxGoalGraph.Image = bitmap;
             }
+            else
+            {
+                Label labelError = new Label();
+                labelError.AutoSize = false;
+                labelError.Width = 250;
+                labelError.Location = new Point(20, 450);
+                labelError.Text = "No goal data found"; 
+                formLabels.Add(labelError);
 
-            picBoxGoalGraph.Image = bitmap;
+                this.Controls.Add(labelError);
+            }
+            
 
         }
 

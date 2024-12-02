@@ -58,36 +58,8 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
 
             currentExpenseId = expense.ExpenseId; // Assign ExpenseId here.
 
-            //Hadt his below before
-            //if (expense == null)
-            //{
-            //    MessageBox.Show("Expense data is null.");
-            //    return;
-            //}
-
-            //string dateString = expense.TimePeriod.ToString(); // Ensure it's not null
-
-            //if (string.IsNullOrEmpty(dateString))
-            //{
-            //    MessageBox.Show("Expense date is invalid or missing.");
-            //    return;
-            //}
-
-            //// Check if the date string is valid before parsing
-            //DateTime timePeriod;
-            //if (DateTime.TryParse(dateString, out timePeriod))
-            //{
-            //    // Proceed with setting the inputs (form fields)
-            //    dateTimePicker1.Text = timePeriod.ToString("yyyy-MM-dd"); // example date format
-            //}
-            //else
-            //{
-            //    MessageBox.Show("The date format is incorrect or cannot be parsed.");
-            //}
         }
 
-        //Populate Budget Category - Still need to parse it to the ID NOV 30 11:11pm
-        //CANT FIX THE PARSING
         private void PopulateBudgetComboBox()
         {
 
@@ -188,74 +160,12 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            //second try
-            //{ // Validate required fields
-            //    if (string.IsNullOrEmpty(txtExpenseName.Text) || string.IsNullOrEmpty(txtDescription.Text))
-            //    {
-            //        MessageBox.Show("Please fill in all fields.");
-            //        return;
-            //    }
-
-            //    // Validate date
-            //    if (string.IsNullOrEmpty(dateTimePicker1.Text))
-            //    {
-            //        MessageBox.Show("Please select a valid date.");
-            //        return;
-            //    }
-
-            //    // Retrieve the selected BudgetId from the ComboBox
-            //    int selectedBudgetId = (int)cmbExpense.SelectedValue;
-
-            //    // Retrieve other data from the form fields
-            //    string name = txtExpenseName.Text;
-            //    double amount = Convert.ToDouble(numExpenseAmount.Value);
-            //    string description = txtDescription.Text;
-            //    string dateString = dateTimePicker1.Text;
-
-            //    // Create a new Expense object with the selected BudgetId
-            //    Expense expense = new Expense(selectedBudgetId, name, amount, description, dateString);
-
-            //    // Pass the Expense object and selectedBudgetId to the EditExpense method
-            //    bool isUpdated = expenseService.UpdateExpense(expense, expense.ExpenseId); // Pass ExpenseId here if required
-
-            //    if (isUpdated)
-            //    {
-            //        MessageBox.Show("Expense updated successfully.");
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Error updating expense.");
-            //    }
-
-            //    // Close the form
-            //    this.DialogResult = DialogResult.OK;
-            //    this.Close();
-            //}
-
-            //first try
-            //{   // retrieve data from form
-            //    int budgetId = 1;
-            //    string name = txtExpenseName.Text;
-            //    double amount = Convert.ToDouble(numExpenseAmount.Value);
-            //    string description = txtDescription.Text;
-            //    string dateString = dateTimePicker1.Text;
-
-            //    // create a new budget class object
-
-            //    {
-            //        Expense expense = new Expense(budgetId, name, amount, description, dateString);
-
-            //        // pass the object AND ID to the edit budget method of budget service
-            //        // proceed to budget service class
-            //        expenseService.UpdateExpense(expense, budgetId);
-            //        this.DialogResult = DialogResult.OK;
-            //        this.Close();
         } 
-            //TO POPULATE THE COMBOBOX NOV 11:11pm
+
             private void EditExpenseForm_Load(object sender, EventArgs e)
-        {
-            PopulateBudgetComboBox(); // Populate the ComboBox when the form is loaded
-        }
+            {
+                PopulateBudgetComboBox(); // Populate the ComboBox when the form is loaded
+            }
 
     }
 
