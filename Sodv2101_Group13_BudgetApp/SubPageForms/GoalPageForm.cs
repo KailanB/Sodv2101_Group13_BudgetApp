@@ -20,7 +20,8 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
         public FinancialGoal SelectedGoal {  get; private set; }
         private List<FinancialGoal> goalList = new List<FinancialGoal>();
         private FinancialGoalService goalService = new FinancialGoalService();
-        private ContributionService ContributionService = new ContributionService();
+        private ContributionService contributionService = new ContributionService();
+		private List<Contribution> contributionsList = new List<Contribution>();
         public GoalPageForm()
         {
             InitializeComponent();
@@ -70,18 +71,17 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
 					dataGridViewContributions.Columns["ContributionID"].Visible = false;
 				}
 			}
+		}
 
-<<<<<<< Updated upstream
 
 
 			//DataTable contributionTable = new DataTable();
 			//contributionTable.Columns.Add("Amount", typeof(double));
 			//contributionTable.Columns.Add("Description", typeof (string));
 			//contributionTable.Columns.Add("Date", typeof(DateTime));
-=======
         private void toolStripMenuItemAddGoal_Click(object sender, EventArgs e)
         {
-            AddGoalForm addGoalForm = new AddGoalForm();
+            CreateGoalForm addGoalForm = new CreateGoalForm();
             if (addGoalForm.ShowDialog() == DialogResult.OK)
             {
                 FinancialGoal newGoal = addGoalForm.NewGoal;
@@ -96,7 +96,7 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
 
         private void btnGFPAddGoal_Click(object sender, EventArgs e)
         {
-            AddGoalForm addGoalForm = new AddGoalForm();
+            CreateGoalForm addGoalForm = new CreateGoalForm();
             if (addGoalForm.ShowDialog() == DialogResult.OK)
             {
                 FinancialGoal newGoal = addGoalForm.NewGoal;
@@ -107,7 +107,7 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
                     LoadGoals();
                 }
             }
->>>>>>> Stashed changes
+
 
 			//foreach(var contribution in contributionsList)
 			//{
@@ -124,7 +124,6 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
 			//    dataGridViewContributions.Columns["ContributionID"].Visible = false;
 			//}
 
-<<<<<<< Updated upstream
 		}
 
 		private void LoadContributionsOfGoal(int goalId)
@@ -157,36 +156,37 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
 			return goalList;
 		}
 
-		private void toolStripMenuItemAddGoal_Click(object sender, EventArgs e)
-		{
-			AddGoalForm addGoalForm = new AddGoalForm();
-			if (addGoalForm.ShowDialog() == DialogResult.OK)
-			{
-				FinancialGoal newGoal = addGoalForm.NewGoal;
+		//private void toolStripMenuItemAddGoal_Click(object sender, EventArgs e)
+		//{
+		//	AddGoalForm addGoalForm = new AddGoalForm();
+		//	if (addGoalForm.ShowDialog() == DialogResult.OK)
+		//	{
+		//		FinancialGoal newGoal = addGoalForm.NewGoal;
 
-				if (newGoal != null)
-				{
-					goalService.CreateFinancialGoal(newGoal);
-					LoadGoals();
-				}
-			}
-		}
+		//		if (newGoal != null)
+		//		{
+		//			goalService.CreateFinancialGoal(newGoal);
+		//			LoadGoals();
+		//		}
+		//	}
+		//}
 
-		private void btnGFPAddGoal_Click(object sender, EventArgs e)
-		{
-			AddGoalForm addGoalForm = new AddGoalForm();
-			if (addGoalForm.ShowDialog() == DialogResult.OK)
-			{
-				FinancialGoal newGoal = addGoalForm.NewGoal;
 
-				if (newGoal != null)
-				{
-					goalService.CreateFinancialGoal(newGoal);
-					LoadGoals();
-				}
-			}
+  //      private void btnGFPAddGoal_Click(object sender, EventArgs e)
+		//{
+		//	AddGoalForm addGoalForm = new AddGoalForm();
+		//	if (addGoalForm.ShowDialog() == DialogResult.OK)
+		//	{
+		//		FinancialGoal newGoal = addGoalForm.NewGoal;
 
-		}
+		//		if (newGoal != null)
+		//		{
+		//			goalService.CreateFinancialGoal(newGoal);
+		//			LoadGoals();
+		//		}
+		//	}
+
+		//}
 
 		private void btnGFPDeleteGoal_Click(object sender, EventArgs e)
 		{
@@ -211,7 +211,7 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
 
 		private void toolStripDropDownButtonGoals_DoubleClick(object sender, EventArgs e)
 		{
-			AddGoalForm addGoal = new AddGoalForm();
+			CreateGoalForm addGoal = new CreateGoalForm();
 			addGoal.ShowDialog();
 		}
 
@@ -238,7 +238,7 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
 
 				FinancialGoal goal = new FinancialGoal(goalName, amount, description, deadline);
 
-				EditGoalForm editGoal = new EditGoalForm();
+				UpdateGoalForm editGoal = new UpdateGoalForm();
 				editGoal.PopulateInput(goal, SelectedGoal.GoalID);
 				DialogResult newGoalResult = editGoal.ShowDialog();
 				if (newGoalResult == DialogResult.OK)
@@ -298,13 +298,13 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
 				return;
 			}
 
-			AddContribution addContribution = new AddContribution(goalList);
+			CreateContribution addContribution = new CreateContribution(goalList);
 			addContribution.ShowDialog();
 		}
 
 		private void btnAddConbtribution_Click(object sender, EventArgs e)
 		{
-			AddContribution addContributionForm = new AddContribution();
+			CreateContribution addContributionForm = new CreateContribution();
 			addContributionForm.ShowDialog();
 		}
 
@@ -447,7 +447,7 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
 
 				FinancialGoal goal = new FinancialGoal(goalName, amount, description, deadline);
 
-				EditGoalForm editGoal = new EditGoalForm();
+				UpdateGoalForm editGoal = new UpdateGoalForm();
 				editGoal.PopulateInput(goal, SelectedGoal.GoalID);
 				DialogResult newGoalResult = editGoal.ShowDialog();
 				if (newGoalResult == DialogResult.OK)
@@ -550,80 +550,80 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
 
 
 	}
-=======
-        private void btnGFPDeleteGoal_Click(object sender, EventArgs e)
-        {
-            if (dataGridViewFinancialGoals.SelectedRows.Count > 0)
-            {
-                //Still working on the Logic
-                int selectedIndex = dataGridViewFinancialGoals.SelectedRows[0].Index;
-                 SelectedGoal = goalList[selectedIndex];
 
-                DialogResult confirmResult = MessageBox.Show("Are you sure you want to delete this goal?", "Confirm Deletion", MessageBoxButtons.YesNo);
-                if (confirmResult == DialogResult.Yes)
-                {
-                    goalService.DeleteFinancialGoal(SelectedGoal.GoalID);
-                    LoadGoals();
-                }
-            }
-            else
-            {
-                lblGPFError.Text = "Please Select a Goal to Delete!";
-            }
-        }
+        //private void btnGFPDeleteGoal_Click(object sender, EventArgs e)
+        //{
+        //    if (dataGridViewFinancialGoals.SelectedRows.Count > 0)
+        //    {
+        //        //Still working on the Logic
+        //        int selectedIndex = dataGridViewFinancialGoals.SelectedRows[0].Index;
+        //         SelectedGoal = goalList[selectedIndex];
 
-        private void toolStripDropDownButtonGoals_DoubleClick(object sender, EventArgs e)
-        {
-            AddGoalForm addGoal = new AddGoalForm();
-            addGoal.ShowDialog();
-        }
+        //        DialogResult confirmResult = MessageBox.Show("Are you sure you want to delete this goal?", "Confirm Deletion", MessageBoxButtons.YesNo);
+        //        if (confirmResult == DialogResult.Yes)
+        //        {
+        //            goalService.DeleteFinancialGoal(SelectedGoal.GoalID);
+        //            LoadGoals();
+        //        }
+        //    }
+        //    else
+        //    {
+        //        lblGPFError.Text = "Please Select a Goal to Delete!";
+        //    }
+        //}
 
-        private void lblGPFError_TextChanged(object sender, EventArgs e)
-        {
+    //    private void toolStripDropDownButtonGoals_DoubleClick(object sender, EventArgs e)
+    //    {
+    //        AddGoalForm addGoal = new AddGoalForm();
+    //        addGoal.ShowDialog();
+    //    }
 
-            lblGPFError.ForeColor = Color.Red;
-        }
+    //    private void lblGPFError_TextChanged(object sender, EventArgs e)
+    //    {
 
-        private void btnGFPEditGoal_Click(object sender, EventArgs e)
-        {
-            if(dataGridViewFinancialGoals.SelectedRows.Count > 0)
-            {
-                DataGridViewRow selectedRow = dataGridViewFinancialGoals.SelectedRows[0];
+    //        lblGPFError.ForeColor = Color.Red;
+    //    }
 
-                int goalIndex = dataGridViewFinancialGoals.CurrentCell.RowIndex;
-                SelectedGoal = goalList[goalIndex];
+    //    private void btnGFPEditGoal_Click(object sender, EventArgs e)
+    //    {
+    //        if(dataGridViewFinancialGoals.SelectedRows.Count > 0)
+    //        {
+    //            DataGridViewRow selectedRow = dataGridViewFinancialGoals.SelectedRows[0];
+
+    //            int goalIndex = dataGridViewFinancialGoals.CurrentCell.RowIndex;
+    //            SelectedGoal = goalList[goalIndex];
                 
 
-                string goalName = selectedRow.Cells["Name"].Value.ToString();
-                double amount = Convert.ToDouble(selectedRow.Cells["Max Amount"].Value);
-                string description = selectedRow.Cells["Description"].Value.ToString();
-                DateTime deadline = Convert.ToDateTime(selectedRow.Cells["Deadline"].Value.ToString());
+    //            string goalName = selectedRow.Cells["Name"].Value.ToString();
+    //            double amount = Convert.ToDouble(selectedRow.Cells["Max Amount"].Value);
+    //            string description = selectedRow.Cells["Description"].Value.ToString();
+    //            DateTime deadline = Convert.ToDateTime(selectedRow.Cells["Deadline"].Value.ToString());
 
-                FinancialGoal goal = new FinancialGoal(goalName, amount, description, deadline);
+    //            FinancialGoal goal = new FinancialGoal(goalName, amount, description, deadline);
 
-                EditGoalForm editGoal = new EditGoalForm();
-                editGoal.PopulateInput(goal, SelectedGoal.GoalID);
-                DialogResult newGoalResult = editGoal.ShowDialog();
-                if(newGoalResult == DialogResult.OK)
-                {
-                    LoadGoals();
-                }
-            }
-            else
-            {
-                lblGPFError.Text = "Please select a goal to edit";
-            }
+    //            EditGoalForm editGoal = new EditGoalForm();
+    //            editGoal.PopulateInput(goal, SelectedGoal.GoalID);
+    //            DialogResult newGoalResult = editGoal.ShowDialog();
+    //            if(newGoalResult == DialogResult.OK)
+    //            {
+    //                LoadGoals();
+    //            }
+    //        }
+    //        else
+    //        {
+    //            lblGPFError.Text = "Please select a goal to edit";
+    //        }
             
-        }
+    //    }
 
-        private void toolStripMenuItemRemoveContribution_Click(object sender, EventArgs e)
-        {
-            //Open Goal List
-            //User must click on a goal to remove
-            // Confirm User wants to remove the goal
-            //Remove close
-            //Close Form
-        }
-    }
->>>>>>> Stashed changes
+    //    private void toolStripMenuItemRemoveContribution_Click(object sender, EventArgs e)
+    //    {
+    //        //Open Goal List
+    //        //User must click on a goal to remove
+    //        // Confirm User wants to remove the goal
+    //        //Remove close
+    //        //Close Form
+    //    }
+    //}
+
 }
