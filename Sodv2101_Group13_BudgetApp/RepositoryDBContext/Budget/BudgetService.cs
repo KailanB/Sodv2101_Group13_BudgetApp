@@ -167,8 +167,6 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.BudgetServices
 
 						}
 
-
-
 						foreach(Budget budget in budgetList)
 						{
 							budget.Expenses = expenseService.GetExpenseByBudgetId(budget.BudgetID);
@@ -185,7 +183,6 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.BudgetServices
 			}
 			return null;
 		}
-
 
 		public bool DeleteBudget(int budgetId)
 		{
@@ -209,9 +206,6 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.BudgetServices
 			}
 			return false;
 		}
-
-
-
 
 	}
 }

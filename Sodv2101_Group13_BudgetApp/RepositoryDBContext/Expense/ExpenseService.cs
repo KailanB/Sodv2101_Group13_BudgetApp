@@ -17,7 +17,7 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.ExpenseServices
         // Method to create a new expense
         public bool NewExpense(Expense expense)
         {
-            string query = "INSERT INTO Expense (BudgetID, Name, Amount, Description, PurchaseDate ) VALUES (@BudgetID, @Name, @Amount, @Description, @TimePeriod)";
+            string query = "INSERT INTO Expense (BudgetID, Name, Amount, Description, PurchaseDate ) VALUES (@BudgetID, @Name, @Amount, @Description, @PurchaseDate)";
 
             using (SqlConnection connection = new SqlConnection(dbConnection.ConnectionString))
             {
@@ -292,4 +292,6 @@ namespace Sodv2101_Group13_BudgetApp.RepositoryDBContext.ExpenseServices
                 //}
 
             }
+        }
+    }
 }
