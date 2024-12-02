@@ -40,6 +40,7 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
         {
             if (expense == null)
             {
+                lblUpdateExpense.Text = "Expense data is null.\", \"Error\"";
                 MessageBox.Show("Expense data is null.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
