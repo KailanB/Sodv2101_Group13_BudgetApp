@@ -143,6 +143,12 @@ namespace Sodv2101_Group13_BudgetApp
             int locationYIncrease = 0;
             Bitmap bitmap = new Bitmap(250, 250);
 
+            PictureBox picBoxBudgetGraph = new PictureBox();
+            picBoxBudgetGraph.Width = 250;
+            picBoxBudgetGraph.Height = 250;
+            picBoxBudgetGraph.Location = new Point(160, 128);
+            this.Controls.Add(picBoxBudgetGraph);
+
             // The dashboard can onyl display a maximum of 8 budgets
             int maxBudgetDisplayCounter = 1;
             foreach (Budget budget in budgets)
@@ -200,7 +206,7 @@ namespace Sodv2101_Group13_BudgetApp
                     break;
             }
 
-            picBudgetGraphs.Image = bitmap;
+            picBoxBudgetGraph.Image = bitmap;
 
         }
 
@@ -240,6 +246,13 @@ namespace Sodv2101_Group13_BudgetApp
             int locationYStart = 500;
             int locationXStart = 20;
             Bitmap bitmap = new Bitmap(250, 250);
+
+            // add pic box dynamically to accommodate for screen sizes
+            PictureBox picBoxGoalGraph = new PictureBox();
+            picBoxGoalGraph.Width = 250;
+            picBoxGoalGraph.Height = 250;
+            picBoxGoalGraph.Location = new Point(160, 492);
+            this.Controls.Add(picBoxGoalGraph);
 
             // The dashboard can onyl display a maximum of 8 budgets
             int maxGoalDisplayCounter = 1;
@@ -298,11 +311,11 @@ namespace Sodv2101_Group13_BudgetApp
                     break;
             }
 
-            picGoalGraph.Image = bitmap;
+            picBoxGoalGraph.Image = bitmap;
 
         }
 
-        // these labels are created and tracked via custom methods to accomodate for different screen sizes
+        // these labels are created and tracked via custom methods to accommodate for different screen sizes
         // otherwise creating custom labels to display dynamic data causes errors in the UI
         private void LoadCustomLabels()
         {
@@ -327,6 +340,7 @@ namespace Sodv2101_Group13_BudgetApp
             budgetLabel.Text = "Budgets";
             this.Controls.Add(budgetLabel);
             formLabels.Add(budgetLabel);
+            
             // 
             // Goal list label
             Label goalLabel = new Label();

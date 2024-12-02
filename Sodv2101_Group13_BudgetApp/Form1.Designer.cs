@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            picBudgetGraphs = new PictureBox();
             toolStripDropDownButtonAddExpenses = new ToolStripDropDownButton();
             addExpenseToolStripMenuItem = new ToolStripMenuItem();
             addGoalContributionToolStripMenuItem = new ToolStripMenuItem();
@@ -44,20 +43,8 @@
             toolStrip1 = new ToolStrip();
             toolStripButtonBudget = new ToolStripButton();
             toolStripButton1 = new ToolStripButton();
-            picGoalGraph = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)picBudgetGraphs).BeginInit();
             toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)picGoalGraph).BeginInit();
             SuspendLayout();
-            // 
-            // picBudgetGraphs
-            // 
-            picBudgetGraphs.Location = new Point(153, 127);
-            picBudgetGraphs.Margin = new Padding(3, 2, 3, 2);
-            picBudgetGraphs.Name = "picBudgetGraphs";
-            picBudgetGraphs.Size = new Size(250, 250);
-            picBudgetGraphs.TabIndex = 6;
-            picBudgetGraphs.TabStop = false;
             // 
             // toolStripDropDownButtonAddExpenses
             // 
@@ -173,39 +160,24 @@
             toolStripButton1.Text = "Goals";
             toolStripButton1.Click += toolStripButton1_Click;
             // 
-            // picGoalGraph
-            // 
-            picGoalGraph.Location = new Point(153, 492);
-            picGoalGraph.Name = "picGoalGraph";
-            picGoalGraph.Size = new Size(250, 250);
-            picGoalGraph.TabIndex = 7;
-            picGoalGraph.TabStop = false;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(776, 782);
-            Controls.Add(picGoalGraph);
-            Controls.Add(picBudgetGraphs);
             Controls.Add(toolStrip1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "Form1";
             Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)picBudgetGraphs).EndInit();
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)picGoalGraph).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
-
-
         #endregion
-        private PictureBox picBudgetGraphs;
-		private ToolStripDropDownButton toolStripDropDownButtonAddExpenses;
+        private ToolStripDropDownButton toolStripDropDownButtonAddExpenses;
 		private ToolStripMenuItem toolBtnAddBudget;
 		private ToolStripSeparator toolStripSeparator2;
 		private ToolStripSeparator toolStripSeparator1;
@@ -219,7 +191,6 @@
 		private ToolStripMenuItem addGoalContributionToolStripMenuItem;
 		private ToolStripButton toolStripButton1;
 		private ToolStripButton toolStripButtonBudget;
-        private PictureBox picGoalGraph;
     }
 }
 
