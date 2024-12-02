@@ -110,40 +110,9 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
             Controls.Add(btnCancel);
         }
 
-        
 
-        private void RefreshIncomeList()
-        {
-            lstIncomes.DataSource = null;
-            lstIncomes.DataSource = incomes;
-        }
 
-        private void ClearIncomeForm()
-        {
-            txtName.Clear();
-            txtAmount.Clear();
-            txtTimePeriod.Clear();
-            cmbIncomeType.SelectedIndex = -1;
-        }
 
-        private void ToggleIncomeForm(bool isVisible)
-        {
-            lblName.Visible = isVisible;
-            txtName.Visible = isVisible;
-            lblAmount.Visible = isVisible;
-            txtAmount.Visible = isVisible;
-            lblTimePeriod.Visible = isVisible;
-            txtTimePeriod.Visible = isVisible;
-            lblIncomeType.Visible = isVisible;
-            cmbIncomeType.Visible = isVisible;
-            btnSave.Visible = isVisible;
-            btnCancel.Visible = isVisible;
-        }
-
-        private void HideIncomeForm(object sender, EventArgs e)
-        {
-            ToggleIncomeForm(false);
-        }
 
         private void InitializeComponent()
         {
@@ -156,6 +125,7 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
             // lstincome
             // 
             lstincome.FormattingEnabled = true;
+            lstincome.ItemHeight = 15;
             lstincome.Location = new Point(40, 40);
             lstincome.Name = "lstincome";
             lstincome.Size = new Size(500, 184);
@@ -170,6 +140,7 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
             btnNewIncome.TabIndex = 1;
             btnNewIncome.Text = "New Income";
             btnNewIncome.UseVisualStyleBackColor = false;
+            btnNewIncome.Click += ShowIncomeFormForNew;
             // 
             // btnEditIncome
             // 
