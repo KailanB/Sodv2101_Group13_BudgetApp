@@ -44,10 +44,12 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
             budgetTable.Columns.Add("Budget", typeof(string));
             budgetTable.Columns.Add("Max Amount", typeof(double));
             budgetTable.Columns.Add("Description", typeof(string));
-            budgetTable.Columns.Add("Budget ID", typeof(int));
+            //budgetTable.Columns.Add("Budget ID", typeof(int));
+            // , budg.BudgetID
+
             foreach (var budg in budgetList)
             {
-                budgetTable.Rows.Add(budg.Name, budg.Max, budg.Description, budg.BudgetID);
+                budgetTable.Rows.Add(budg.Name, budg.Max, budg.Description);
             }
             dataGridViewBudgets.DataSource = budgetTable;
 
@@ -87,19 +89,32 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
 
         private void btnDeleteBudget_Click(object sender, EventArgs e)
         {
+
             if (dataGridViewBudgets.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = dataGridViewBudgets.SelectedRows[0];
                 int budgetListIndex = dataGridViewBudgets.CurrentCell.RowIndex;
                 int budgetId = budgetList[budgetListIndex].BudgetID;
-
-                // int budgetId = Convert.ToInt32(selectedRow.Cells["Budget ID"].Value);
-
-                bool budgetDeleted = budgetService.DeleteBudget(budgetId);
-                if (budgetDeleted)
+                if (budgetList[budgetListIndex].Expenses.Count == 0)
                 {
-                    LoadBudgets();
+                    // int budgetId = Convert.ToInt32(selectedRow.Cells["Budget ID"].Value);
+
+                    bool budgetDeleted = budgetService.DeleteBudget(budgetId);
+                    if (budgetDeleted)
+                    {
+                        LoadBudgets();
+                    }
+                    else
+                    {
+                        lblBudgetOutput.Text = "Error deleting budget.";
+                    }
                 }
+                else
+                {
+                    lblBudgetOutput.Text = "Please delete all expenses before deleting a budget!";
+                }
+
+                
             }
         }
         //to VIEW ALL EXPENSES IN THE BUDGET PAGE FORM
@@ -150,16 +165,14 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
 
                 Budget budget = new Budget(name, amount, description);
 
-                EditBudgetForm editBudgetForm = new EditBudgetForm();
+                UpdateBudgetForm editBudgetForm = new UpdateBudgetForm();
                 editBudgetForm.PopulateInputs(budget, budgetId);
                 DialogResult result = editBudgetForm.ShowDialog();
                 // if new budget is added then reload budget info
                 if (result == DialogResult.OK)
                 {
-                    {
-                        LoadBudgets();
-                    }
 
+                    LoadBudgets();
 
                 }
             }
@@ -170,7 +183,7 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
 
         private void btnNewExpense_Click(object sender, EventArgs e)
         {
-            NewExpense expenseForm = new NewExpense();
+            CreateExpense expenseForm = new CreateExpense();
             DialogResult result = expenseForm.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -237,7 +250,7 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
 
 
         //added nov31
-        private void btnDeleteExpense_Click_1(object sender, EventArgs e)
+        private void btnDeleteExpense_Click(object sender, EventArgs e)
         {
             if (dataGridViewExpenses.SelectedRows.Count > 0)
             {
@@ -257,7 +270,8 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
 
                     if (expenseDeleted)
                     {
-                        MessageBox.Show("Expense deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        lblExpenseOutput.Text = "Expense deleted successfully.";
+                        //MessageBox.Show("Expense deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         // Get the current budget ID (you need to reload the expenses for this budget)
                         int budgetListIndex = dataGridViewBudgets.CurrentCell.RowIndex;
@@ -268,13 +282,15 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
                     }
                     else
                     {
-                        MessageBox.Show("Failed to delete the expense. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        lblExpenseOutput.Text = "Failed to delete the expense. Please try again.";
+                        //MessageBox.Show("Failed to delete the expense. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Please select an expense to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                lblExpenseOutput.Text = "Please select an expense to delete.\", \"No Selection";
+                // MessageBox.Show("Please select an expense to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }
