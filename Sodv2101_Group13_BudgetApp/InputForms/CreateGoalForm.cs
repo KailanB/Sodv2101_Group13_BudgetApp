@@ -12,10 +12,10 @@ using Sodv2101_Group13_BudgetApp.RepositoryDBContext.FinancialGoalsService;
 
 namespace Sodv2101_Group13_BudgetApp.InputForms
 {
-    public partial class AddGoalForm : Form
+    public partial class CreateGoalForm : Form
     {
         internal FinancialGoal NewGoal = new FinancialGoal();
-        public AddGoalForm()
+        public CreateGoalForm()
         {
             InitializeComponent();
         }

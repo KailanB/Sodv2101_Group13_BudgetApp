@@ -1,6 +1,6 @@
 ﻿namespace Sodv2101_Group13_BudgetApp.InputForms
 {
-    partial class AddGoalForm
+    partial class CreateGoalForm
     {
         /// <summary>
         /// Required designer variable.

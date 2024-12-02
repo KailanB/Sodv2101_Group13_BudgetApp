@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Sodv2101_Group13_BudgetApp.InputForms
 {
-    public partial class AddContribution : Form
+    public partial class CreateContribution : Form
     {
         private ContributionService contributionService = new ContributionService();
         private FinancialGoalService financialGoalService = new FinancialGoalService();
@@ -22,14 +22,14 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
         
         // added paramterless constructor so that we can use this Form outside of the GoalPageForm.
         // instead of passing a value into the constructor simply use financialGoalService to pull goal list and populate form combo box
-        public AddContribution()
+        public CreateContribution()
         {
 			InitializeComponent();
 
             //populates combo box with financial goal options
             LoadFinancialGoalsComboBox();
 		}
-        public AddContribution(List<FinancialGoal> goals)
+        public CreateContribution(List<FinancialGoal> goals)
         {
             InitializeComponent();
            

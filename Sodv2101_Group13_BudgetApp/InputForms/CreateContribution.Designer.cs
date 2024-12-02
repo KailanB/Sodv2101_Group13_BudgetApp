@@ -1,6 +1,6 @@
 ﻿namespace Sodv2101_Group13_BudgetApp.InputForms
 {
-    partial class AddContribution
+    partial class CreateContribution
     {
         /// <summary>
         /// Required designer variable.
