@@ -1,6 +1,6 @@
 ﻿namespace Sodv2101_Group13_BudgetApp.InputForms
 {
-	partial class EditBudgetForm
+	partial class UpdateBudgetForm
 	{
 		/// <summary>
 		/// Required designer variable.

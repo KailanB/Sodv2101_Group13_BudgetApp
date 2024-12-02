@@ -1,6 +1,6 @@
 ﻿namespace Sodv2101_Group13_BudgetApp.InputForms
 {
-    partial class EditGoalForm
+    partial class UpdateGoalForm
     {
         /// <summary>
         /// Required designer variable.
@@ -52,11 +52,11 @@
             // 
             // btnEditGoalSave
             // 
-<<<<<<< Updated upstream
+
             btnEditGoalSave.Location = new Point(105, 373);
-=======
+
             btnEditGoalSave.Location = new Point(100, 343);
->>>>>>> Stashed changes
+
             btnEditGoalSave.Name = "btnEditGoalSave";
             btnEditGoalSave.Size = new Size(146, 36);
             btnEditGoalSave.TabIndex = 2;

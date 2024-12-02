@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace Sodv2101_Group13_BudgetApp.InputForms
 {
-    public partial class EditGoalForm : Form
+    public partial class UpdateGoalForm : Form
     {
         private FinancialGoalService goalService = new FinancialGoalService();
         private int goalID;
-        public EditGoalForm()
+        public UpdateGoalForm()
         {
             InitializeComponent();
         }

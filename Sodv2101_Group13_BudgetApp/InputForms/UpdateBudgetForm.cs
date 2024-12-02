@@ -11,13 +11,13 @@ using System.Windows.Forms;
 
 namespace Sodv2101_Group13_BudgetApp.InputForms
 {
-	public partial class EditBudgetForm : Form
+	public partial class UpdateBudgetForm : Form
 	{
 
 		private BudgetService budgetService = new BudgetService();
 		private int budgetId;
 
-		public EditBudgetForm()
+		public UpdateBudgetForm()
 		{
 			InitializeComponent();
 		}
