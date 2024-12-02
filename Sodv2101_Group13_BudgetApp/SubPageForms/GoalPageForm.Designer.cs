@@ -151,10 +151,10 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F);
+            label1.Font = new Font("Segoe UI Semibold", 12F);
             label1.Location = new Point(12, 9);
             label1.Name = "label1";
-            label1.Size = new Size(140, 21);
+            label1.Size = new Size(143, 21);
             label1.TabIndex = 13;
             label1.Text = "My Financial Goals";
             // 

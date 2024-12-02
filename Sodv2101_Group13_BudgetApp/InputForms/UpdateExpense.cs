@@ -107,7 +107,8 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            Close();
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
 
 

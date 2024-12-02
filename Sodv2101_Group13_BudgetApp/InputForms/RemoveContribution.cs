@@ -76,7 +76,7 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
 
         private void comboBoxRemoveContribution_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(comboBoxRemoveContribution.SelectedItem is Contribution selectedContribution)
+            if (comboBoxRemoveContribution.SelectedItem is Contribution selectedContribution)
             {
                 numRemoveContributionAmount.Value = (decimal)selectedContribution.Amount;
                 txtBoxRemoveContributionDescription.Text = selectedContribution.Description;
@@ -88,6 +88,12 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
                 txtBoxRemoveContributionDescription.Text = string.Empty;
                 dateTimePickerRemoveContribution.Value = DateTime.Now;
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
     }
 }

@@ -37,76 +37,80 @@
             dateTimePickerAddContribution = new DateTimePicker();
             btnAddContributionSave = new Button();
             comboBoxAddContribution = new ComboBox();
-            lblAddContributionHeader = new Label();
+            btnCancel = new Button();
+            lblCreateContribution = new Label();
+            lblCreateOutput = new Label();
             ((System.ComponentModel.ISupportInitialize)numAddContributionAmount).BeginInit();
             SuspendLayout();
             // 
             // lblAddContributionName
             // 
             lblAddContributionName.AutoSize = true;
-            lblAddContributionName.Location = new Point(20, 66);
+            lblAddContributionName.Location = new Point(12, 66);
             lblAddContributionName.Name = "lblAddContributionName";
-            lblAddContributionName.Size = new Size(39, 15);
+            lblAddContributionName.Size = new Size(42, 15);
             lblAddContributionName.TabIndex = 0;
-            lblAddContributionName.Text = "Name";
+            lblAddContributionName.Text = "Name:";
             // 
             // lblAddContributionAmount
             // 
             lblAddContributionAmount.AutoSize = true;
-            lblAddContributionAmount.Location = new Point(20, 130);
+            lblAddContributionAmount.Location = new Point(12, 105);
             lblAddContributionAmount.Name = "lblAddContributionAmount";
-            lblAddContributionAmount.Size = new Size(51, 15);
+            lblAddContributionAmount.Size = new Size(54, 15);
             lblAddContributionAmount.TabIndex = 1;
-            lblAddContributionAmount.Text = "Amount";
+            lblAddContributionAmount.Text = "Amount:";
             // 
             // lblAddContributionDescription
             // 
             lblAddContributionDescription.AutoSize = true;
-            lblAddContributionDescription.Location = new Point(20, 184);
+            lblAddContributionDescription.Location = new Point(12, 146);
             lblAddContributionDescription.Name = "lblAddContributionDescription";
-            lblAddContributionDescription.Size = new Size(67, 15);
+            lblAddContributionDescription.Size = new Size(70, 15);
             lblAddContributionDescription.TabIndex = 2;
-            lblAddContributionDescription.Text = "Description";
+            lblAddContributionDescription.Text = "Description:";
             // 
             // lblAddContributionDate
             // 
             lblAddContributionDate.AutoSize = true;
-            lblAddContributionDate.Location = new Point(28, 276);
+            lblAddContributionDate.Location = new Point(12, 227);
             lblAddContributionDate.Name = "lblAddContributionDate";
-            lblAddContributionDate.Size = new Size(31, 15);
+            lblAddContributionDate.Size = new Size(34, 15);
             lblAddContributionDate.TabIndex = 3;
-            lblAddContributionDate.Text = "Date";
+            lblAddContributionDate.Text = "Date:";
             // 
             // numAddContributionAmount
             // 
-            numAddContributionAmount.Location = new Point(123, 128);
+            numAddContributionAmount.Location = new Point(123, 103);
             numAddContributionAmount.Maximum = new decimal(new int[] { 9999999, 0, 0, 0 });
             numAddContributionAmount.Name = "numAddContributionAmount";
-            numAddContributionAmount.Size = new Size(180, 23);
+            numAddContributionAmount.Size = new Size(183, 23);
             numAddContributionAmount.TabIndex = 5;
             // 
             // txtBoxAddContributionDescription
             // 
-            txtBoxAddContributionDescription.Location = new Point(123, 181);
+            txtBoxAddContributionDescription.Location = new Point(123, 143);
+            txtBoxAddContributionDescription.Multiline = true;
             txtBoxAddContributionDescription.Name = "txtBoxAddContributionDescription";
-            txtBoxAddContributionDescription.Size = new Size(183, 23);
+            txtBoxAddContributionDescription.Size = new Size(183, 59);
             txtBoxAddContributionDescription.TabIndex = 6;
             // 
             // dateTimePickerAddContribution
             // 
-            dateTimePickerAddContribution.Location = new Point(123, 270);
+            dateTimePickerAddContribution.Location = new Point(123, 221);
             dateTimePickerAddContribution.Name = "dateTimePickerAddContribution";
             dateTimePickerAddContribution.Size = new Size(183, 23);
             dateTimePickerAddContribution.TabIndex = 7;
             // 
             // btnAddContributionSave
             // 
-            btnAddContributionSave.Location = new Point(119, 339);
+            btnAddContributionSave.BackColor = Color.Plum;
+            btnAddContributionSave.Location = new Point(231, 263);
             btnAddContributionSave.Name = "btnAddContributionSave";
-            btnAddContributionSave.Size = new Size(142, 23);
+            btnAddContributionSave.Size = new Size(75, 23);
             btnAddContributionSave.TabIndex = 8;
             btnAddContributionSave.Text = "Save";
-            btnAddContributionSave.UseVisualStyleBackColor = true;
+            btnAddContributionSave.UseVisualStyleBackColor = false;
             btnAddContributionSave.Click += btnAddContributionSave_Click;
             // 
             // comboBoxAddContribution
@@ -117,24 +121,45 @@
             comboBoxAddContribution.Size = new Size(183, 23);
             comboBoxAddContribution.TabIndex = 9;
             // 
-            // lblAddContributionHeader
+            // btnCancel
             // 
-            lblAddContributionHeader.Dock = DockStyle.Top;
-            lblAddContributionHeader.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            lblAddContributionHeader.Location = new Point(0, 0);
-            lblAddContributionHeader.Name = "lblAddContributionHeader";
-            lblAddContributionHeader.Size = new Size(410, 46);
-            lblAddContributionHeader.TabIndex = 10;
-            lblAddContributionHeader.Text = "Add Contribution";
-            lblAddContributionHeader.TextAlign = ContentAlignment.MiddleCenter;
-            lblAddContributionHeader.Visible = false;
+            btnCancel.BackColor = Color.Plum;
+            btnCancel.Location = new Point(20, 263);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(75, 23);
+            btnCancel.TabIndex = 11;
+            btnCancel.Text = "Cancel";
+            btnCancel.UseVisualStyleBackColor = false;
+            btnCancel.Click += btnCancel_Click;
             // 
-            // AddContribution
+            // lblCreateContribution
+            // 
+            lblCreateContribution.Dock = DockStyle.Top;
+            lblCreateContribution.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblCreateContribution.Location = new Point(0, 0);
+            lblCreateContribution.Name = "lblCreateContribution";
+            lblCreateContribution.Size = new Size(340, 57);
+            lblCreateContribution.TabIndex = 19;
+            lblCreateContribution.Text = "Create Contribution";
+            lblCreateContribution.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lblCreateOutput
+            // 
+            lblCreateOutput.AutoSize = true;
+            lblCreateOutput.Location = new Point(12, 306);
+            lblCreateOutput.Name = "lblCreateOutput";
+            lblCreateOutput.Size = new Size(0, 15);
+            lblCreateOutput.TabIndex = 20;
+            // 
+            // CreateContribution
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(410, 450);
-            Controls.Add(lblAddContributionHeader);
+            BackColor = SystemColors.GradientInactiveCaption;
+            ClientSize = new Size(340, 330);
+            Controls.Add(lblCreateOutput);
+            Controls.Add(lblCreateContribution);
+            Controls.Add(btnCancel);
             Controls.Add(comboBoxAddContribution);
             Controls.Add(btnAddContributionSave);
             Controls.Add(dateTimePickerAddContribution);
@@ -144,8 +169,8 @@
             Controls.Add(lblAddContributionDescription);
             Controls.Add(lblAddContributionAmount);
             Controls.Add(lblAddContributionName);
-            Name = "AddContribution";
-            Text = "AddContribution";
+            Name = "CreateContribution";
+            Text = "CreateContribution";
             ((System.ComponentModel.ISupportInitialize)numAddContributionAmount).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -162,6 +187,8 @@
         private DateTimePicker dateTimePickerAddContribution;
         private Button btnAddContributionSave;
         private ComboBox comboBoxAddContribution;
-        private Label lblAddContributionHeader;
+        private Button btnCancel;
+        private Label lblCreateContribution;
+        private Label lblCreateOutput;
     }
 }

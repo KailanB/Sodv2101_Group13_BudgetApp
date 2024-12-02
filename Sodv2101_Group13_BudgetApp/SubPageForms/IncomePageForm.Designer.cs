@@ -131,10 +131,10 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 12F);
+            label3.Font = new Font("Segoe UI Semibold", 12F);
             label3.Location = new Point(19, 9);
             label3.Name = "label3";
-            label3.Size = new Size(94, 21);
+            label3.Size = new Size(99, 21);
             label3.TabIndex = 9;
             label3.Text = "My Incomes";
             // 

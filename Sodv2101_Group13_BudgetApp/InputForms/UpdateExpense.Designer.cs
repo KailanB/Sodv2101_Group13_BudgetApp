@@ -41,130 +41,145 @@
             cmbExpense = new ComboBox();
             lblBudget = new Label();
             lblUpdateExpense = new Label();
+            lblEditGoalFormHeader = new Label();
             ((System.ComponentModel.ISupportInitialize)numExpenseAmount).BeginInit();
             SuspendLayout();
             // 
             // lblExpenseName
             // 
             lblExpenseName.AutoSize = true;
-            lblExpenseName.Location = new Point(25, 45);
+            lblExpenseName.Location = new Point(12, 75);
             lblExpenseName.Name = "lblExpenseName";
-            lblExpenseName.Size = new Size(52, 20);
+            lblExpenseName.Size = new Size(42, 15);
             lblExpenseName.TabIndex = 0;
             lblExpenseName.Text = "Name:";
             // 
             // txtExpenseName
             // 
-            txtExpenseName.Location = new Point(106, 39);
+            txtExpenseName.Location = new Point(97, 72);
+            txtExpenseName.Margin = new Padding(3, 2, 3, 2);
             txtExpenseName.Name = "txtExpenseName";
-            txtExpenseName.Size = new Size(289, 27);
+            txtExpenseName.Size = new Size(212, 23);
             txtExpenseName.TabIndex = 1;
             // 
             // numExpenseAmount
             // 
             numExpenseAmount.DecimalPlaces = 2;
-            numExpenseAmount.Location = new Point(106, 97);
-            numExpenseAmount.Margin = new Padding(3, 4, 3, 4);
+            numExpenseAmount.Location = new Point(97, 110);
             numExpenseAmount.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
             numExpenseAmount.Name = "numExpenseAmount";
-            numExpenseAmount.Size = new Size(182, 27);
+            numExpenseAmount.Size = new Size(159, 23);
             numExpenseAmount.TabIndex = 6;
             // 
             // lblExpenseAmount
             // 
             lblExpenseAmount.AutoSize = true;
-            lblExpenseAmount.Location = new Point(25, 99);
+            lblExpenseAmount.Location = new Point(12, 112);
             lblExpenseAmount.Name = "lblExpenseAmount";
-            lblExpenseAmount.Size = new Size(65, 20);
+            lblExpenseAmount.Size = new Size(54, 15);
             lblExpenseAmount.TabIndex = 7;
             lblExpenseAmount.Text = "Amount:";
             // 
             // lblDescription
             // 
             lblDescription.AutoSize = true;
-            lblDescription.Location = new Point(27, 183);
+            lblDescription.Location = new Point(12, 194);
             lblDescription.Name = "lblDescription";
-            lblDescription.Size = new Size(85, 20);
+            lblDescription.Size = new Size(70, 15);
             lblDescription.TabIndex = 8;
-            lblDescription.Text = "Description";
+            lblDescription.Text = "Description:";
             // 
             // txtDescription
             // 
-            txtDescription.Location = new Point(153, 183);
-            txtDescription.Margin = new Padding(3, 4, 3, 4);
+            txtDescription.Location = new Point(97, 191);
             txtDescription.Multiline = true;
             txtDescription.Name = "txtDescription";
-            txtDescription.Size = new Size(181, 149);
+            txtDescription.Size = new Size(212, 83);
             txtDescription.TabIndex = 9;
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(25, 392);
-            btnCancel.Margin = new Padding(3, 4, 3, 4);
+            btnCancel.BackColor = Color.Plum;
+            btnCancel.Location = new Point(13, 336);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(86, 31);
+            btnCancel.Size = new Size(75, 23);
             btnCancel.TabIndex = 10;
             btnCancel.Text = "Cancel";
-            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.UseVisualStyleBackColor = false;
             btnCancel.Click += btnCancel_Click;
             // 
             // btnEditExpense
             // 
-            btnEditExpense.Location = new Point(309, 392);
-            btnEditExpense.Margin = new Padding(3, 4, 3, 4);
+            btnEditExpense.BackColor = Color.Plum;
+            btnEditExpense.Location = new Point(234, 336);
             btnEditExpense.Name = "btnEditExpense";
-            btnEditExpense.Size = new Size(86, 31);
+            btnEditExpense.Size = new Size(75, 23);
             btnEditExpense.TabIndex = 11;
             btnEditExpense.Text = "Edit";
-            btnEditExpense.UseVisualStyleBackColor = true;
+            btnEditExpense.UseVisualStyleBackColor = false;
             btnEditExpense.Click += btnEditExpense_Click;
             // 
             // lblTimePeriod
             // 
             lblTimePeriod.AutoSize = true;
-            lblTimePeriod.Location = new Point(27, 340);
+            lblTimePeriod.Location = new Point(22, 302);
             lblTimePeriod.Name = "lblTimePeriod";
-            lblTimePeriod.Size = new Size(91, 20);
+            lblTimePeriod.Size = new Size(73, 15);
             lblTimePeriod.TabIndex = 12;
             lblTimePeriod.Text = "Time Period:";
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(153, 339);
+            dateTimePicker1.Location = new Point(135, 294);
+            dateTimePicker1.Margin = new Padding(3, 2, 3, 2);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(243, 27);
+            dateTimePicker1.Size = new Size(174, 23);
             dateTimePicker1.TabIndex = 13;
             // 
             // cmbExpense
             // 
             cmbExpense.FormattingEnabled = true;
-            cmbExpense.Location = new Point(103, 141);
+            cmbExpense.Location = new Point(97, 149);
+            cmbExpense.Margin = new Padding(3, 2, 3, 2);
             cmbExpense.Name = "cmbExpense";
-            cmbExpense.Size = new Size(292, 28);
+            cmbExpense.Size = new Size(212, 23);
             cmbExpense.TabIndex = 14;
             // 
             // lblBudget
             // 
             lblBudget.AutoSize = true;
-            lblBudget.Location = new Point(27, 149);
+            lblBudget.Location = new Point(12, 152);
             lblBudget.Name = "lblBudget";
-            lblBudget.Size = new Size(64, 20);
+            lblBudget.Size = new Size(51, 15);
             lblBudget.TabIndex = 15;
             lblBudget.Text = "Budget: ";
             // 
             // lblUpdateExpense
             // 
             lblUpdateExpense.AutoSize = true;
-            lblUpdateExpense.Location = new Point(25, 438);
+            lblUpdateExpense.Location = new Point(22, 376);
             lblUpdateExpense.Name = "lblUpdateExpense";
-            lblUpdateExpense.Size = new Size(0, 20);
+            lblUpdateExpense.Size = new Size(0, 15);
             lblUpdateExpense.TabIndex = 16;
+            // 
+            // lblEditGoalFormHeader
+            // 
+            lblEditGoalFormHeader.Dock = DockStyle.Top;
+            lblEditGoalFormHeader.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblEditGoalFormHeader.Location = new Point(0, 0);
+            lblEditGoalFormHeader.Name = "lblEditGoalFormHeader";
+            lblEditGoalFormHeader.Size = new Size(341, 57);
+            lblEditGoalFormHeader.TabIndex = 17;
+            lblEditGoalFormHeader.Text = "Update Expense";
+            lblEditGoalFormHeader.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // UpdateExpense
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(465, 476);
+            BackColor = SystemColors.GradientInactiveCaption;
+            ClientSize = new Size(341, 414);
+            Controls.Add(lblEditGoalFormHeader);
             Controls.Add(lblUpdateExpense);
             Controls.Add(lblBudget);
             Controls.Add(cmbExpense);
@@ -178,6 +193,7 @@
             Controls.Add(numExpenseAmount);
             Controls.Add(txtExpenseName);
             Controls.Add(lblExpenseName);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "UpdateExpense";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "UpdateExpense";
@@ -201,5 +217,6 @@
         private ComboBox cmbExpense;
         private Label lblBudget;
         private Label lblUpdateExpense;
+        private Label lblEditGoalFormHeader;
     }
 }

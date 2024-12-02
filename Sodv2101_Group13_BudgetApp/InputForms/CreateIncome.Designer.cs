@@ -37,21 +37,22 @@
             txtIncomeName = new TextBox();
             label3 = new Label();
             lblIncomeOutput = new Label();
+            lblCreateIncome = new Label();
             ((System.ComponentModel.ISupportInitialize)numIncomeAmount).BeginInit();
             SuspendLayout();
             // 
             // numIncomeAmount
             // 
-            numIncomeAmount.Location = new Point(138, 79);
+            numIncomeAmount.Location = new Point(136, 117);
             numIncomeAmount.Maximum = new decimal(new int[] { 9999999, 0, 0, 0 });
             numIncomeAmount.Name = "numIncomeAmount";
-            numIncomeAmount.Size = new Size(120, 23);
+            numIncomeAmount.Size = new Size(151, 23);
             numIncomeAmount.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(37, 81);
+            label1.Location = new Point(15, 119);
             label1.Name = "label1";
             label1.Size = new Size(54, 15);
             label1.TabIndex = 1;
@@ -60,15 +61,15 @@
             // comboIncomeType
             // 
             comboIncomeType.FormattingEnabled = true;
-            comboIncomeType.Location = new Point(137, 129);
+            comboIncomeType.Location = new Point(136, 160);
             comboIncomeType.Name = "comboIncomeType";
-            comboIncomeType.Size = new Size(121, 23);
+            comboIncomeType.Size = new Size(151, 23);
             comboIncomeType.TabIndex = 2;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(37, 132);
+            label2.Location = new Point(15, 163);
             label2.Name = "label2";
             label2.Size = new Size(77, 15);
             label2.TabIndex = 3;
@@ -77,7 +78,7 @@
             // btnCancel
             // 
             btnCancel.BackColor = Color.Plum;
-            btnCancel.Location = new Point(16, 201);
+            btnCancel.Location = new Point(15, 208);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(75, 23);
             btnCancel.TabIndex = 4;
@@ -88,7 +89,7 @@
             // btnAddIncome
             // 
             btnAddIncome.BackColor = Color.Plum;
-            btnAddIncome.Location = new Point(231, 201);
+            btnAddIncome.Location = new Point(212, 208);
             btnAddIncome.Name = "btnAddIncome";
             btnAddIncome.Size = new Size(75, 23);
             btnAddIncome.TabIndex = 5;
@@ -98,15 +99,15 @@
             // 
             // txtIncomeName
             // 
-            txtIncomeName.Location = new Point(138, 30);
+            txtIncomeName.Location = new Point(136, 76);
             txtIncomeName.Name = "txtIncomeName";
-            txtIncomeName.Size = new Size(121, 23);
+            txtIncomeName.Size = new Size(151, 23);
             txtIncomeName.TabIndex = 14;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(37, 30);
+            label3.Location = new Point(15, 79);
             label3.Name = "label3";
             label3.Size = new Size(42, 15);
             label3.TabIndex = 15;
@@ -115,17 +116,29 @@
             // lblIncomeOutput
             // 
             lblIncomeOutput.AutoSize = true;
-            lblIncomeOutput.Location = new Point(16, 245);
+            lblIncomeOutput.Location = new Point(15, 249);
             lblIncomeOutput.Name = "lblIncomeOutput";
             lblIncomeOutput.Size = new Size(0, 15);
             lblIncomeOutput.TabIndex = 16;
+            // 
+            // lblCreateIncome
+            // 
+            lblCreateIncome.Dock = DockStyle.Top;
+            lblCreateIncome.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblCreateIncome.Location = new Point(0, 0);
+            lblCreateIncome.Name = "lblCreateIncome";
+            lblCreateIncome.Size = new Size(323, 57);
+            lblCreateIncome.TabIndex = 18;
+            lblCreateIncome.Text = "Create Income";
+            lblCreateIncome.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // CreateIncome
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
-            ClientSize = new Size(340, 269);
+            ClientSize = new Size(323, 283);
+            Controls.Add(lblCreateIncome);
             Controls.Add(lblIncomeOutput);
             Controls.Add(label3);
             Controls.Add(txtIncomeName);
@@ -153,5 +166,6 @@
         private TextBox txtIncomeName;
         private Label label3;
         private Label lblIncomeOutput;
+        private Label lblCreateIncome;
     }
 }

@@ -19,20 +19,20 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
         private FinancialGoal goal;
 
         private List<FinancialGoal> financialGoals = new List<FinancialGoal>();
-        
+
         // added paramterless constructor so that we can use this Form outside of the GoalPageForm.
         // instead of passing a value into the constructor simply use financialGoalService to pull goal list and populate form combo box
         public CreateContribution()
         {
-			InitializeComponent();
+            InitializeComponent();
 
             //populates combo box with financial goal options
             LoadFinancialGoalsComboBox();
-		}
+        }
         public CreateContribution(List<FinancialGoal> goals)
         {
             InitializeComponent();
-           
+
             comboBoxAddContribution.DataSource = goals;
             comboBoxAddContribution.DisplayMember = "Name";
             comboBoxAddContribution.ValueMember = "GoalID";
@@ -41,12 +41,12 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
 
         private void LoadFinancialGoalsComboBox()
         {
-			financialGoals = financialGoalService.GetFinancialGoalList();
+            financialGoals = financialGoalService.GetFinancialGoalList();
 
-			comboBoxAddContribution.DataSource = financialGoals;
-			comboBoxAddContribution.DisplayMember = "Name";
-			comboBoxAddContribution.ValueMember = "GoalID";
-		}
+            comboBoxAddContribution.DataSource = financialGoals;
+            comboBoxAddContribution.DisplayMember = "Name";
+            comboBoxAddContribution.ValueMember = "GoalID";
+        }
         private void btnAddContributionSave_Click(object sender, EventArgs e)
         {
 
@@ -80,6 +80,12 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
             {
                 MessageBox.Show("Please select a goal.", "No Goal Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
     }
 }

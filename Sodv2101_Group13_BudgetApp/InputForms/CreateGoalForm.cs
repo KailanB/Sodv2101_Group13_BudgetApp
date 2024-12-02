@@ -25,12 +25,12 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
             string name = txtBoxAddGoalName.Text;
             if (string.IsNullOrEmpty(name))
             {
-                lblAddGoalErrorMessage.Text = "Goal Name is required";
+                lblErrorOutput.Text = "Goal Name is required";
                 return;
             }
             if (!double.TryParse(numericUpDownAddGoalAmount.Text, out double amount) || amount <= 0)
             {
-                lblAddGoalErrorMessage.Text += "\n Please Enter a valid amount";
+                lblErrorOutput.Text += "\n Please Enter a valid amount";
                 return;
             }
             string description = txtBoxAddGoalDescription.Text;
@@ -50,7 +50,13 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
 
         private void lblAddGoalErrorMessage_TextChanged(object sender, EventArgs e)
         {
-            lblAddGoalErrorMessage.ForeColor = Color.Red;
+            lblErrorOutput.ForeColor = Color.Red;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
     }
 }

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            lblRemoveContributionHeader = new Label();
             comboBoxRemoveContribution = new ComboBox();
             btnRemoveContributionSave = new Button();
             dateTimePickerRemoveContribution = new DateTimePicker();
@@ -38,25 +37,15 @@
             lblRemoveContributionDescription = new Label();
             lblRemoveContributionAmount = new Label();
             lblRemoveContributionName = new Label();
+            btnCancel = new Button();
+            lblUpdateContribution = new Label();
             ((System.ComponentModel.ISupportInitialize)numRemoveContributionAmount).BeginInit();
             SuspendLayout();
-            // 
-            // lblRemoveContributionHeader
-            // 
-            lblRemoveContributionHeader.Dock = DockStyle.Top;
-            lblRemoveContributionHeader.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            lblRemoveContributionHeader.Location = new Point(0, 0);
-            lblRemoveContributionHeader.Name = "lblRemoveContributionHeader";
-            lblRemoveContributionHeader.Size = new Size(376, 46);
-            lblRemoveContributionHeader.TabIndex = 20;
-            lblRemoveContributionHeader.Text = "Delete Contribution";
-            lblRemoveContributionHeader.TextAlign = ContentAlignment.MiddleCenter;
-            lblRemoveContributionHeader.Visible = false;
             // 
             // comboBoxRemoveContribution
             // 
             comboBoxRemoveContribution.FormattingEnabled = true;
-            comboBoxRemoveContribution.Location = new Point(123, 107);
+            comboBoxRemoveContribution.Location = new Point(142, 107);
             comboBoxRemoveContribution.Name = "comboBoxRemoveContribution";
             comboBoxRemoveContribution.Size = new Size(183, 23);
             comboBoxRemoveContribution.TabIndex = 19;
@@ -64,31 +53,32 @@
             // 
             // btnRemoveContributionSave
             // 
-            btnRemoveContributionSave.Location = new Point(119, 383);
+            btnRemoveContributionSave.BackColor = Color.Plum;
+            btnRemoveContributionSave.Location = new Point(250, 383);
             btnRemoveContributionSave.Name = "btnRemoveContributionSave";
-            btnRemoveContributionSave.Size = new Size(142, 23);
+            btnRemoveContributionSave.Size = new Size(78, 23);
             btnRemoveContributionSave.TabIndex = 18;
             btnRemoveContributionSave.Text = "Delete";
-            btnRemoveContributionSave.UseVisualStyleBackColor = true;
+            btnRemoveContributionSave.UseVisualStyleBackColor = false;
             btnRemoveContributionSave.Click += btnRemoveContributionSave_Click;
             // 
             // dateTimePickerRemoveContribution
             // 
-            dateTimePickerRemoveContribution.Location = new Point(123, 314);
+            dateTimePickerRemoveContribution.Location = new Point(145, 314);
             dateTimePickerRemoveContribution.Name = "dateTimePickerRemoveContribution";
             dateTimePickerRemoveContribution.Size = new Size(183, 23);
             dateTimePickerRemoveContribution.TabIndex = 17;
             // 
             // txtBoxRemoveContributionDescription
             // 
-            txtBoxRemoveContributionDescription.Location = new Point(123, 225);
+            txtBoxRemoveContributionDescription.Location = new Point(145, 225);
             txtBoxRemoveContributionDescription.Name = "txtBoxRemoveContributionDescription";
             txtBoxRemoveContributionDescription.Size = new Size(183, 23);
             txtBoxRemoveContributionDescription.TabIndex = 16;
             // 
             // numRemoveContributionAmount
             // 
-            numRemoveContributionAmount.Location = new Point(123, 172);
+            numRemoveContributionAmount.Location = new Point(145, 172);
             numRemoveContributionAmount.Maximum = new decimal(new int[] { 9999999, 0, 0, 0 });
             numRemoveContributionAmount.Name = "numRemoveContributionAmount";
             numRemoveContributionAmount.Size = new Size(180, 23);
@@ -130,12 +120,36 @@
             lblRemoveContributionName.TabIndex = 11;
             lblRemoveContributionName.Text = "Name";
             // 
+            // btnCancel
+            // 
+            btnCancel.BackColor = Color.Plum;
+            btnCancel.Location = new Point(20, 383);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(75, 23);
+            btnCancel.TabIndex = 21;
+            btnCancel.Text = "Cancel";
+            btnCancel.UseVisualStyleBackColor = false;
+            btnCancel.Click += btnCancel_Click;
+            // 
+            // lblUpdateContribution
+            // 
+            lblUpdateContribution.Dock = DockStyle.Top;
+            lblUpdateContribution.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblUpdateContribution.Location = new Point(0, 0);
+            lblUpdateContribution.Name = "lblUpdateContribution";
+            lblUpdateContribution.Size = new Size(376, 57);
+            lblUpdateContribution.TabIndex = 35;
+            lblUpdateContribution.Text = "Delete Contribution";
+            lblUpdateContribution.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // RemoveContribution
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(376, 450);
-            Controls.Add(lblRemoveContributionHeader);
+            Controls.Add(lblUpdateContribution);
+            Controls.Add(btnCancel);
             Controls.Add(comboBoxRemoveContribution);
             Controls.Add(btnRemoveContributionSave);
             Controls.Add(dateTimePickerRemoveContribution);
@@ -153,8 +167,6 @@
         }
 
         #endregion
-
-        private Label lblRemoveContributionHeader;
         private ComboBox comboBoxRemoveContribution;
         private Button btnRemoveContributionSave;
         private DateTimePicker dateTimePickerRemoveContribution;
@@ -164,5 +176,7 @@
         private Label lblRemoveContributionDescription;
         private Label lblRemoveContributionAmount;
         private Label lblRemoveContributionName;
+        private Button btnCancel;
+        private Label lblUpdateContribution;
     }
 }

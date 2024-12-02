@@ -40,131 +40,147 @@
             lblExpenseName = new Label();
             lblBudget = new Label();
             cmbBudgetList = new ComboBox();
-            lblCreateExpense = new Label();
+            lblExpenseOutput = new Label();
+            lblCreateExpenseHeader = new Label();
             ((System.ComponentModel.ISupportInitialize)numExpenseAmount).BeginInit();
             SuspendLayout();
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(147, 331);
+            dateTimePicker1.Location = new Point(139, 281);
+            dateTimePicker1.Margin = new Padding(3, 2, 3, 2);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(243, 27);
+            dateTimePicker1.Size = new Size(166, 23);
             dateTimePicker1.TabIndex = 23;
             // 
             // lblTimePeriod
             // 
             lblTimePeriod.AutoSize = true;
-            lblTimePeriod.Location = new Point(22, 332);
+            lblTimePeriod.Location = new Point(12, 287);
             lblTimePeriod.Name = "lblTimePeriod";
-            lblTimePeriod.Size = new Size(91, 20);
+            lblTimePeriod.Size = new Size(73, 15);
             lblTimePeriod.TabIndex = 22;
             lblTimePeriod.Text = "Time Period:";
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(303, 384);
-            btnSave.Margin = new Padding(3, 4, 3, 4);
+            btnSave.BackColor = Color.Plum;
+            btnSave.Location = new Point(230, 323);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(86, 31);
+            btnSave.Size = new Size(75, 23);
             btnSave.TabIndex = 21;
             btnSave.Text = "Save";
-            btnSave.UseVisualStyleBackColor = true;
+            btnSave.UseVisualStyleBackColor = false;
             btnSave.Click += btnSave_Click;
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(19, 384);
-            btnCancel.Margin = new Padding(3, 4, 3, 4);
+            btnCancel.BackColor = Color.Plum;
+            btnCancel.Location = new Point(12, 323);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(86, 31);
+            btnCancel.Size = new Size(75, 23);
             btnCancel.TabIndex = 20;
             btnCancel.Text = "Cancel";
-            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.UseVisualStyleBackColor = false;
+            btnCancel.Click += btnCancel_Click_1;
             // 
             // txtDescription
             // 
-            txtDescription.Location = new Point(147, 175);
-            txtDescription.Margin = new Padding(3, 4, 3, 4);
+            txtDescription.Location = new Point(99, 184);
             txtDescription.Multiline = true;
             txtDescription.Name = "txtDescription";
-            txtDescription.Size = new Size(181, 149);
+            txtDescription.Size = new Size(206, 83);
             txtDescription.TabIndex = 19;
             // 
             // lblDescription
             // 
             lblDescription.AutoSize = true;
-            lblDescription.Location = new Point(22, 178);
+            lblDescription.Location = new Point(12, 187);
             lblDescription.Name = "lblDescription";
-            lblDescription.Size = new Size(85, 20);
+            lblDescription.Size = new Size(67, 15);
             lblDescription.TabIndex = 18;
             lblDescription.Text = "Description";
             // 
             // lblExpenseAmount
             // 
             lblExpenseAmount.AutoSize = true;
-            lblExpenseAmount.Location = new Point(19, 91);
+            lblExpenseAmount.Location = new Point(12, 113);
             lblExpenseAmount.Name = "lblExpenseAmount";
-            lblExpenseAmount.Size = new Size(65, 20);
+            lblExpenseAmount.Size = new Size(54, 15);
             lblExpenseAmount.TabIndex = 17;
             lblExpenseAmount.Text = "Amount:";
             // 
             // numExpenseAmount
             // 
             numExpenseAmount.DecimalPlaces = 2;
-            numExpenseAmount.Location = new Point(101, 89);
-            numExpenseAmount.Margin = new Padding(3, 4, 3, 4);
+            numExpenseAmount.Location = new Point(99, 111);
             numExpenseAmount.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
             numExpenseAmount.Name = "numExpenseAmount";
-            numExpenseAmount.Size = new Size(182, 27);
+            numExpenseAmount.Size = new Size(159, 23);
             numExpenseAmount.TabIndex = 16;
             // 
             // txtExpenseName
             // 
-            txtExpenseName.Location = new Point(101, 31);
+            txtExpenseName.Location = new Point(99, 73);
+            txtExpenseName.Margin = new Padding(3, 2, 3, 2);
             txtExpenseName.Name = "txtExpenseName";
-            txtExpenseName.Size = new Size(289, 27);
+            txtExpenseName.Size = new Size(206, 23);
             txtExpenseName.TabIndex = 15;
             // 
             // lblExpenseName
             // 
             lblExpenseName.AutoSize = true;
-            lblExpenseName.Location = new Point(19, 37);
+            lblExpenseName.Location = new Point(12, 76);
             lblExpenseName.Name = "lblExpenseName";
-            lblExpenseName.Size = new Size(52, 20);
+            lblExpenseName.Size = new Size(42, 15);
             lblExpenseName.TabIndex = 14;
             lblExpenseName.Text = "Name:";
             // 
             // lblBudget
             // 
             lblBudget.AutoSize = true;
-            lblBudget.Location = new Point(28, 139);
+            lblBudget.Location = new Point(12, 149);
             lblBudget.Name = "lblBudget";
-            lblBudget.Size = new Size(60, 20);
+            lblBudget.Size = new Size(48, 15);
             lblBudget.TabIndex = 24;
             lblBudget.Text = "Budget:";
             // 
             // cmbBudgetList
             // 
             cmbBudgetList.FormattingEnabled = true;
-            cmbBudgetList.Location = new Point(106, 136);
+            cmbBudgetList.Location = new Point(99, 146);
+            cmbBudgetList.Margin = new Padding(3, 2, 3, 2);
             cmbBudgetList.Name = "cmbBudgetList";
-            cmbBudgetList.Size = new Size(283, 28);
+            cmbBudgetList.Size = new Size(206, 23);
             cmbBudgetList.TabIndex = 25;
             // 
-            // lblCreateExpense
+            // lblExpenseOutput
             // 
-            lblCreateExpense.AutoSize = true;
-            lblCreateExpense.Location = new Point(22, 435);
-            lblCreateExpense.Name = "lblCreateExpense";
-            lblCreateExpense.Size = new Size(0, 20);
-            lblCreateExpense.TabIndex = 26;
+            lblExpenseOutput.AutoSize = true;
+            lblExpenseOutput.Location = new Point(12, 361);
+            lblExpenseOutput.Name = "lblExpenseOutput";
+            lblExpenseOutput.Size = new Size(0, 15);
+            lblExpenseOutput.TabIndex = 26;
+            // 
+            // lblCreateExpenseHeader
+            // 
+            lblCreateExpenseHeader.Dock = DockStyle.Top;
+            lblCreateExpenseHeader.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblCreateExpenseHeader.Location = new Point(0, 0);
+            lblCreateExpenseHeader.Name = "lblCreateExpenseHeader";
+            lblCreateExpenseHeader.Size = new Size(343, 57);
+            lblCreateExpenseHeader.TabIndex = 27;
+            lblCreateExpenseHeader.Text = "Create Expense";
+            lblCreateExpenseHeader.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // CreateExpense
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(454, 464);
-            Controls.Add(lblCreateExpense);
+            BackColor = SystemColors.GradientInactiveCaption;
+            ClientSize = new Size(343, 393);
+            Controls.Add(lblCreateExpenseHeader);
+            Controls.Add(lblExpenseOutput);
             Controls.Add(cmbBudgetList);
             Controls.Add(lblBudget);
             Controls.Add(dateTimePicker1);
@@ -177,7 +193,6 @@
             Controls.Add(numExpenseAmount);
             Controls.Add(txtExpenseName);
             Controls.Add(lblExpenseName);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "CreateExpense";
             Text = "NewExpense";
             ((System.ComponentModel.ISupportInitialize)numExpenseAmount).EndInit();
@@ -199,6 +214,7 @@
 		private Label lblExpenseName;
         private Label lblBudget;
         private ComboBox cmbBudgetList;
-        private Label lblCreateExpense;
+        private Label lblExpenseOutput;
+        private Label lblCreateExpenseHeader;
     }
 }

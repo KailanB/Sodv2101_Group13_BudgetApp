@@ -36,139 +36,132 @@
             lblGoalAmount = new Label();
             lblGoalDescription = new Label();
             lblGoalDeadline = new Label();
-            btnUpdateGoal = new Button();
-            btnDeleteGoal = new Button();
             dateTimePickerAddGoalDeadline = new DateTimePicker();
             lblAddGoalHeader = new Label();
-            lblAddGoalErrorMessage = new Label();
+            lblErrorOutput = new Label();
+            btnCancel = new Button();
             ((System.ComponentModel.ISupportInitialize)numericUpDownAddGoalAmount).BeginInit();
             SuspendLayout();
             // 
             // lblGoalName
             // 
             lblGoalName.AutoSize = true;
-            lblGoalName.Location = new Point(38, 74);
+            lblGoalName.Location = new Point(12, 73);
             lblGoalName.Name = "lblGoalName";
-            lblGoalName.Size = new Size(39, 15);
+            lblGoalName.Size = new Size(42, 15);
             lblGoalName.TabIndex = 0;
-            lblGoalName.Text = "Name";
+            lblGoalName.Text = "Name:";
             // 
             // numericUpDownAddGoalAmount
             // 
-            numericUpDownAddGoalAmount.Location = new Point(170, 121);
+            numericUpDownAddGoalAmount.Location = new Point(135, 108);
             numericUpDownAddGoalAmount.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
             numericUpDownAddGoalAmount.Name = "numericUpDownAddGoalAmount";
-            numericUpDownAddGoalAmount.Size = new Size(200, 23);
+            numericUpDownAddGoalAmount.Size = new Size(163, 23);
             numericUpDownAddGoalAmount.TabIndex = 1;
-            numericUpDownAddGoalAmount.TextAlign = HorizontalAlignment.Center;
             // 
             // txtBoxAddGoalDescription
             // 
-            txtBoxAddGoalDescription.Location = new Point(170, 175);
+            txtBoxAddGoalDescription.Location = new Point(135, 147);
             txtBoxAddGoalDescription.Multiline = true;
             txtBoxAddGoalDescription.Name = "txtBoxAddGoalDescription";
-            txtBoxAddGoalDescription.Size = new Size(200, 23);
+            txtBoxAddGoalDescription.Size = new Size(163, 23);
             txtBoxAddGoalDescription.TabIndex = 2;
             // 
             // txtBoxAddGoalName
             // 
-            txtBoxAddGoalName.Location = new Point(170, 71);
+            txtBoxAddGoalName.Location = new Point(135, 70);
             txtBoxAddGoalName.Name = "txtBoxAddGoalName";
-            txtBoxAddGoalName.Size = new Size(200, 23);
+            txtBoxAddGoalName.Size = new Size(163, 23);
             txtBoxAddGoalName.TabIndex = 3;
             // 
             // btnSaveGoal
             // 
-            btnSaveGoal.Location = new Point(47, 332);
+            btnSaveGoal.BackColor = Color.Plum;
+            btnSaveGoal.Location = new Point(223, 234);
             btnSaveGoal.Name = "btnSaveGoal";
             btnSaveGoal.Size = new Size(75, 23);
             btnSaveGoal.TabIndex = 4;
             btnSaveGoal.Text = "Save";
-            btnSaveGoal.UseVisualStyleBackColor = true;
+            btnSaveGoal.UseVisualStyleBackColor = false;
             btnSaveGoal.Click += btnSaveGoal_Click;
             // 
             // lblGoalAmount
             // 
             lblGoalAmount.AutoSize = true;
-            lblGoalAmount.Location = new Point(38, 123);
+            lblGoalAmount.Location = new Point(12, 110);
             lblGoalAmount.Name = "lblGoalAmount";
-            lblGoalAmount.Size = new Size(51, 15);
+            lblGoalAmount.Size = new Size(54, 15);
             lblGoalAmount.TabIndex = 5;
-            lblGoalAmount.Text = "Amount";
+            lblGoalAmount.Text = "Amount:";
             // 
             // lblGoalDescription
             // 
             lblGoalDescription.AutoSize = true;
-            lblGoalDescription.Location = new Point(38, 178);
+            lblGoalDescription.Location = new Point(12, 150);
             lblGoalDescription.Name = "lblGoalDescription";
-            lblGoalDescription.Size = new Size(67, 15);
+            lblGoalDescription.Size = new Size(70, 15);
             lblGoalDescription.TabIndex = 6;
-            lblGoalDescription.Text = "Description";
+            lblGoalDescription.Text = "Description:";
             // 
             // lblGoalDeadline
             // 
             lblGoalDeadline.AutoSize = true;
-            lblGoalDeadline.Location = new Point(38, 241);
+            lblGoalDeadline.Location = new Point(12, 193);
             lblGoalDeadline.Name = "lblGoalDeadline";
             lblGoalDeadline.Size = new Size(110, 15);
             lblGoalDeadline.TabIndex = 7;
             lblGoalDeadline.Text = "Deadline (Optional)";
             // 
-            // btnUpdateGoal
-            // 
-            btnUpdateGoal.Location = new Point(187, 332);
-            btnUpdateGoal.Name = "btnUpdateGoal";
-            btnUpdateGoal.Size = new Size(93, 23);
-            btnUpdateGoal.TabIndex = 8;
-            btnUpdateGoal.Text = "Update Goal";
-            btnUpdateGoal.UseVisualStyleBackColor = true;
-            // 
-            // btnDeleteGoal
-            // 
-            btnDeleteGoal.Location = new Point(358, 332);
-            btnDeleteGoal.Name = "btnDeleteGoal";
-            btnDeleteGoal.Size = new Size(75, 23);
-            btnDeleteGoal.TabIndex = 9;
-            btnDeleteGoal.Text = "Delete ";
-            btnDeleteGoal.UseVisualStyleBackColor = true;
-            // 
             // dateTimePickerAddGoalDeadline
             // 
-            dateTimePickerAddGoalDeadline.Location = new Point(170, 235);
+            dateTimePickerAddGoalDeadline.Location = new Point(135, 187);
             dateTimePickerAddGoalDeadline.Name = "dateTimePickerAddGoalDeadline";
-            dateTimePickerAddGoalDeadline.Size = new Size(200, 23);
+            dateTimePickerAddGoalDeadline.Size = new Size(163, 23);
             dateTimePickerAddGoalDeadline.TabIndex = 10;
             // 
             // lblAddGoalHeader
             // 
             lblAddGoalHeader.Dock = DockStyle.Top;
-            lblAddGoalHeader.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblAddGoalHeader.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblAddGoalHeader.Location = new Point(0, 0);
             lblAddGoalHeader.Name = "lblAddGoalHeader";
-            lblAddGoalHeader.Size = new Size(491, 58);
+            lblAddGoalHeader.Size = new Size(349, 58);
             lblAddGoalHeader.TabIndex = 11;
-            lblAddGoalHeader.Text = "Add Goal";
+            lblAddGoalHeader.Text = "Create Goal";
             lblAddGoalHeader.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // lblAddGoalErrorMessage
+            // lblErrorOutput
             // 
-            lblAddGoalErrorMessage.AutoSize = true;
-            lblAddGoalErrorMessage.Location = new Point(33, 290);
-            lblAddGoalErrorMessage.Name = "lblAddGoalErrorMessage";
-            lblAddGoalErrorMessage.Size = new Size(0, 15);
-            lblAddGoalErrorMessage.TabIndex = 12;
-            lblAddGoalErrorMessage.TextChanged += lblAddGoalErrorMessage_TextChanged;
+            lblErrorOutput.AutoSize = true;
+            lblErrorOutput.ForeColor = Color.Red;
+            lblErrorOutput.Location = new Point(12, 273);
+            lblErrorOutput.Name = "lblErrorOutput";
+            lblErrorOutput.Size = new Size(0, 15);
+            lblErrorOutput.TabIndex = 12;
+            lblErrorOutput.TextChanged += lblAddGoalErrorMessage_TextChanged;
             // 
-            // AddGoalForm
+            // btnCancel
+            // 
+            btnCancel.BackColor = Color.Plum;
+            btnCancel.Location = new Point(12, 234);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(75, 23);
+            btnCancel.TabIndex = 13;
+            btnCancel.Text = "Cancel";
+            btnCancel.UseVisualStyleBackColor = false;
+            btnCancel.Click += btnCancel_Click;
+            // 
+            // CreateGoalForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(491, 450);
-            Controls.Add(lblAddGoalErrorMessage);
+            BackColor = SystemColors.GradientInactiveCaption;
+            ClientSize = new Size(349, 311);
+            Controls.Add(btnCancel);
+            Controls.Add(lblErrorOutput);
             Controls.Add(lblAddGoalHeader);
             Controls.Add(dateTimePickerAddGoalDeadline);
-            Controls.Add(btnDeleteGoal);
-            Controls.Add(btnUpdateGoal);
             Controls.Add(lblGoalDeadline);
             Controls.Add(lblGoalDescription);
             Controls.Add(lblGoalAmount);
@@ -177,8 +170,8 @@
             Controls.Add(txtBoxAddGoalDescription);
             Controls.Add(numericUpDownAddGoalAmount);
             Controls.Add(lblGoalName);
-            Name = "AddGoalForm";
-            Text = "AddGoal";
+            Name = "CreateGoalForm";
+            Text = "CreateGoal";
             ((System.ComponentModel.ISupportInitialize)numericUpDownAddGoalAmount).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -194,10 +187,9 @@
         private Label lblGoalAmount;
         private Label lblGoalDescription;
         private Label lblGoalDeadline;
-        private Button btnUpdateGoal;
-        private Button btnDeleteGoal;
         private DateTimePicker dateTimePickerAddGoalDeadline;
         private Label lblAddGoalHeader;
-        private Label lblAddGoalErrorMessage;
+        private Label lblErrorOutput;
+        private Button btnCancel;
     }
 }
