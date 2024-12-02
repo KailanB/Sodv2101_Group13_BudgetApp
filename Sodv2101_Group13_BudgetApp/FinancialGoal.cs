@@ -41,6 +41,17 @@ namespace Sodv2101_Group13_BudgetApp
 
         }
 
+        public double GetContributionTotal()
+        {
+            double total = 0;
+            foreach(Contribution contribution in Contributions)
+            {
+                total += contribution.Amount;
+            }
+
+            return total;
+        }
+
 
     }
 }
