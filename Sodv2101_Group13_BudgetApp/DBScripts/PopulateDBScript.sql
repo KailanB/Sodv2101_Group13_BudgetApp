@@ -29,14 +29,14 @@ INSERT INTO Users (FirstName, LastName, Email, Password) VALUES
 
 
 
-INSERT INTO Income (Amount, TimePeriod, IncomeTypeID, UserID) VALUES
-(7500, 'Monthly', 1, 1),  -- Regular salary  - Alex, Salary
-(25, 'Bi-Weekly', 2, 1), -- Hourly job
-(15, 'Weekly', 2, 1), 
-(1500.00, 'Weekly', 2, 2), -- Taylor, Hourly
-(2500.00, 'Monthly', 2, 3), -- Jordan, Hourly
-(200.00, 'Quarterly', 2, 4), -- Charlie, Salary
-(300.00, 'Weekly', 1, 5); -- Sam, Hourly 
+INSERT INTO Income (Name, Amount, IncomeTypeID, UserID) VALUES
+('Software Developer', 7500, 1, 1),  -- Regular salary  - Alex, Salary
+('Painter', 25, 2, 1), -- Hourly job
+('Bakery', 15, 2, 1), 
+('Grocery Store', 15, 2, 2), -- Taylor, Hourly
+('Store Supervisor', 25, 2, 3), -- Jordan, Hourly
+('Delivery Driver', 20, 2, 4), -- Charlie, Salary
+('Apartment Manager', 3000.00, 1, 5); -- Sam, Hourly 
 
 INSERT INTO HoursWorked ([Hours], Date, IncomeID) VALUES
 (30, '2024-10-14', 2),  -- Hourly job, October
