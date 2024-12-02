@@ -61,7 +61,7 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
 
 
             bool createdIncome = false;
-            if (numAmount.Value > 0 && txtIncomeName.Text != "")
+            if (numAmount.Value > 0 && txtIncomeName.Text != "" && comboIncomeType.SelectedValue != null)
             {
                 int incomeTypeId = (int)comboIncomeType.SelectedValue;
 
@@ -80,7 +80,7 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
                     }
                     else
                     {
-                        MessageBox.Show("Error editing income!");
+                        lblIncomeOutput.Text = "Error editing income!";
                         this.DialogResult = DialogResult.Cancel;
                     }
 
@@ -96,7 +96,7 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
                     }
                     else
                     {
-                        MessageBox.Show("Error editing income!");
+                        lblIncomeOutput.Text = "Error editing income!";
                         this.DialogResult = DialogResult.Cancel;
                     }
 
@@ -105,7 +105,7 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
             }
             else
             {
-                lblIncomeOutput.Text = "Please select income name and value";
+                lblIncomeOutput.Text = "Please select income name, value, and type";
             }
 
 

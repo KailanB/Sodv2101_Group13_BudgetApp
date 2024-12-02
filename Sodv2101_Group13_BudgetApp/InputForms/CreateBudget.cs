@@ -20,7 +20,6 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
         {
             InitializeComponent();
         }
-
         // on create button click
         private void btnCreate_Click(object sender, EventArgs e)
         {
@@ -50,12 +49,6 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
 
 
         }
-
-        //public void ChangeBtnNameEdit()
-        //{
-        //    btnCreate.Text = "Edit";
-        //}
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;

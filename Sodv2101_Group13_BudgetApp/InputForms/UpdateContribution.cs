@@ -63,105 +63,47 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
 
 
         }
-
-
-        // this function pulls all contributions for userId 1 and then tries to load it into the edit form. 
-        // In this case we simply need to prepopulate the form with values from the selected contribution
-        //private void LoadContributions()
-        //{
-
-        //    try
-        //    {
-        //        contributions = contributionService.GetContributionList(1); // 1 is for USER ID
-        //        if (contributions.Count == 0)
-        //        {
-        //            MessageBox.Show("No Contributions to Remove.", "No Data", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //            this.Close();
-        //            return;
-        //        }
-        //        comboBoxUpdateContribution.DataSource = contributions;
-        //        comboBoxUpdateContribution.DisplayMember = "Description";
-        //        comboBoxUpdateContribution.ValueMember = "ContributionID";
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show($"Error loading contributions: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-
-        //}
-        private void comboBoxUpdateContribution_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboBoxUpdateContribution.SelectedItem is Contribution selectedContribution)
-            {
-                numUpdateContributionAmount.Value = (decimal)selectedContribution.Amount;
-                numUpdateContributionAmount.Text = selectedContribution.Description;
-                dateTimePickerUpdateContribution.Value = selectedContribution.Date;
-            }
-            else
-            {
-                lblUpdateContributionError.Text = "Select a Contribution to Update";
-            }
-        }
-
         private void lblUpdateContributionError_TextChanged(object sender, EventArgs e)
         {
-            lblUpdateContributionError.ForeColor = Color.Red;
+            lblUpdateOutput.ForeColor = Color.Red;
         }
 
         private void btnUpdateContributionSave_Click(object sender, EventArgs e)
         {
-
             int selectedGoalIndex = comboBoxUpdateContribution.SelectedIndex;
-            // get goalID of selected goal 
-            int goalId = financialGoals[selectedGoalIndex].GoalID;
+            if (selectedGoalIndex >= 0)
+            {
+                if(numUpdateContributionAmount.Value > 0)
+                {
+                    // get goalID of selected goal 
+                    int goalId = financialGoals[selectedGoalIndex].GoalID;
 
-            GoalId = goalId;
+                    GoalId = goalId;
 
-            double amount = Convert.ToDouble(numUpdateContributionAmount.Value);
-            string description = txtBoxUpdateContributionDescription.Text;
-            DateTime date = dateTimePickerUpdateContribution.Value.Date;
+                    double amount = Convert.ToDouble(numUpdateContributionAmount.Value);
+                    string description = txtBoxUpdateContributionDescription.Text;
+                    DateTime date = dateTimePickerUpdateContribution.Value.Date;
 
-            Contribution contribution = new Contribution(goalId, amount, description, date);
+                    Contribution contribution = new Contribution(goalId, amount, description, date);
 
-            // pass the object AND ID to the edit budget method of budget service
-            // proceed to budget service class
-            contributionService.UpdateContribution(contribution, ContributionId);
-            this.DialogResult = DialogResult.OK;
-
-            //if (comboBoxUpdateContribution.SelectedItem is Contribution selectedContribution)
-            //{
-            //    var confirmResult = MessageBox.Show($"Are you sure you want to update contribution: {selectedContribution.Description}?", "Update Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            //    if (confirmResult == DialogResult.Yes)
-            //    {
-
-            //        Contribution updateContribution = new Contribution
-            //        {
-            //            ContributionID = selectedContribution.ContributionID,
-            //            GoalID = selectedContribution.GoalID,
-            //            Amount = Convert.ToDouble(numUpdateContributionAmount.Value),
-            //            Description = selectedContribution.Description,
-            //            Date = DateTime.Now,
-            //        };
-
-            //        bool isUpdated = contributionService.UpdateContribution(updateContribution, selectedContribution.ContributionID);
-            //        if (isUpdated)
-            //        {
-            //            MessageBox.Show("Contribution update successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);                        
-            //            // LoadContributions();
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("Failed to Update the contribution.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        }
-
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Please select a contribution to Update.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //}
-
-            this.Close();
+                    // pass the object AND ID to the edit budget method of budget service
+                    // proceed to budget service class
+                    contributionService.UpdateContribution(contribution, ContributionId);
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                {
+                    lblUpdateOutput.Text = "Please input a value greater than 0";
+                }
+                
+            }
+            else
+            {
+                lblUpdateOutput.Text = "Please select a goal category!";   
+            }
+            
+            
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

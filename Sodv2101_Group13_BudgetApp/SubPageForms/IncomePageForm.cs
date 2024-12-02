@@ -103,31 +103,36 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            DataGridViewRow selectedRow = dataGridViewIncome.SelectedRows[0];
-            int incomeListIndex = dataGridViewIncome.CurrentCell.RowIndex;
-            string type = selectedRow.Cells["Type"].Value.ToString();
-
-            if (type == "Hourly")
+            if(dataGridViewIncome.SelectedRows.Count > 0)
             {
-                var incomeHourly = incomeList[incomeListIndex] as IncomeHourly;
+                DataGridViewRow selectedRow = dataGridViewIncome.SelectedRows[0];
+                int incomeListIndex = dataGridViewIncome.CurrentCell.RowIndex;
+                string type = selectedRow.Cells["Type"].Value.ToString();
 
-                // exp.TimePeriod.ToString("yyyy/MM/dd")
-
-                DataTable hoursTable = new DataTable();
-                hoursTable.Columns.Add("Hours", typeof(double));
-                hoursTable.Columns.Add("Date", typeof(string));
-                foreach (var hours in incomeHourly.HoursList)
+                if (type == "Hourly")
                 {
-                    hoursTable.Rows.Add(hours.Hours, hours.Date.ToString("yyyy/MM/dd"));
-                }
-                dataGridViewHours.DataSource = hoursTable;
+                    var incomeHourly = incomeList[incomeListIndex] as IncomeHourly;
 
+                    DataTable hoursTable = new DataTable();
+                    hoursTable.Columns.Add("Hours", typeof(double));
+                    hoursTable.Columns.Add("Date", typeof(string));
+                    foreach (var hours in incomeHourly.HoursList)
+                    {
+                        hoursTable.Rows.Add(hours.Hours, hours.Date.ToString("yyyy/MM/dd"));
+                    }
+                    dataGridViewHours.DataSource = hoursTable;
+
+                }
+                else
+                {
+                    lblIncomeOutput.Text = "Please select an hourly income to view hours!";
+                }
             }
             else
             {
                 lblIncomeOutput.Text = "Please select an hourly income to view hours!";
             }
+            
 
 
         }

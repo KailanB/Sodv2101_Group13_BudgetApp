@@ -20,6 +20,8 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
 
         private List<FinancialGoal> financialGoals = new List<FinancialGoal>();
 
+        public int GoalId;
+
         // added paramterless constructor so that we can use this Form outside of the GoalPageForm.
         // instead of passing a value into the constructor simply use financialGoalService to pull goal list and populate form combo box
         public CreateContribution()
@@ -29,14 +31,14 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
             //populates combo box with financial goal options
             LoadFinancialGoalsComboBox();
         }
-        public CreateContribution(List<FinancialGoal> goals)
-        {
-            InitializeComponent();
+        //public CreateContribution(List<FinancialGoal> goals)
+        //{
+        //    InitializeComponent();
 
-            comboBoxAddContribution.DataSource = goals;
-            comboBoxAddContribution.DisplayMember = "Name";
-            comboBoxAddContribution.ValueMember = "GoalID";
-        }
+        //    comboBoxAddContribution.DataSource = goals;
+        //    comboBoxAddContribution.DisplayMember = "Name";
+        //    comboBoxAddContribution.ValueMember = "GoalID";
+        //}
 
 
         private void LoadFinancialGoalsComboBox()
@@ -67,18 +69,21 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
                     // Add the contribution via your service
                     contributionService.AddContribution(newContribution);
 
+                    GoalId = selectedGoal.GoalID;
                     // Notify the user and close the form
-                    MessageBox.Show("Contribution added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // MessageBox.Show("Contribution added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.DialogResult = DialogResult.OK;
                 }
                 else
                 {
-                    MessageBox.Show("Please enter a valid amount.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    lblCreateOutput.Text = "Please enter a valid amount. Invalid Input";
+                    //MessageBox.Show("Please enter a valid amount.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             else
             {
-                MessageBox.Show("Please select a goal.", "No Goal Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                lblCreateOutput.Text = "Please select a goal. No Goal Selected";
+                //MessageBox.Show("Please select a goal.", "No Goal Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

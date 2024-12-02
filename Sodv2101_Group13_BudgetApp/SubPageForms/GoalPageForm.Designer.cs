@@ -39,6 +39,7 @@
             btnEditContribution = new Button();
             btnDeleteContribution = new Button();
             label1 = new Label();
+            lblContributionOutput = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewFinancialGoals).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewContributions).BeginInit();
             SuspendLayout();
@@ -158,12 +159,21 @@
             label1.TabIndex = 13;
             label1.Text = "My Financial Goals";
             // 
+            // lblContributionOutput
+            // 
+            lblContributionOutput.AutoSize = true;
+            lblContributionOutput.Location = new Point(515, 421);
+            lblContributionOutput.Name = "lblContributionOutput";
+            lblContributionOutput.Size = new Size(0, 15);
+            lblContributionOutput.TabIndex = 14;
+            // 
             // GoalPageForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(933, 459);
+            Controls.Add(lblContributionOutput);
             Controls.Add(label1);
             Controls.Add(btnDeleteContribution);
             Controls.Add(btnEditContribution);
@@ -483,5 +493,6 @@
 		private Button btnEditContribution;
 		private Button btnDeleteContribution;
         private Label label1;
+        private Label lblContributionOutput;
     }
 }

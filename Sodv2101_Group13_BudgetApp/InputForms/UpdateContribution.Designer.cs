@@ -37,7 +37,7 @@
             lblUpdateContributionDescription = new Label();
             lblUpdateContributionAmount = new Label();
             lblUpdateContributionName = new Label();
-            lblUpdateContributionError = new Label();
+            lblUpdateOutput = new Label();
             btnCancel = new Button();
             lblUpdateContribution = new Label();
             ((System.ComponentModel.ISupportInitialize)numUpdateContributionAmount).BeginInit();
@@ -50,7 +50,6 @@
             comboBoxUpdateContribution.Name = "comboBoxUpdateContribution";
             comboBoxUpdateContribution.Size = new Size(183, 23);
             comboBoxUpdateContribution.TabIndex = 29;
-            comboBoxUpdateContribution.SelectedIndexChanged += comboBoxUpdateContribution_SelectedIndexChanged;
             // 
             // btnUpdateContributionSave
             // 
@@ -121,14 +120,14 @@
             lblUpdateContributionName.TabIndex = 21;
             lblUpdateContributionName.Text = "Name:";
             // 
-            // lblUpdateContributionError
+            // lblUpdateOutput
             // 
-            lblUpdateContributionError.AutoSize = true;
-            lblUpdateContributionError.Location = new Point(22, 298);
-            lblUpdateContributionError.Name = "lblUpdateContributionError";
-            lblUpdateContributionError.Size = new Size(0, 15);
-            lblUpdateContributionError.TabIndex = 31;
-            lblUpdateContributionError.TextChanged += lblUpdateContributionError_TextChanged;
+            lblUpdateOutput.AutoSize = true;
+            lblUpdateOutput.Location = new Point(22, 298);
+            lblUpdateOutput.Name = "lblUpdateOutput";
+            lblUpdateOutput.Size = new Size(0, 15);
+            lblUpdateOutput.TabIndex = 31;
+            lblUpdateOutput.TextChanged += lblUpdateContributionError_TextChanged;
             // 
             // btnCancel
             // 
@@ -160,7 +159,7 @@
             ClientSize = new Size(345, 328);
             Controls.Add(lblUpdateContribution);
             Controls.Add(btnCancel);
-            Controls.Add(lblUpdateContributionError);
+            Controls.Add(lblUpdateOutput);
             Controls.Add(comboBoxUpdateContribution);
             Controls.Add(btnUpdateContributionSave);
             Controls.Add(dateTimePickerUpdateContribution);
@@ -187,7 +186,7 @@
         private Label lblUpdateContributionDescription;
         private Label lblUpdateContributionAmount;
         private Label lblUpdateContributionName;
-        private Label lblUpdateContributionError;
+        private Label lblUpdateOutput;
         private Button btnCancel;
         private Label lblUpdateContribution;
     }

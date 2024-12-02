@@ -46,11 +46,8 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
         private void btnAddIncome_Click(object sender, EventArgs e)
         {
             bool createdIncome = false;
-            if (numIncomeAmount.Value > 0 && txtIncomeName.Text != "")
+            if (numIncomeAmount.Value > 0 && txtIncomeName.Text != "" && comboIncomeType.SelectedValue != null)
             {
-                //int selectedBudgetId = (int)comboIncomeType.SelectedValue;
-                //int incomeTypeId = incomeTypes[selectedBudgetId].TypeId;
-
                 int incomeTypeId = (int)comboIncomeType.SelectedValue;
 
                 string name = txtIncomeName.Text;
@@ -93,7 +90,7 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
             }
             else
             {
-                lblIncomeOutput.Text = "Please select income name and value";
+                lblIncomeOutput.Text = "Please select income name, value and type";
             }
 
 
