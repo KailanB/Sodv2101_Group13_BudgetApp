@@ -8,24 +8,56 @@ namespace Sodv2101_Group13_BudgetApp
 {
     internal class IncomeHourly : Income
     {
-        public double Hours { get; set; }
+        public List<HoursWorked> HoursList { get; set; } = new List<HoursWorked>();
+        public double HoursTotal { get; set; }
 
-        public IncomeHourly(string name, double amount, string timePeriod) : base(name, amount)
+        public IncomeHourly(string name, double amount) : base(name, amount)
         {
-            
+
         }
 
-        public void AddHours(double hours)
+        public IncomeHourly(string name, double amount, int incomeTypeId) : base(name, amount, incomeTypeId)
         {
-            Hours += hours;
+
         }
 
-        
-
-        public override double GetTotalEarned()
+        public IncomeHourly(int incomeId, string name, double amount, int incomeTypeId, int userId) : base(incomeId, name, amount, incomeTypeId, userId)
         {
-            return Hours * Amount;
+
+        }
+        public IncomeHourly(int incomeId, string name, double amount, int incomeTypeId, string type, int userId) : base(incomeId, name, amount, incomeTypeId, type, userId)
+        {
+
         }
 
+        public void AddHours(HoursWorked hours)
+        {
+            HoursList.Add(hours);
+        }
+
+        public double GetTotalEarned()
+        {
+            double total = 0;
+            foreach (HoursWorked hour in HoursList)
+            {
+                total += hour.Hours;
+            }
+            return total;
+
+        }
+
+        public override double GetMonthlyEarnings(int month)
+        {
+            double totalHours = 0;
+            foreach (HoursWorked hour in HoursList)
+            {
+                if (hour.Date.Month == month)
+                {
+                    totalHours += hour.Hours;
+                }
+
+            }
+            return totalHours * Amount;
+        }
     }
 }
