@@ -40,6 +40,7 @@
             lblExpenseName = new Label();
             lblBudget = new Label();
             cmbBudgetList = new ComboBox();
+            lblCreateExpense = new Label();
             ((System.ComponentModel.ISupportInitialize)numExpenseAmount).BeginInit();
             SuspendLayout();
             // 
@@ -79,7 +80,6 @@
             btnCancel.TabIndex = 20;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            //btnCancel.Click += btnCancel_Click;
             // 
             // txtDescription
             // 
@@ -151,11 +151,20 @@
             cmbBudgetList.Size = new Size(283, 28);
             cmbBudgetList.TabIndex = 25;
             // 
-            // NewExpense
+            // lblCreateExpense
+            // 
+            lblCreateExpense.AutoSize = true;
+            lblCreateExpense.Location = new Point(22, 435);
+            lblCreateExpense.Name = "lblCreateExpense";
+            lblCreateExpense.Size = new Size(0, 20);
+            lblCreateExpense.TabIndex = 26;
+            // 
+            // CreateExpense
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(454, 449);
+            ClientSize = new Size(454, 464);
+            Controls.Add(lblCreateExpense);
             Controls.Add(cmbBudgetList);
             Controls.Add(lblBudget);
             Controls.Add(dateTimePicker1);
@@ -169,7 +178,7 @@
             Controls.Add(txtExpenseName);
             Controls.Add(lblExpenseName);
             Margin = new Padding(3, 4, 3, 4);
-            Name = "NewExpense";
+            Name = "CreateExpense";
             Text = "NewExpense";
             ((System.ComponentModel.ISupportInitialize)numExpenseAmount).EndInit();
             ResumeLayout(false);
@@ -190,5 +199,6 @@
 		private Label lblExpenseName;
         private Label lblBudget;
         private ComboBox cmbBudgetList;
+        private Label lblCreateExpense;
     }
 }

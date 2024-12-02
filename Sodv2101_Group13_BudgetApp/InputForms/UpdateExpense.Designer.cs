@@ -40,6 +40,7 @@
             dateTimePicker1 = new DateTimePicker();
             cmbExpense = new ComboBox();
             lblBudget = new Label();
+            lblUpdateExpense = new Label();
             ((System.ComponentModel.ISupportInitialize)numExpenseAmount).BeginInit();
             SuspendLayout();
             // 
@@ -151,11 +152,20 @@
             lblBudget.TabIndex = 15;
             lblBudget.Text = "Budget: ";
             // 
+            // lblUpdateExpense
+            // 
+            lblUpdateExpense.AutoSize = true;
+            lblUpdateExpense.Location = new Point(25, 438);
+            lblUpdateExpense.Name = "lblUpdateExpense";
+            lblUpdateExpense.Size = new Size(0, 20);
+            lblUpdateExpense.TabIndex = 16;
+            // 
             // UpdateExpense
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(465, 451);
+            ClientSize = new Size(465, 476);
+            Controls.Add(lblUpdateExpense);
             Controls.Add(lblBudget);
             Controls.Add(cmbExpense);
             Controls.Add(dateTimePicker1);
@@ -190,5 +200,6 @@
         private DateTimePicker dateTimePicker1;
         private ComboBox cmbExpense;
         private Label lblBudget;
+        private Label lblUpdateExpense;
     }
 }

@@ -233,18 +233,21 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
                     }
                     else
                     {
-                        MessageBox.Show("The date format is incorrect or cannot be parsed. Please check the date format.");
+                        lblExpenseOutput.Text = "The date format is incorrect or cannot be parsed. Please check the date format.";
+                        //MessageBox.Show("The date format is incorrect or cannot be parsed. Please check the date format.");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("The selected expense does not have a valid date.");
+                    lblExpenseOutput.Text = "The selected expense does not have a valid date.";
+                    //MessageBox.Show("The selected expense does not have a valid date.");
                 }
             }
             else
             {
                 // No expense selected
-                MessageBox.Show("Please select a single expense to edit.");
+                lblBudgetOutput.Text = "Please select a single expense to edit.";
+                //MessageBox.Show("Please select a single expense to edit.");
             }
         }
 

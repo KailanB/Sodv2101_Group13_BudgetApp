@@ -52,19 +52,23 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
             // Validate required fields
             if (string.IsNullOrWhiteSpace(txtExpenseName.Text))
             {
-                MessageBox.Show("Expense Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                lblCreateExpense.Text = "Expense Name is required.";
+                //MessageBox.Show("Expense Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (numExpenseAmount.Value <= 0)
             {
-                MessageBox.Show("Expense Amount must be greater than 0.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                lblCreateExpense.Text = "Expense Amount must be greater than 0.";
+
+                //MessageBox.Show("Expense Amount must be greater than 0.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (cmbBudgetList.SelectedValue == null)
             {
-                MessageBox.Show("Please select a valid budget.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                lblCreateExpense.Text = "Please select a valid budget.";
+                //MessageBox.Show("Please select a valid budget.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -95,13 +99,15 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
 
             if (isAdded)
             {
-                MessageBox.Show("Expense added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                lblCreateExpense.Text = "Expense added successfully.";
+                //MessageBox.Show("Expense added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Failed to add expense. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    lblCreateExpense.Text = "Failed to add expense. Please try again.";
+                    //MessageBox.Show("Failed to add expense. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         catch (Exception ex)
@@ -143,7 +149,8 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
                 }
                 else
                 {
-                    MessageBox.Show("No budgets found. Please create a budget first.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        lblCreateExpense.Text = "No budgets found. Please create a budget first.";
+                        //MessageBox.Show("No budgets found. Please create a budget first.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
