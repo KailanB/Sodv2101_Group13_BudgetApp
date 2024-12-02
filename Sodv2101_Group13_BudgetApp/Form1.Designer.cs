@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            label1 = new Label();
-            label2 = new Label();
             picBudgetGraphs = new PictureBox();
             toolStripDropDownButtonAddExpenses = new ToolStripDropDownButton();
             addExpenseToolStripMenuItem = new ToolStripMenuItem();
@@ -43,84 +41,21 @@
             btnToolStripIncome = new ToolStripButton();
             toolStripSeparator3 = new ToolStripSeparator();
             toolStripSeparator4 = new ToolStripSeparator();
-            btnToolStripReports = new ToolStripButton();
             toolStrip1 = new ToolStrip();
-            // btnToolStripBudget = new ToolStripDropDownButton();
-            // toolStripMenuItemCreateBudget = new ToolStripMenuItem();
-            // toolStripMenuItemEditBudget = new ToolStripMenuItem();
-            // newExpenseToolStripMenuItem = new ToolStripMenuItem();
-            // editExpenseToolStripMenuItem = new ToolStripMenuItem();
-            // toolStripDropDownButtonGoals = new ToolStripDropDownButton();
-            // toolStripMenuItemAddContribution = new ToolStripMenuItem();
-            // toolStripMenuItemRemoveContribution = new ToolStripMenuItem();
-            // toolStripMenuItemUpdateContribution = new ToolStripMenuItem();
-            // toolStripMenuItemAddGoal = new ToolStripMenuItem();
-            // toolStripMenuItemEditGoal = new ToolStripMenuItem();
-            // toolStripMenuItemDeleteGoal = new ToolStripMenuItem();
-            // toolStripButtonBudget = new ToolStripButton();
+            toolStripButtonBudget = new ToolStripButton();
             toolStripButton1 = new ToolStripButton();
-            toolStripSeparator5 = new ToolStripSeparator();
-            label3 = new Label();
+            picGoalGraph = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)picBudgetGraphs).BeginInit();
             toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picGoalGraph).BeginInit();
             SuspendLayout();
-            // 
-            // btnCreateBudget
-            
-            // btnCreateBudget.Location = new Point(854, 89);
-            // btnCreateBudget.Margin = new Padding(3, 4, 3, 4);
-            // btnCreateBudget.Name = "btnCreateBudget";
-            // btnCreateBudget.Size = new Size(121, 31);
-            // btnCreateBudget.TabIndex = 0;
-            // btnCreateBudget.Text = "Create Budget";
-            // btnCreateBudget.UseVisualStyleBackColor = true;
-            // btnCreateBudget.Click += btnCreateBudget_Click;
-            // // 
-            // // comboBudgets
-            // // 
-            // comboBudgets.FormattingEnabled = true;
-            // comboBudgets.Location = new Point(837, 176);
-            // comboBudgets.Margin = new Padding(3, 4, 3, 4);
-            // comboBudgets.Name = "comboBudgets";
-            // comboBudgets.Size = new Size(138, 28);
-            // comboBudgets.TabIndex = 1;
-            // // 
-            // // button1
-            // // 
-            // button1.Location = new Point(1026, 280);
-            // button1.Margin = new Padding(3, 4, 3, 4);
-            // button1.Name = "button1";
-            // button1.Size = new Size(86, 31);
-            // button1.TabIndex = 3;
-            // button1.Text = "button1";
-            // button1.UseVisualStyleBackColor = true;
-            // button1.Click += button1_Click;
-            
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 16F);
-            label1.Location = new Point(14, 49);
-            label1.Name = "label1";
-            label1.Size = new Size(360, 37);
-            label1.TabIndex = 4;
-            label1.Text = "Welcome to the Budget App!";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F);
-            label2.Location = new Point(14, 179);
-            label2.Name = "label2";
-            label2.Size = new Size(159, 28);
-            label2.TabIndex = 5;
-            label2.Text = "Monthly Income:";
             // 
             // picBudgetGraphs
             // 
-            picBudgetGraphs.Location = new Point(104, 220);
+            picBudgetGraphs.Location = new Point(153, 127);
+            picBudgetGraphs.Margin = new Padding(3, 2, 3, 2);
             picBudgetGraphs.Name = "picBudgetGraphs";
-            picBudgetGraphs.Size = new Size(258, 150);
+            picBudgetGraphs.Size = new Size(250, 250);
             picBudgetGraphs.TabIndex = 6;
             picBudgetGraphs.TabStop = false;
             // 
@@ -174,12 +109,12 @@
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(6, 27);
+            toolStripSeparator2.Size = new Size(6, 25);
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(6, 27);
+            toolStripSeparator1.Size = new Size(6, 25);
             // 
             // btnToolStripIncome
             // 
@@ -196,31 +131,20 @@
             // toolStripSeparator3
             // 
             toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(6, 27);
+            toolStripSeparator3.Size = new Size(6, 25);
             // 
             // toolStripSeparator4
             // 
             toolStripSeparator4.Name = "toolStripSeparator4";
-            toolStripSeparator4.Size = new Size(6, 27);
-            // 
-            // btnToolStripReports
-            // 
-            btnToolStripReports.AutoSize = false;
-            btnToolStripReports.BackColor = Color.Plum;
-            btnToolStripReports.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            btnToolStripReports.Image = (Image)resources.GetObject("btnToolStripReports.Image");
-            btnToolStripReports.ImageTransparentColor = Color.Magenta;
-            btnToolStripReports.Name = "btnToolStripReports";
-            btnToolStripReports.Size = new Size(100, 22);
-            btnToolStripReports.Text = "Reports";
+            toolStripSeparator4.Size = new Size(6, 25);
             // 
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(20, 20);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripDropDownButtonAddExpenses, toolStripSeparator2, toolStripButtonBudget, toolStripSeparator1, btnToolStripIncome, toolStripSeparator3, toolStripButton1, toolStripSeparator4, btnToolStripReports, toolStripSeparator5 });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripDropDownButtonAddExpenses, toolStripSeparator2, toolStripButtonBudget, toolStripSeparator1, btnToolStripIncome, toolStripSeparator3, toolStripButton1, toolStripSeparator4 });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(1141, 27);
+            toolStrip1.Size = new Size(776, 25);
             toolStrip1.TabIndex = 2;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -249,47 +173,38 @@
             toolStripButton1.Text = "Goals";
             toolStripButton1.Click += toolStripButton1_Click;
             // 
-            // toolStripSeparator5
+            // picGoalGraph
             // 
-            toolStripSeparator5.Name = "toolStripSeparator5";
-            toolStripSeparator5.Size = new Size(6, 25);
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 12F);
-            label3.Location = new Point(14, 265);
-            label3.Name = "label3";
-            label3.Size = new Size(83, 28);
-            label3.TabIndex = 7;
-            label3.Text = "Budgets";
+            picGoalGraph.Location = new Point(153, 492);
+            picGoalGraph.Name = "picGoalGraph";
+            picGoalGraph.Size = new Size(250, 250);
+            picGoalGraph.TabIndex = 7;
+            picGoalGraph.TabStop = false;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
-            ClientSize = new Size(1141, 787);
-            Controls.Add(label3);
+            ClientSize = new Size(776, 782);
+            Controls.Add(picGoalGraph);
             Controls.Add(picBudgetGraphs);
-            Controls.Add(label2);
-            Controls.Add(label1);
             Controls.Add(toolStrip1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)picBudgetGraphs).EndInit();
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)picGoalGraph).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
+
+
         #endregion
-        private Label label1;
-		private Label label2;
-		private PictureBox picBudgetGraphs;
+        private PictureBox picBudgetGraphs;
 		private ToolStripDropDownButton toolStripDropDownButtonAddExpenses;
 		private ToolStripMenuItem toolBtnAddBudget;
 		private ToolStripSeparator toolStripSeparator2;
@@ -297,16 +212,14 @@
 		private ToolStripButton btnToolStripIncome;
 		private ToolStripSeparator toolStripSeparator3;
 		private ToolStripSeparator toolStripSeparator4;
-		private ToolStripButton btnToolStripReports;
 		private ToolStrip toolStrip1;
-		private Label label3;
         private ToolStripMenuItem toolStripMenuItemAddFinanceGoal;
         private ToolStripMenuItem toolStripMenuItemAddIncome;
 		private ToolStripMenuItem addExpenseToolStripMenuItem;
 		private ToolStripMenuItem addGoalContributionToolStripMenuItem;
 		private ToolStripButton toolStripButton1;
-		private ToolStripSeparator toolStripSeparator5;
 		private ToolStripButton toolStripButtonBudget;
+        private PictureBox picGoalGraph;
     }
 }
 
