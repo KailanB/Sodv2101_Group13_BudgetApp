@@ -142,6 +142,11 @@ namespace Sodv2101_Group13_BudgetApp.SubPageForms
                 int budgetId = budgetList[budgetListIndex].BudgetID;
                 // int budgetId = Convert.ToInt32(selectedRow.Cells["Budget ID"].Value);
 
+                DateTime date = DateTime.Now;
+                double monthlyExpenseTotal = budgetList[budgetListIndex].GetExpenseTotalByMonth(date.Month);
+                lblBudgetExpenses.Text = $"{budgetList[budgetListIndex].Name} Monthly expense total: {monthlyExpenseTotal}";
+
+
                 expenses = expenseService.GetExpenseByBudgetId(budgetId);
 
                 DataTable expenseTable = new DataTable();
