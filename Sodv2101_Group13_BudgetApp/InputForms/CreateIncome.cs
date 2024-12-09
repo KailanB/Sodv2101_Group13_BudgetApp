@@ -21,6 +21,7 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
         private List<IncomeType> incomeTypes = new List<IncomeType>();
         private IncomeService incomeService = new IncomeService();
 
+        public bool CreatedIncome = false;
         public CreateIncome()
         {
             InitializeComponent();
@@ -60,6 +61,7 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
                     createdIncome = incomeService.CreateIncome(incomeSalary);
                     if (createdIncome)
                     {
+                        CreatedIncome = true;
                         this.DialogResult = DialogResult.OK;
                         this.Close();
                     }
@@ -76,6 +78,7 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
                     createdIncome = incomeService.CreateIncome(incomeHourly);
                     if (createdIncome)
                     {
+                        CreatedIncome = true;
                         this.DialogResult = DialogResult.OK;
                         this.Close();
                     }

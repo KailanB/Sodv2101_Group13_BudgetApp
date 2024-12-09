@@ -15,6 +15,7 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
     public partial class CreateGoalForm : Form
     {
         internal FinancialGoal NewGoal = new FinancialGoal();
+        public bool CreatedGoal;
         public CreateGoalForm()
         {
             InitializeComponent();
@@ -30,7 +31,7 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
             }
             if (!double.TryParse(numericUpDownAddGoalAmount.Text, out double amount) || amount <= 0)
             {
-                lblErrorOutput.Text += "\n Please Enter a valid amount";
+                lblErrorOutput.Text = "Please Enter a valid amount";
                 return;
             }
             string description = txtBoxAddGoalDescription.Text;

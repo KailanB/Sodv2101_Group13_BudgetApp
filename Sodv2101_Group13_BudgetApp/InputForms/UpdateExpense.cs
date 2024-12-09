@@ -58,36 +58,8 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
 
             currentExpenseId = expense.ExpenseId; // Assign ExpenseId here.
 
-            //Hadt his below before
-            //if (expense == null)
-            //{
-            //    MessageBox.Show("Expense data is null.");
-            //    return;
-            //}
-
-            //string dateString = expense.TimePeriod.ToString(); // Ensure it's not null
-
-            //if (string.IsNullOrEmpty(dateString))
-            //{
-            //    MessageBox.Show("Expense date is invalid or missing.");
-            //    return;
-            //}
-
-            //// Check if the date string is valid before parsing
-            //DateTime timePeriod;
-            //if (DateTime.TryParse(dateString, out timePeriod))
-            //{
-            //    // Proceed with setting the inputs (form fields)
-            //    dateTimePicker1.Text = timePeriod.ToString("yyyy-MM-dd"); // example date format
-            //}
-            //else
-            //{
-            //    MessageBox.Show("The date format is incorrect or cannot be parsed.");
-            //}
         }
 
-        //Populate Budget Category - Still need to parse it to the ID NOV 30 11:11pm
-        //CANT FIX THE PARSING
         private void PopulateBudgetComboBox()
         {
 
@@ -188,6 +160,7 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+<<<<<<< HEAD
             //second try
             //{ // Validate required fields
             //    if (string.IsNullOrEmpty(txtExpenseName.Text) || string.IsNullOrEmpty(txtDescription.Text))
@@ -256,6 +229,14 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
         {
             PopulateBudgetComboBox(); // Populate the ComboBox when the form is loaded
         }
+=======
+        } 
+
+            private void EditExpenseForm_Load(object sender, EventArgs e)
+            {
+                PopulateBudgetComboBox(); // Populate the ComboBox when the form is loaded
+            }
+>>>>>>> 7a61e77a8a1763cd816f32646cc05fe056457bde
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {

@@ -38,8 +38,8 @@
             lblGoalDeadline = new Label();
             dateTimePickerAddGoalDeadline = new DateTimePicker();
             lblAddGoalHeader = new Label();
-            lblErrorOutput = new Label();
             btnCancel = new Button();
+            lblErrorOutput = new Label();
             ((System.ComponentModel.ISupportInitialize)numericUpDownAddGoalAmount).BeginInit();
             SuspendLayout();
             // 
@@ -131,16 +131,6 @@
             lblAddGoalHeader.Text = "Create Goal";
             lblAddGoalHeader.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // lblErrorOutput
-            // 
-            lblErrorOutput.AutoSize = true;
-            lblErrorOutput.ForeColor = Color.Red;
-            lblErrorOutput.Location = new Point(12, 273);
-            lblErrorOutput.Name = "lblErrorOutput";
-            lblErrorOutput.Size = new Size(0, 15);
-            lblErrorOutput.TabIndex = 12;
-            lblErrorOutput.TextChanged += lblAddGoalErrorMessage_TextChanged;
-            // 
             // btnCancel
             // 
             btnCancel.BackColor = Color.Plum;
@@ -152,14 +142,22 @@
             btnCancel.UseVisualStyleBackColor = false;
             btnCancel.Click += btnCancel_Click;
             // 
+            // lblErrorOutput
+            // 
+            lblErrorOutput.AutoSize = true;
+            lblErrorOutput.Location = new Point(12, 271);
+            lblErrorOutput.Name = "lblErrorOutput";
+            lblErrorOutput.Size = new Size(0, 15);
+            lblErrorOutput.TabIndex = 14;
+            // 
             // CreateGoalForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(349, 311);
-            Controls.Add(btnCancel);
             Controls.Add(lblErrorOutput);
+            Controls.Add(btnCancel);
             Controls.Add(lblAddGoalHeader);
             Controls.Add(dateTimePickerAddGoalDeadline);
             Controls.Add(lblGoalDeadline);
@@ -189,7 +187,7 @@
         private Label lblGoalDeadline;
         private DateTimePicker dateTimePickerAddGoalDeadline;
         private Label lblAddGoalHeader;
-        private Label lblErrorOutput;
         private Button btnCancel;
+        private Label lblErrorOutput;
     }
 }

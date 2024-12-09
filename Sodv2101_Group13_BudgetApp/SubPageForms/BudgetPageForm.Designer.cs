@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            label2 = new Label();
+            lblBudgetExpenses = new Label();
             lblExpenseList = new Label();
             dataGridViewBudgets = new DataGridView();
             dataGridViewExpenses = new DataGridView();
@@ -56,14 +56,14 @@
             label1.TabIndex = 4;
             label1.Text = "My Budgets";
             // 
-            // label2
+            // lblBudgetExpenses
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(421, 61);
-            label2.Name = "label2";
-            label2.Size = new Size(102, 15);
-            label2.TabIndex = 5;
-            label2.Text = "Budget Expenses: ";
+            lblBudgetExpenses.AutoSize = true;
+            lblBudgetExpenses.Location = new Point(421, 61);
+            lblBudgetExpenses.Name = "lblBudgetExpenses";
+            lblBudgetExpenses.Size = new Size(102, 15);
+            lblBudgetExpenses.TabIndex = 5;
+            lblBudgetExpenses.Text = "Budget Expenses: ";
             // 
             // lblExpenseList
             // 
@@ -75,6 +75,7 @@
             // 
             // dataGridViewBudgets
             // 
+            dataGridViewBudgets.AllowUserToAddRows = false;
             dataGridViewBudgets.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewBudgets.Location = new Point(22, 79);
             dataGridViewBudgets.Name = "dataGridViewBudgets";
@@ -84,6 +85,7 @@
             // 
             // dataGridViewExpenses
             // 
+            dataGridViewExpenses.AllowUserToAddRows = false;
             dataGridViewExpenses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewExpenses.Location = new Point(421, 79);
             dataGridViewExpenses.Name = "dataGridViewExpenses";
@@ -133,7 +135,6 @@
             btnNewExpense.TabIndex = 12;
             btnNewExpense.Text = "New Expense";
             btnNewExpense.UseVisualStyleBackColor = false;
-            btnNewExpense.UseWaitCursor = true;
             btnNewExpense.Click += btnNewExpense_Click;
             // 
             // btnEditExpense
@@ -214,7 +215,7 @@
             Controls.Add(dataGridViewExpenses);
             Controls.Add(dataGridViewBudgets);
             Controls.Add(lblExpenseList);
-            Controls.Add(label2);
+            Controls.Add(lblBudgetExpenses);
             Controls.Add(label1);
             Name = "BudgetPageForm";
             Text = "BudgetPageForm";
@@ -238,7 +239,7 @@
 		private ToolStripSeparator toolStripSeparator4;
 		private ToolStripButton btnToolStripReports;
 		private Label label1;
-		private Label label2;
+		private Label lblBudgetExpenses;
 		private Label lblExpenseList;
 		private DataGridView dataGridViewBudgets;
 		private DataGridView dataGridViewExpenses;
