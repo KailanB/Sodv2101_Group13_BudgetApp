@@ -31,7 +31,7 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
         private void LoadIncomeTypes()
         {
             incomeTypes = incomeService.GetIncomeTypeList();
-            if(incomeTypes != null && incomeTypes.Count > 0)
+            if (incomeTypes != null && incomeTypes.Count > 0)
             {
                 comboIncomeType.DataSource = incomeTypes;
                 comboIncomeType.DisplayMember = "Type";
@@ -100,6 +100,11 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void txtIncomeName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

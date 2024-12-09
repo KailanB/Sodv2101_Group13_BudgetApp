@@ -250,13 +250,17 @@ namespace Sodv2101_Group13_BudgetApp.InputForms
             //        expenseService.UpdateExpense(expense, budgetId);
             //        this.DialogResult = DialogResult.OK;
             //        this.Close();
-        } 
-            //TO POPULATE THE COMBOBOX NOV 11:11pm
-            private void EditExpenseForm_Load(object sender, EventArgs e)
+        }
+        //TO POPULATE THE COMBOBOX NOV 11:11pm
+        private void EditExpenseForm_Load(object sender, EventArgs e)
         {
             PopulateBudgetComboBox(); // Populate the ComboBox when the form is loaded
         }
 
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }
